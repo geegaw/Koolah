@@ -1,0 +1,58 @@
+.movingFolder{
+    background: #aaa;
+}
+.movingFolder,
+.folder{
+    float: left;
+    width: 90px;
+    margin: 5px;
+    position: relative;
+}
+
+.folder a:hover{
+    cursor: pointer;
+}
+
+.folder.hover span:not(.name){
+    background: #aaa;
+}
+
+
+.folder .tabTop{
+    display: block;
+    background: #ccc;
+    width: 33px;
+    height: 5px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.folder .folderBody{
+    display: block;
+    background: #ccc;
+    height: 65px;
+    width: 90px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.folder .name{
+    text-align: center;
+}
+
+.folder .folderOptions{
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    background: #eee;
+    padding: 5px;
+    
+    -webkit-box-shadow: 0px 0px 4px 1px #ccc;
+       -moz-box-shadow: 0px 0px 4px 1px #ccc;
+            box-shadow: 0px 0px 4px 1px #ccc;
+}
+
+.folder .folderOptions a:hover{
+    color: #aaa;
+}

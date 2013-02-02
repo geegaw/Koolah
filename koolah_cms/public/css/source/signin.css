@@ -1,0 +1,64 @@
+#signInSection{
+	width: 500px;
+	height: 200px;
+	padding: 15px;
+	border: 1px solid #000;
+	/*float: left;*/	
+	clear: both;
+	margin: 25px auto;
+	position: relative;
+}
+
+
+#signInSection fieldset.up{
+	float: left;
+	clear: both;
+	margin: 15px 0;
+}
+
+#signInSection fieldset.up .errorText{
+	font-size: 14px;
+}
+
+#signInSection fieldset.up fieldset{
+	float: left;
+	width: 230px;
+	padding: 5px;
+	margin-left: 10px;	
+} 
+
+#signInSection fieldset.up:first-child fieldset{
+	margin-left: 0px;
+} 
+
+#signInSection fieldset.up fieldset label,
+#signInSection fieldset.up fieldset input{
+	float: left;
+	clear: both;
+}
+
+#signInSection fieldset.up fieldset label{
+	font-size: 19px;
+	margin-bottom: 5px;
+}
+
+#signInSection fieldset.up fieldset input{
+	padding: 5px;
+	width: 218px;
+}
+
+#signInSection fieldset.submit{
+	clear: both;
+	float: right;
+	
+	position: absolute;
+	right: 15px;
+	bottom: 15px;
+}
+
+#signIn{
+	float: right;
+	width: 100px;
+	padding: 5px;
+	cursor: pointer;
+}

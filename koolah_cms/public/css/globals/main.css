@@ -1,0 +1,68 @@
+body{ font-family: calibri; }
+h1{ font-size: 1.5em; }
+h2{ font-size: 1.4em; }
+h3{ font-size: 1.3em; }
+h4{ font-size: 1.2em; }
+a{ text-decoration: none; color: #000;}
+a.active{ font-weight: bold; }
+button{ cursor: pointer;}
+input, label, textarea{ float: left;}
+label{ clear: both; }
+input[type="text"],
+input[type="password"]{
+    width: 100%;
+    padding: 5px;
+    height: 30px;
+    line-height: 25px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+fieldset{ margin: 5px 0}
+fieldset .description{
+    float: left;
+    clear: both;
+    font-size: .8em;
+}
+
+.hide{display:none;}
+.error{color:red; border: 1px solid red;}
+.errorText{clear: both; float: left; color:red;}
+.success{color:green;}
+.draggable{cursor: move;}
+.clear{clear:both;}
+.zLevel1{ z-index: 10 }
+.zLevel2{ z-index: 20 }
+.zLevel3{ z-index: 30 }
+.zLevel4{ z-index: 40 }
+.zLevel5{ z-index: 50 }
+.zLevel6{ z-index: 60 }
+.zLevel7{ z-index: 70 }
+.zLevel8{ z-index: 80 }
+.zLevel9{ z-index: 90 }
+.zLevel10{ z-index: 100 }
+
+.ext{
+    background: url('../../images/icons/default_file.png') no-repeat;
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-indent: -9999px;
+ }
+.doc, .docx{ background: url('../../images/icons/doc.png') no-repeat;}
+.pdf{ background: url('../../images/icons/pdf.png') no-repeat;}
+.xls, .xlsx{ background: url('../../images/icons/xls.png') no-repeat;}
+.ppt, .pptx{ background: url('../../images/icons/ppt.png') no-repeat;}
+
+.fullWidth{
+    float: left;
+    clear: both;
+    width: 100%;
+}
+.halfWidth{
+    float: left;
+    width: 50%;
+}
+
+
+

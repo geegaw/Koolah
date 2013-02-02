@@ -1,0 +1,17 @@
+#overlayBox .top{
+    margin-bottom: 10px;
+}
+
+#overlayBox .msg,
+#overlayBox .options{
+    padding: 0 10px;
+    margin-bottom: 10px;
+}    
+
+#overlayBox .options button{
+    margin-left: 15px;
+}
+
+#overlayBox .options button.yes{
+    color: red;
+}

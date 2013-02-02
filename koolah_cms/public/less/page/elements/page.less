@@ -1,0 +1,63 @@
+#left{
+    .left( @leftW );
+    .border( @color1 );
+    margin-left: 5%; 
+    
+    .tabSection{ margin: 10px 0; }    
+}
+
+#right{
+    .right( @rightW );
+    margin-right: 40px;
+    
+    #commandsSection{
+        .fullWidth;
+        .border( @color1 );
+        
+        #publicationCommands{
+            .fullWidth;
+            .border-bottom( @color1, 10px, 10px );
+            
+            div{ margin-top: 10px; }
+            div:first-child{ margin-top: 0; }
+            
+            #publishUnpublish{
+                .fullWidth;
+              
+                a{
+                    .left();
+                    .border-bottom( @color1 );
+                    .border-right( @color1 );
+                    .border-top( @color1 );
+                    font-size: @font2;
+                    line-height: 30px;
+                    padding: 2px;
+                    margin: 0;
+                    
+                }
+                a.active{ font-size: @font4; }
+                a.inactive{ opacity: .5; }
+            }
+            
+            #publish{
+                .border-left( @color1 );
+                color: @successColor;
+            }
+            
+            #unpublish{ color: @color8; }
+            
+            #publicationStatus{
+                .fullWidth;  
+                
+                .status{
+                  .bold;
+                  font-size: @font3;
+                }
+            }
+            
+            #workflowCommands{
+                .fullWidth;  
+            }
+        }
+    }
+}

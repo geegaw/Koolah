@@ -1,0 +1,25 @@
+fieldset.many{
+    border: 1px solid #aaa;
+    padding: 0 5px;
+}
+
+fieldset.manyBody{
+    clear: both;
+    border: 1px solid #ccc;
+}
+
+fieldset.manyBody fieldset{
+    margin: 10px 0 0 0 !important;
+}
+
+a.many{
+    width: 20px;
+    line-height: 18px;
+    font-size: 18px;
+    height: 20px;
+    border: 1px solid #000;
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+    float: right;
+}

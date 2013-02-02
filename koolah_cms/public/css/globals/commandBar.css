@@ -1,0 +1,39 @@
+.commandBarBody{
+    border: 1px solid #ccc;
+}
+
+.commandBar{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    background: #ccc;
+    padding: 3px 5px;
+    line-height: 15px;
+    height: 21px;
+    width: 100%;    
+}
+
+.commandBar h3{
+    font-size: 12px;
+    float: left;       
+}
+
+.commandBar a{
+    float: right;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.collapsible .toggle{
+    font-size: 25px;
+    
+}
+
+.square{
+    text-indent: -9999px;
+    border: 1px solid #fff;
+    height: 10px;
+    width: 10px;
+    display: block;
+}

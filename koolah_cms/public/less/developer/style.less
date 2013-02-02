@@ -1,0 +1,76 @@
+#developer{
+  padding: 2%;
+}
+
+#filterArea{
+    .left();
+    .border( @color1 );
+    padding: 5px;
+}
+
+#filterArea fieldset{
+    .left();
+    border: none;
+}
+
+#filterArea fieldset label,
+#filterArea fieldset input{
+    .leftBoth;
+    width: @inputW;
+}
+#filterArea ul{ 
+  .left();
+  margin: 10px 0 0 15px; 
+}
+
+#filterArea ul label,
+#filterArea ul input{
+    .left();
+    clear: none;
+}
+#filterArea ul label{
+    margin-left: 5px;
+}
+
+#templates{ .right(); }
+
+.tabSection{
+  .left( @tabSectionW );
+  .border( @color5 );
+  padding: 5px;
+  margin-left: 15px;
+}
+.tabSection:first-child{ margin-left: 0; }
+.tabSection .heading{ .border-bottom( @color5 );}
+.tabSection .heading h2{ .left(); }
+.tabSection .heading a{
+  .right();
+  line-height: 29px;
+  font-size: @font5;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.tabSection ul{
+  .leftBoth;
+  padding: 0;
+  margin: 5px 0;
+  width: 100%;
+  height: 250px;
+  overflow: auto;
+}
+
+.tabSection li{
+  padding: 2px 0 2px 5px;
+  line-height: 25px;
+  margin-top: 5px;
+}
+.tabSection li:nth(odd){ background: @color3; }
+.tabSection li button{ .right(); }
+.templateList .templateName{ .left() }
+.templateList .commands{ .right(); }
+.templateList .commands a{
+    .left( 25px );
+    text-align: center;
+    margin-left: 5px;
+}

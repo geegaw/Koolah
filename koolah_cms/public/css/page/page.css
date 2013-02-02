@@ -1,0 +1,106 @@
+#left{
+    float: left;
+    width: 70%;
+    padding: 10px;
+    margin-left: 40px; 
+    border: 1px solid #ccc;
+}
+
+#right{
+    float: right;
+    margin-right: 40px;
+    width: 230px;
+}
+
+#page fieldset{
+    margin: 10px auto;
+}
+
+#page fieldset input,
+#page fieldset textarea,
+#page fieldset select,
+#page fieldset label{
+    clear: both;
+    float: left;
+}
+
+#page fieldset input{
+    width: 300px;
+}
+
+#page fieldset textarea{
+    /*width: 90%;*/
+}
+
+
+.tabSection{
+    margin: 10px 0;
+}
+
+#commandsSection{
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+#publicationCommands{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+#publicationCommands div{
+    margin-top: 10px;
+}
+#publicationCommands div:first-child{
+    margin-top: 0;
+}
+
+#publishUnpublish a{
+    font-size: 18px;
+    line-height: 30px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 2px;
+    margin: 0;
+    float: left;
+}
+
+#publishUnpublish a.active{
+    font-size: 24px;
+}
+
+#publishUnpublish a.inactive{
+    opacity: .5;
+}
+
+
+#publish{
+    border-left: 1px solid #ccc;
+    color: #008000;
+}
+
+#unpublish{
+    color: #888888;
+}
+
+#publicationStatus .status{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#meta{
+    border: 1px solid #ccc;
+    margin-top: 15px;
+}
+
+#meta .collapsibleBody {
+    padding: 20px;
+}
+
+#templateName span{
+    font-weight: bold;
+}
+
+@import url("globals/commandBar.css");
+@import url("globals/many.css");

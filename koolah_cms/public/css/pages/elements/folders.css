@@ -1,0 +1,14 @@
+#list{
+    float: left;
+    clear: both;
+    border: 1px solid #000;
+    height: 300px;
+    padding: 10px;
+    
+    box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    
+    position: relative;
+    top: 0;
+}

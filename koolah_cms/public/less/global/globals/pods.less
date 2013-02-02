@@ -1,0 +1,25 @@
+.pod{
+    .left();
+    .border( @color6 );
+    .roundCorner( 10px );
+    .shadow( @color1, 2px, 0, 2px, -1px);
+    background: @color3;
+    margin-left: 10px;
+    padding: 2px 5px;
+    
+    span, button{
+        .left();
+        line-height: @font2;
+        @font2;
+    }
+    
+    button{ .clearButton; }
+    .del{
+        .right();
+        margin-left: 10px;
+    }
+}
+
+.pods .pod:first-child{
+    margin-left: 0;
+}

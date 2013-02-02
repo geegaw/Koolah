@@ -1,0 +1,57 @@
+#ratioForm{
+    .right();
+    min-width:  @ratioFormW;
+    
+    #ratioFormBody{
+      .commonBox( 100% );
+      
+      form{
+          @formPadding: 5px;
+          
+          .fullWidth;
+          .border( @color2 );
+          padding: @formPadding;
+          .relative;
+          
+          
+          #ratioInputs{ 
+              .halfWidth; 
+              padding: 5px;
+              
+              #ratiofieldset{ .fullWidth; }
+              #ratiofieldset fieldset{ .left(); }
+              #ratiofieldsetLabel{ .fullWidth; }
+              #seperator{ 
+                  clear: none;
+                  padding-top: 5px; 
+                  margin: 0 3px;
+                  font-size: @font4; 
+                  .bold;
+              }
+              #ratiofieldset input{ width: @ratiofieldsetInputW; }
+          }  
+          
+          #ratioCommands{
+              .positionRightBottom( absolute, @formPadding, @formPadding );
+           }
+            
+           #ratioCommands .options{
+              .fullWidth;
+              margin-top: 25px;
+           }
+           
+           
+      }
+      
+      .list{
+           @proportionsW: 9%;
+           .ratioSizeName{
+              width: @ratioNameW - @proportionsW * 2;
+           }
+           .ratioSizeW, .ratioSizeH{
+              .left( @proportionsW );            
+           }
+           
+       }
+    }
+}

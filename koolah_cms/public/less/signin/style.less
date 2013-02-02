@@ -1,0 +1,56 @@
+#signInSection{
+    .relative;
+    padding: 75px 0;
+}
+
+#signInForm{
+    .border( @color1 );
+    .leftBoth;
+    .positionLeftTop(relative, 50%, 0);
+    .center( @signInWidth );
+    .dropShadow;
+    padding: 15px;
+}
+
+#signInForm legend{
+    .fullWidth;
+    .bold;
+    text-align:center;
+    font-size: @font5;
+      
+}
+
+#signInSection fieldset.up{
+    .fullWidth;
+    margin: 15px 0;
+}
+
+#signInSection fieldset.up fieldset{
+    padding: 5px;
+} 
+
+#signInSection fieldset.up fieldset label,
+#signInSection fieldset.up fieldset input{
+    .leftBoth;
+}
+
+#signInSection fieldset.up fieldset label{
+    font-size: @font4;
+    margin-bottom: 5px;
+}
+
+#signInSection fieldset.up fieldset input{
+    padding: 5px;
+    width: @inputWidth;
+}
+
+#signInSection fieldset.submit{
+    .rightBoth;
+    .positionRightBottom( absolute, 15px, 15px );
+}
+
+#signIn{
+    .right( 100px );
+    padding: 5px;
+    cursor: pointer;
+}

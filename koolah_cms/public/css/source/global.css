@@ -1,0 +1,225 @@
+.hide {
+  display: none;
+}
+.clear {
+  clear: both;
+}
+.leftBoth {
+  clear: both;
+  float: left;
+}
+.fullWidth {
+  clear: both;
+  float: left;
+  width: 100%;
+}
+.halfWidth {
+  float: left;
+  width: 50%;
+}
+.error {
+  color: #ff0000;
+  border: 1px solid #ff0000;
+}
+.errorText {
+  clear: both;
+  float: left;
+  color: #ff0000;
+}
+.success {
+  color: #008000;
+}
+.draggable {
+  cursor: move;
+}
+.zLevel1 {
+  z-index: 10;
+}
+.zLevel2 {
+  z-index: 20;
+}
+.zLevel3 {
+  z-index: 30;
+}
+.zLevel4 {
+  z-index: 40;
+}
+.zLevel5 {
+  z-index: 50;
+}
+.zLevel6 {
+  z-index: 60;
+}
+.zLevel7 {
+  z-index: 70;
+}
+.zLevel8 {
+  z-index: 80;
+}
+.zLevel9 {
+  z-index: 90;
+}
+.zLevel10 {
+  z-index: 100;
+}
+.noText {
+  text-indent: -9999px;
+}
+body {
+  font-family: calibri;
+}
+h1 {
+  font-size: 25px;
+}
+h2 {
+  font-size: 20px;
+}
+h3 {
+  font-size: 17px;
+}
+h4 {
+  font-size: 15px;
+}
+a {
+  text-decoration: none;
+  color: #000000;
+}
+a.active {
+  font-weight: bold;
+}
+button {
+  cursor: pointer;
+}
+input,
+label,
+textarea {
+  float: left;
+}
+label {
+  clear: both;
+}
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 5px;
+  height: 30px;
+  line-height: 25px;
+}
+fieldset {
+  margin: 5px 0;
+}
+fieldset .description {
+  clear: both;
+  float: left;
+  font-size: 13px;
+}
+.ext {
+  background: url('../../images/icons/default_file.png') no-repeat;
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-indent: -9999px;
+}
+.doc,
+.docx {
+  background: url('../../images/icons/doc.png') no-repeat;
+}
+.pdf {
+  background: url('../../images/icons/pdf.png') no-repeat;
+}
+.xls,
+.xlsx {
+  background: url('../../images/icons/xls.png') no-repeat;
+}
+.ppt,
+.pptx {
+  background: url('../../images/icons/ppt.png') no-repeat;
+}
+header {
+  clear: both;
+  float: left;
+  width: 100%;
+  padding: 5px 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #000000;
+  background: #707070;
+  background: -moz-linear-gradient(left center, #707070, #888888);
+  /*background: #512100;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#804800), to(#804800));
+    background: -webkit-linear-gradient(left, #512100, #804800);
+    /*background: -moz-linear-gradient(left, #512100, #804800 75%);
+    /*background: -moz-radial-gradient( circle, #804800 , #512100);
+    background: -moz-radial-gradient(80% 20%, closest-corner, #804800, #512100);
+    background: -ms-linear-gradient(left, #512100, #804800);
+    background: -o-linear-gradient(left, #512100, #804800);*/
+}
+/*
+
+#logo{
+    float: left;
+}
+
+#logo a{
+    background: url( ("@{logosDir}koolah-logo-100-trans.png") ) no-repeat;
+    width: 100px;
+    height: 90px;
+    display: block;
+    .noText;
+}
+
+header a{
+    color: @font1;
+}
+
+@mainNavWidth: 200px;
+#mainNav{
+    float: left;
+    width: @mainNavWidth;
+    position: relative;
+}
+
+#mainNav .menuItem{
+    float:left;
+    width: @mainNavWidth;
+} 
+
+#mainNav .menuItem a{
+    .leftBoth;
+    display: block;    
+    width: 100px;
+    border-top: 1px solid #fff;
+}
+
+#mainNav .menuItem:first-child a{
+    border-top: 0;
+}
+
+#mainNav .menuItem .subMenu{
+    height: 100%; 
+    float: right;
+    width: 100px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 500;
+}
+
+#userOptions
+{
+    float: right;
+    margin-right: 20px;
+}
+
+#userOptions a
+{
+    border-left: 1px solid #fff;
+    margin-left: 5px;
+    padding-left: 5px;
+}
+#userOptions a:first-child
+{
+    border-left: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+*/

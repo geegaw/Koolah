@@ -1,0 +1,40 @@
+.help{
+    .left();
+    margin-left: 5px;
+    .relative;
+}
+
+.help .helpTrigger,
+.help .helpArea .helpTriggerClose{
+    display: block;
+    color: @color5;
+    background: @color1;
+    line-height: 13px;
+    height: 17px;
+    font-size: @font1;
+    padding: 2px;
+}
+
+.help .helpTrigger{
+    width: 14px;
+    .border( @color1 );
+    text-align: center;
+}
+
+.help .helpArea{
+    .positionLeftTop();
+    .left( 10px );
+    height: 13px;
+    .border( @color1 );
+    background: @color3;
+    .zLevel5;
+}
+.help .helpArea .helpTriggerClose{
+    width: 100%;
+    text-align: left;
+}
+.help .helpText{
+    .fullWidth;
+    padding: 10px;
+    box-sizing: border-box;
+}

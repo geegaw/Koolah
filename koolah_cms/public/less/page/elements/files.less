@@ -1,0 +1,15 @@
+@import "../../files/toc";
+
+#filesSection{
+    .hide;
+    .positionLeftTop( absolute, 50%, 0 );
+    .zLevel2;
+    background: @color4;
+    .center(@filesSectionW);
+    
+    .filterInput input{ .fullWidth; }        
+    .filterCommands input[type=submit]{ clear: none; }
+    
+    .selectMe{ .right(); }
+    .commands.doc{ background: none; }
+}

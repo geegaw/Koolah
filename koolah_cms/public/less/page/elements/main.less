@@ -1,0 +1,30 @@
+#page{
+  .fullWidth;
+  
+  fieldset{
+    .fullWidth;
+    margin: 10px auto;
+  
+    input, textarea, select, label, .cke_1{ .fullWidth; }
+    
+    input{ width: @pageInputW; }
+  }
+  
+  .fileField{
+      .selectFile{
+        .clearButton;
+        background: @color2;
+        color: @color5;
+        padding: 0 10px;
+        height: 30px;
+        line-height: 25px;
+      }
+      .selectFile:hover{
+        background: @color1;
+      }
+  }
+}
+
+.ui-datepicker{ 
+  z-index: 1000 !important;
+}

@@ -1,0 +1,97 @@
+.commonBox(@width:auto, @filterInputW:70%, @filterCommandsW:30%, @nameW:50%, @listCommandsW:25%, @listMinW:150px, @listMaxW:350px ){
+    .left( @width );
+    .border( @color2 );
+    padding: 20px;
+    
+    
+    .heading{
+        .fullWidth;
+        
+        h2{ .left( 80% ); }          
+        button{ .right(); }
+     }    
+     
+     .filterArea{
+        .fullWidth;
+        
+        .filterInput{ .left( @filterInputW ); }
+        .filterCommands{ 
+            .left( @filterCommandsW  );
+            padding-top: 20px; 
+        }
+     }
+    
+    .listHeading{
+        .fullWidth;
+        
+        ul{ 
+            .fullWidth;
+            
+            li{ .left(); } 
+            li:last-child{ .right() }
+        }
+    }
+    
+     .list{
+        .fullWidth;
+        .border-top( @color1, 10px, 5px, solid, 7px  ); 
+        min-height: @listMinW;
+        max-height: @listMaxW;
+        .scrollAuto;    
+        
+        ul{
+            .fullWidth;
+            
+            
+            li{
+                .fullWidth;
+                .border-top( @color1 );
+                padding: 5px 0;
+                
+                span{ .left(); }
+                 
+                .name{
+                    .left();
+                    font-size: @font2;
+                    max-width: @nameW;
+                }
+                
+                .commands{
+                    .right();
+                    max-width: @listCommandsW;
+                    
+                    button{ margin-left: 5px;}
+                    button:first-child{ margin-left: 0; }
+                }
+            }
+            
+            li:first-child{ 
+                border-top: none;
+                padding-top: 0; 
+            }
+            
+            li:nth-child(even){ background: @color3; }
+        }
+    }  
+}
+
+.commonForm( @formW: 75% ){
+    .center( @formW );
+    .overlayBox;
+    .zLevel6;
+    .fixed;     
+    padding: 20px;
+          
+     legend{ 
+        .fullWidth;
+        font-size: @font4; 
+     }
+     
+     fieldset{ 
+        .fullWidth;
+     }
+     
+     .commands{
+        
+     }
+}

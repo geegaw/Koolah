@@ -1,0 +1,50 @@
+@collapsibleH: 25px;
+@collapsibleLineH: 25px;
+
+@closedBox: 17px;
+@closedBoxMargin: (@collapsibleH - @closedBox) / 2;
+ 
+.collapsible{
+  .left();  
+  
+  .commandBar{
+      .fullWidth;
+      background: @color1;
+      padding: 3px 5px;
+      height: @collapsibleH;
+      
+       h3{
+            font-size: @font1;
+            line-height: @collapsibleLineH;
+            .left();       
+        }
+        
+       button{
+            .clearButton;
+            .block;
+            .right( @closedBox );
+            text-align: center;
+            color: @color4;
+            font-weight: bold;
+            height: @collapsibleH;
+            margin-right: 5px;
+       }
+       
+       .open{ 
+          margin-top: -14px;
+          font-size: @font6; 
+       }
+        
+       .closed{
+          .noText;
+          .border( @color3, 3px );
+          height: @closedBox;      
+          margin: @closedBoxMargin 0;
+       }     
+  }
+  
+  .collapsibleBody{ 
+    .fullWidth;
+    padding: 20px; 
+  }
+}

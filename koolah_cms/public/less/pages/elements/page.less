@@ -1,0 +1,54 @@
+.page{
+    .left( @pageW );
+    margin: 5px;
+    .relative;
+}
+
+.page .pageBody{
+    .roundCorner( 10px );
+    .relative;
+    .block;
+    background: @color3;
+    margin-left: 15px;
+    height: 70px;
+    width: 60px;
+}
+
+
+.page .pageBody span{
+    .block;
+    .absolute;
+    font-size: @subfont1;
+    color: @color4;
+    width: 100%;    
+    height: 12px;
+    padding: 2px 0;
+    text-align: center;
+}
+.page .pageBody .pagePublicationStatus{
+    .roundCorner( 0, 0, 10px, 10px );
+    background: @color5;
+    bottom: 0;
+}
+.page .pageBody .pagePublicationStatus.published{
+    background: @successColor;
+}
+
+.page .pageBody .pageTemplate{
+    background: @color1;
+    bottom: 14px;
+}
+.page .name{
+    text-align: center;
+}
+
+.page .pageOptions{
+    .positionLeftTop( absolute, 15px, 25px );
+    background: @color3;
+    padding: 5px;
+    .shadow( @color1, 0, 0, 4px, 1px )
+}
+
+.page .pageOptions a:hover{
+    color: @color10;
+}

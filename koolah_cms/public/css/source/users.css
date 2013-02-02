@@ -1,0 +1,153 @@
+#saveCancel input{
+	clear: none;
+	margin-left: 5px;
+}
+#saveCancel input:first-child{
+	margin-left: 0px;
+}
+
+#rolesArea label,
+#rolesArea input{
+	clear: none;
+	float: left;
+}
+#rolesArea label{
+	margin-left: 5px;
+}
+
+.roleWrapper{
+	float: left;	
+}
+
+#userForm
+#userInfoArea,
+#userInfoArea label,
+#userInfoArea input,
+#userInfoArea span,
+#rolesArea,
+.roleCheckBox,
+.roleCheckBox input,
+.roleCheckBox label,
+.roleCheckBox span,
+#permissionsArea,
+#saveCancel,
+#leftCol,
+#rightCol,
+#bottom,
+#rolesArea,
+#userForm,
+.cat
+{
+    float: left;    
+}
+
+#userInfoArea label,
+#userInfoArea input,
+#userInfoArea span,
+#bottom
+{
+    clear: both;    
+}
+
+#userForm
+{
+    width: 904px; 
+   
+}
+#permissionsArea
+{
+    width: 900px;
+    padding: 0;
+    margin: 0;
+}
+#leftCol
+{
+    width: 550px;    
+}
+
+#rightCol
+{
+    width: 350px;    
+}
+
+
+#rolesArea,
+#saveCancel
+{
+    width: 250px;
+}
+
+.colorBox
+{
+    display: block;
+    width: 15px;
+    height: 15px;    
+    text-indent: -9999px;
+}
+
+.roleGuideWrapper,
+.roleWrapper
+{
+    padding: 2px;    
+}
+
+.roleCheckBox label
+{
+    width: 150px;
+    margin-left: 5px;
+}
+
+.roleCheckBox span
+{
+    margin: 2px 5px 0 0;
+}
+
+.roleCheckBox
+{
+    border: none;
+    clear: both;
+    margin: 0;
+    padding: 3px;
+}
+
+#userInfoArea
+{
+    width: 500px;
+}
+
+.cat
+{
+    width: 270px;
+    padding: 10px;
+    margin: 5px;
+}
+
+#allPermissions,
+.allCat,
+.aPerm
+{
+    border: none;
+}
+
+#custom
+{
+    width: 24px;
+    height: 22px;
+    background: #000;
+}
+/*
+#userInfoArea label
+{
+    clear: both;
+}
+
+#userInfoArea input
+{
+    clear: left;
+}
+
+#userInfoArea span
+{
+    margin-left: 5px;
+}
+*/

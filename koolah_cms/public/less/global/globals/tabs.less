@@ -1,0 +1,39 @@
+.tabLabels{
+    .positionLeftTop( relative, 0, 1px );
+    .zLevel2;
+    
+    .tab{
+        .left();    
+        .border( @color1 );
+        .roundCorner(0, 15px, 0, 0);
+        .positionLeftTop(relative, -4px, 0);
+        .shadow( @color1, 2px, 0, 2px, -1px );
+        .zLevel1;
+        min-width: 50px;
+        text-align: center;
+        padding: 5px;
+        line-height: 25px;
+        background: @color4;   
+        a{ color: @color1; }
+    }
+    
+    .tab:last-child{ .shadow( @color3, 0, 0, 0, 0 ); }
+    .tab:first-child{ left: 0; }
+    .tab.active{
+        border-color: @color1;
+        border-bottom: 1px solid @color4 !important;
+        .zLevel2;
+        
+        a{ color: @color5; }
+    }
+}
+
+
+
+.tabsBody{
+    .border( @color1 );
+    padding: 15px;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

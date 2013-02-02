@@ -1,0 +1,156 @@
+#fileList{
+    float: left;
+    width: 720px;
+    margin-right: 5px;
+    border: 1px solid #000;    
+}      
+
+#fileList .aFile
+{
+    padding: 5px 0;
+}
+
+#fileList .name span{
+    float: left;
+}
+#fileList .name .sortAlpha{
+    float: left;
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+#fileList .editAlt
+{
+    float: left;
+    color: #666;
+    
+}
+
+#fileList .tags{
+  float: left;
+  width: 300px;
+  display: block;
+}
+
+#fileList .tags .fileTag
+{
+    float: left;
+    min-width: 75px;
+}
+
+#fileList .commands{
+    width: 90px;
+}
+#fileList .commands.img{
+    width: 120px;
+}
+
+#fileList .commands button{
+    float: left;
+    margin-left: 5px;
+}
+#fileList .commands button:first-child{
+    margin-left: 0px;
+}
+
+/*
+#fileList .commands button{
+    width: 25px;
+    height: 25px;
+    text-indent: -9999px;
+    display: block;
+    border: none;
+    float: left;
+    margin-left: 5px;
+}
+#fileList .commands button:first-child{
+    margin-left: 0px;
+}
+
+#fileList .commands .edit{
+    width: auto;
+    height: auto;
+    text-indent: 0px;
+    display: block;
+    border: auto;
+}
+
+#fileList .commands .info{ background: url('../../../images/icons/info.png') no-repeat; }
+#fileList .commands .del{ background: url('../../../images/icons/del.png') no-repeat;}
+*/
+#fileList .commands .crop{ background: url('../../../../images/icons/crop.png') no-repeat; 
+    width: 25px;
+    height: 25px;
+    text-indent: -9999px;
+    display: block;
+    border: none;
+}
+
+#filesList{
+    min-height: 350px;
+    max-height: 550px;
+    overflow-y: auto;
+    border-top: 3px solid #665;
+    margin-top: 10px;    
+}
+
+#filesList li{
+    min-height: 100px;
+}
+
+/*
+#files
+{
+    max-height: 300px;
+    overflow-y: auto;
+    border: 10px solid red;
+}
+*/
+
+#fileList .type,
+#fileList .ext{
+  float: left;
+  width: 100px;
+}
+
+#fileList .ext.img{
+    text-indent: 0;
+    background: none;
+}
+
+#fileList .ext.img img{
+    width: 90px;
+    max-height: 100px;
+}
+
+#fileList  .name{
+  float: left;
+  width: 175px; 
+  margin-left:10px;
+}
+
+#fileList .previewThumb
+{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+#filesList .nameBlock{
+    float: left;
+    width: 175px; 
+}
+
+#filesList .nameBlock .pod{
+    float: left;
+    max-width: 175px; 
+    margin-left:10px;
+}
+
+#filesList .nameBlock .pod .name{
+    width: auto;
+}
+
+#filesList .tags .name{
+    width: auto;
+}

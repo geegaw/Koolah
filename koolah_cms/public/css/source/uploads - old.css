@@ -1,0 +1,410 @@
+#uploads h2
+{
+    width: 100%;
+    text-align: center;
+    background: #ddd;
+    color: #000;
+    padding: 5px 0;    
+}
+
+
+#filesSection
+{
+    float: left;
+    width: 1000px;
+    border: 1px solid #000;
+    padding: 10px;
+    margin: 20px;
+}
+
+#fileList
+{
+    float: left;
+    width: 740px;
+    margin-right: 5px;
+    border: 1px solid #000;    
+}      
+
+#filesList
+{
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#fileList .aFile
+{
+    padding: 5px 0;
+}
+
+.odd
+{
+   background: #eee;
+   border-top: 1px solid #ccc; 
+   border-bottom: 1px solid #ccc;    
+}
+
+#fileList .type
+{
+  float: left;
+  width: 50px;
+}
+
+#fileList .name
+{
+  float: left;
+  width: 350px; 
+}
+#fileList .name span
+{
+    float: left;
+}
+#fileList .name .sortAlpha
+{
+    float: left;
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+#fileList .tags
+{
+  float: left;
+  width: 200px;
+  display: block;
+}
+
+#fileList .tags .fileTag
+{
+    float: left;
+    min-width: 75px;
+}
+
+#fileList .options
+{
+  float: left;
+  width: 100px;
+}
+
+#files
+{
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#fileFilters
+{
+    float: left;
+    width: 250px;
+    border: 1px solid #000;
+}
+
+#addFile
+{
+    float: right;
+    font-size: 1.2em;
+    margin: 10px 20px;
+}
+
+
+#fileFilters h2
+{
+    clear: both;
+}
+
+#fileFilters .top
+{
+    border-bottom: 1px solid #000;
+}
+
+#fileForm
+{
+    margin: 15px 0;
+    border: 1px solid #000;    
+}
+
+#fileFormForm .leftSide 
+{
+    float: left; 
+    width: 685px;
+    margin-right: 5px;   
+}
+
+#fileFormForm .rightSide 
+{
+    float: left; 
+    width: 250px;   
+}
+
+#fileFormForm label,
+#fileFormForm input
+{
+    clear: left;
+    float: left;
+}
+#fileFormForm input[type=submit]
+{
+    clear: none;
+    float: left;
+    width: 75px;
+    text-align: center;
+    padding: 3px;
+    margin: 10px 5px;
+}
+
+#cancelFile
+{
+    float: left;
+}
+
+#uploadPreview
+{
+    float: right;
+}
+
+#uploadPreview img
+{
+    float: left;
+    max-width: 75px;
+    height: auto;
+}
+
+
+#addTag
+{
+    margin: 15px;
+    float: left;
+    clear: both;
+    
+}
+
+#tagsSection
+{
+    float: right;
+    width: 250px;
+    border: 1px solid #000;
+    padding: 10px;
+    margin: 20px;    
+}
+
+.heading
+{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+}
+
+.tagHeading
+{
+    margin-top: 10px;
+}
+
+.legend
+{
+    float: left;
+}
+
+.dropArea
+{
+    max-height: 150px;
+    overflow-y: auto;
+} 
+
+.dragButton
+{
+
+}
+
+#tagList .dragButton
+{
+    float: left;
+    width: 25px;
+    height: 25px;
+    background: #ccc;
+    margin-right: 5px;    
+}
+
+.draggable
+{
+    cursor: move;
+    border: 1px solid #000;
+    background: #eee;
+}
+ 
+#tagList .options
+{
+    float: right;
+    width: 80px;
+}
+
+#tagList .options button
+{
+    float: right;
+    font-size: 1.1em;
+    width: 40px;
+    padding: 0;
+    margin: 0 5px 0 0;
+    text-align: center;     
+}
+
+
+#tagForm
+{
+    border: 1px solid #000;
+}
+
+#tagForm form
+{
+    padding: 10px;
+    float: left;
+    clear: both;
+}
+
+#tagForm fieldset
+{
+    float: left;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+#tagForm fieldset.full
+{
+    clear: both;
+    /*width: 356px;*/     
+}
+
+#tagForm fieldset.full input
+{
+    width: 345px;
+}
+
+#tagForm fieldset.half
+{
+    float: left;
+    border: 0;
+    padding: 0;
+    width: 178px;    
+}
+
+#tagForm fieldset.half input
+{
+    width: 150px;
+}
+
+
+#tagForm fieldset.half input[type=submit]
+{
+    clear: none;
+    float: left;
+    width: 75px;
+    text-align: center;
+    padding: 3px;
+    margin: 10px 5px;
+}
+
+
+#tagForm label,
+#tagForm input
+{
+    clear: left;
+    float: left;
+}
+
+#tagList 
+{
+    max-height: 300px;
+    overflow-y: auto;    
+}
+
+#tagList .tagName
+{
+    float: left;
+}
+
+#tagList .options
+{
+    float: right;
+}
+
+#tagList .aTag
+{
+    margin: 5px 0;    
+}
+
+#tagList .aTag.odd
+{
+    background: #eee;
+} 
+
+
+.textSearch
+{
+    clear: both;
+    float: left;
+    position: relative;
+}
+
+.dropdown
+{
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}                                                                 
+.down{ background: url('../images/triangle-down.png') no-repeat; }
+.up{ background: url('../images/triangle-up.png') no-repeat; }
+
+.tagDropArea
+{
+    position: absolute;
+    top: 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+    
+}
+.tagDropArea ul
+{
+    padding: 5px;
+    margin: 0;
+}
+
+.tagDropArea li
+{
+    list-style: none;
+    width: 100%;
+    margin-top: 2px;
+}
+
+.tagDropArea li:first-child
+{
+    margin-top: 0;
+}
+
+.addTag
+{
+  float: left;
+}
+
+#fileFormTagArea {
+    background: #ccc;
+    border: 1px solid #000;
+    float: left;
+    margin-left: 20px;
+    min-height: 50px;
+    width: 450px;
+}
+
+.tagButton
+{
+    float: left;
+    min-width: 150px;
+    border: 1px solid #ddd;
+    background: #eee;
+    margin: 5px;
+    padding: 5px;
+}
+
+.tagButton button
+{
+    float: right;
+}

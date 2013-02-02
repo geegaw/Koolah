@@ -1,0 +1,221 @@
+#templatesSection{
+    width: @templateSectionW;
+    margin: 10px auto;
+
+    #templateInfo{
+        .left(@templateSectionLeftW);
+        .border( @color1 );
+        padding: 10px;     
+    }
+    
+    #commands{
+        .right( @templateSectionRightW );
+        .border( @color1 );
+        padding: 10px;
+        margin-left: 5px;
+    }
+    
+    input[type=text]{ @templatesSectionInputW; }
+
+    #templateForm{
+        .border( @color1 );
+        padding: 5px;    
+        
+        fieldset{
+            border: 0;
+            margin: 0;
+        }
+        
+        input[type=text]{ width: @templateFormInputW; }
+    }
+    
+    
+}
+
+
+
+
+
+#addField{
+    .leftBoth;
+    .positionLeftTop( relative, 50%, 0 );
+    margin: 15px 0 0 -50px;
+    width: 100px;
+}
+
+#newFieldForm{
+  .positionLeftTop( fixed, 50%, 10% );
+  .center( @newFieldW );
+  .border( @color1, 2px );   
+  .zLevel5;
+  background: @color4;
+  padding: 15px; 
+}
+
+#newFieldCommands{ padding: 10px 0; }
+#newFieldCommands fieldset{
+    padding: 0;
+    border: none;
+}
+
+#newFieldCommands #newFieldCommandsMainCommands{
+    .left( @mainCommandsW );
+    .border( @color5 );
+    padding: 10px;   
+}
+
+#newFieldCommands #newFieldCommandsMainCommands .name{
+    .left( @mainCommandsNameW );
+    border: none;
+}
+#newFieldCommands #newFieldCommandsMainCommands .type{
+    .right( @mainCommandsTypeW );
+    border: none;
+}
+
+#newFieldCommands .furtherInfo{
+    .leftBoth;
+    width: @furtherInfoW;
+    border: none;
+    margin-top: 10px;
+}
+
+#newFieldCommands .furtherInfo label,
+#newFieldCommands .furtherInfo input,
+#newFieldCommands .furtherInfo select,
+#newFieldCommands .furtherInfo textarea,
+#newFieldCommands .furtherInfo div{
+  .leftBoth;
+  width: @furtherInfoW;
+}
+
+
+#newFieldCommands #requiredMany{
+    .right( @requiredManyW );
+    .border( @color5 );
+    padding: 10px;
+}
+
+#newFieldCommands #newFieldSaveCancel{
+    .border( @color5 );
+    .rightBoth;
+    width: @newFieldSaveCancelW;
+    padding: 10px;    
+}
+
+
+.field{ margin: 10px 0;}
+
+.field .fieldInfo{
+    .left( @fieldInfoW );
+    .border( @color5 ); 
+    background: @color4;
+}
+
+.field .fieldNameInfo{
+    .left( @fieldNameInfoW );
+    padding: 5px; 
+}
+
+.field .fieldNameInfo .fieldSub *{
+    .left();
+    margin-left: 5px; 
+}
+.field .fieldNameInfo .fieldSub *:last{
+    margin-left: 0;
+}
+
+.field .fieldType{
+    .right( @fieldTypeW );
+    background: @color1;
+    color: @color5;
+    height: 50px;
+    padding: 5px;
+}
+
+
+.field .fieldInfoCommands{
+    .right( @fieldInfoCommandsW );
+    padding-top: 10px;
+}
+
+#expandCollapseAll{
+    .border( @color5 );
+    .rightBoth;
+    margin: 10px 0;
+    padding: 2px 5px;
+}
+
+#tabNames{
+    .positionLeftTop( relative, 0, 1px );
+    .zLevel2;
+}
+
+#addSection a{ color: @color8; }
+
+#sections{
+    .relative;
+    margin-top: 15px;
+
+    .section{
+      .border( @color1 );
+      .relative;
+      padding: 5px;
+      background: darken( @color4, 1% );  
+      
+      .fields{
+        .border( @color1 );
+        min-height: 50px;
+        background: darken( @color4, 2% );
+      } 
+      .addField{ .leftBoth; }
+      
+      .newField{
+          //.positionLeftTop( absolute, 0, -100px );
+          .border( @color1, 2px );   
+          .zLevel5;
+          background: @color4;
+          width: @newFieldW;
+          padding: 15px; 
+      }
+    }
+    
+    
+    .expandCollapse a{
+        .border( @color1 );
+        .right( 10px );
+        .block;    
+        font-size: @font4;
+        height: 10px;
+        line-height: 5px;
+        text-align: center;
+    }
+    
+    .delSection{
+      .right();
+      text-decoration: underline;
+    }
+
+}
+
+
+
+#newSectionNameHolder{
+    .positionLeftTop( absolute, 50%, 15px );
+    .center( @newSectionNameHolderW );
+    .border( @color1 );
+    .shadow( @color1, 0, 8px, 6px, -6px );
+    .zLevel2;
+    background: @color4;
+    padding: 15px;
+}
+
+#sectionNameConfirmCancel{
+    .leftBoth;
+    margin-top: 10px;
+}
+
+#commands fieldset{
+    .left( 50% );
+    text-align: center;
+}

@@ -1,0 +1,39 @@
+body{ font-family: @fontFamily1;}
+h1{ font-size: @font6; }
+h2{ font-size: @font5; }
+h3{ font-size: @font4; }
+h4{ font-size: @font3; }
+a{ text-decoration: none; color: @color5;}
+a.active{ font-weight: bold; }
+button{ cursor: pointer;}
+input, label, textarea, select{ float: left;}
+label{ .clear; }
+select,
+input[type="text"],
+input[type="password"]{
+    width: 100%;
+    padding: 5px;
+    height: 30px;
+    line-height: 25px;
+}
+
+fieldset{ margin: 5px 0}
+fieldset .description{
+    .leftBoth;
+    font-size: @font1;
+}
+
+.ext{
+    background: url("@{iconsDir}default_file.png") no-repeat;
+    display: block;
+    width: 50px;
+    height: 50px;
+    .noText;
+ }
+
+.doc, .docx{ background: url("@{iconsDir}doc.png") no-repeat;}
+.pdf{ background: url("@{iconsDir}pdf.png") no-repeat;}
+.xls, .xlsx{ background: url("@{iconsDir}xls.png") no-repeat;}
+.ppt, .pptx{ background: url("@{iconsDir}ppt.png") no-repeat;}
+
+#msgBlock, .msgBlock{ .fullWidth; }

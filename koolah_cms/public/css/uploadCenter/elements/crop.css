@@ -1,0 +1,119 @@
+#cropSection{
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    
+    padding: 20px;
+    border: 1px solid #665;    
+    background: #fff;
+    margin-left: -500px;    
+}
+
+#cropImgArea{
+    float: left;
+    margin-right: 20px;
+    color: #665;
+}
+
+#cropImgHeight,
+#cropSection img,
+#cropSection .jcrop-holder{
+    float:left;
+}
+
+#cropImgHeight,
+#cropImgWidth{
+    position: relative;
+}
+#cropImgHeight span,
+#cropImgWidth span{
+    position: absolute;
+    background: #fff;
+    display: block;
+}
+
+
+#cropImgHeight{
+    margin-left: 20px;
+    border-left: 1px solid #665;
+}
+
+#cropImgHeight span{
+    top: 50%;
+    left: -16px;
+    padding: 5px 0;    
+}
+
+#cropImgWidth{
+    clear: both;
+    float: left;
+    margin-top: 20px;
+    border-top: 1px solid #665;
+}
+#cropImgWidth span{
+    top: -11px;
+    left: 50%;
+    padding: 0 5px;
+}
+
+#cropForm{
+    border: 1px solid #665;
+    float: right;
+    padding: 10px;    
+    width: 225px;    
+}
+
+#cropSection fieldset{
+    float: left;
+}
+
+#cropForm > fieldset{
+    border: 1px solid #ccc;
+    width: 200px;
+    padding: 10px;
+} 
+
+#cropSection label{
+    display: none;
+}
+
+#cropSection input[type=text]{
+    width: 180px;
+}
+
+#dimensions{
+    
+}
+
+#dimensions legend{
+    color: #665;
+}
+
+#cropSection .commands{
+    float: left;
+    width: 202px;
+    margin-top: 15px;
+}
+
+#cropRightSide{
+    /*margin: 20px;*/
+}
+
+#imgPreview{
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    border: 1px solid #ccc;
+    background: #fff;
+    box-shadow: 5px 5px 25px #999; 
+}
+
+#closeImgPreview{
+    float: right;
+}
+
+#imgPreview img{
+    clear: both;
+    float: left;
+    padding: 20px;
+}

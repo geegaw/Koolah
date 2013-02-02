@@ -1,0 +1,51 @@
+.help{
+    float: left;
+    margin-left: 5px;
+    position: relative;
+}
+
+.help .helpTrigger,
+.help .helpArea .helpTriggerClose{
+    display: block;
+    color: #ccc;
+    line-height: 13px;
+    height: 17px;
+    font-size: 13px;
+    padding: 2px;
+    background: #ccc;
+    color: #000;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+
+.help .helpTrigger{
+    width: 14px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.help .helpArea{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    float: left;
+    width: 10px;
+    height: 13px;
+    border: 1px solid #ccc;
+    background: #fff;
+    z-index: 5;
+}
+.help .helpArea .helpTriggerClose{
+    width: 100%;
+    text-align: left;
+}
+.help .helpText{
+    clear: both;
+    float: left;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}

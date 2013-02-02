@@ -1,0 +1,34 @@
+#fileForm{
+    width: 750px;
+    margin-left: -375px;
+    padding: 20px;
+}
+
+#uploadPreview,
+#uploadPreview img{    
+    float: left;
+    width: 150px;
+    max-height: 400px;
+    display: block;
+}
+
+#fileFormArea{
+    float: left;
+    margin-left: 10px;
+    width: 545px;
+}
+
+#fileTagArea {
+    float: left;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+#uploadField
+{
+    padding: 0;
+    margin: 10px 0;
+    position: relative;    
+    border: 0;
+}
+

@@ -1,0 +1,134 @@
+#menus{
+    position: relative;    
+}
+
+#menus .list{
+    float: left;
+    width: 350px;
+    border: 1px solid #ccc;
+    margin: 15px;
+    padding: 15px;
+    display: block;
+    position: relative;
+}
+
+#menus .list .heading{
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+#menus .list .heading h1{
+    float: left;
+}
+
+#menus .list .heading h1 span{
+    margin-left: 5px;
+}
+#menus .list .heading button{
+    float: right;
+}
+
+#menus .items{
+    background: #eee;
+    padding: 5px 5px 15px 10px;
+    -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box; 
+                  box-sizing: border-box; 
+}
+
+#menus .items .aMenu{
+    float: left;
+    font-weight: bold;
+}
+
+#menus .items li{
+    padding: 5px 0;
+    cursor: move;
+    border-top: 3px solid #fff;
+}
+
+/*
+#menus .items li:nth-child(odd){
+    background: #eee;
+}
+#menus .items li:nth-child(even){
+    background: #ddd;
+}
+*/
+#menus .items li:first-child{
+    border-top: none;
+}
+
+#menus .items li .items{
+    background: #ccc;
+}
+
+#menus .items li .collapsible{
+    border: 1px solid #fff;
+    margin: 5px 0 -6px 0;
+    -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box; 
+                  box-sizing: border-box;
+}
+
+#menus .items .commands{
+    float: right;
+}
+
+#menus .items .commands a{
+    margin-left: 5px;
+}
+
+#menuList > a{
+    float: right;
+    margin-bottom: 10px;
+}
+
+#menuList .submenu{
+    padding: 5px 0 5px 15px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #aaa;
+    -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box; 
+                  box-sizing: border-box; 
+    border-bottom: 1px solid #fff;
+    background: #ddd;                                   
+}
+
+#menuList .submenu .toggle{
+    margin-right: 5px;
+    float: right;
+    color: #aaa;
+}
+#menuList .submenu .toggle .square{
+    border-color: #aaa;
+}
+
+
+#newMenuForm{
+    background: #fff;
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    width: 750px;
+    margin-left: -375px;
+    z-index: 11;
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+
+#newMenuForm fieldset{
+    margin-top: 10px;
+}
+#newMenuForm fieldset:first-child{
+    margin-top: 0;
+}
+
+
+.placeholder {
+    border: 2px #707070 dashed;
+    height: 50px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,80 @@
+@import url("elements/folder.css");
+@import url("elements/folders.css");
+@import url("elements/page.css");
+
+#main{
+	margin: 25px 0;
+	width: 1000px;
+	border: 1px solid #000;
+	float: left;
+	clear: both;
+	height: 400px;
+}
+
+#pagesWidgets{
+	float: left;
+	clear: left;
+	margin: 25px;
+	width: 750px;
+	position: relative;
+}
+
+#pagesWidgets #tabs{
+	position: relative;
+	top: 1px;
+	z-index: 2;
+}
+#pagesWidgets .tab{
+	float: left;	
+	padding: 5px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #000;
+	
+	line-height: 25px;
+	border-top-right-radius: 15px;
+	background: #fff;
+	position: relative;
+	left: -4px;
+	z-index: 1;
+}
+
+#pagesWidgets .tab:first-child{
+	left: 0;
+}
+
+#pagesWidgets .tab a{
+	color: #ccc;
+}
+
+#pagesWidgets .tab.active{
+	border-color: #000;
+	border-bottom: 1px solid #fff !important;
+	z-index: 2;
+}
+#pagesWidgets .tab.active a{
+	color: #000;
+}
+
+#breadcrumbs{
+	float: left;
+	margin-top: 5px;
+}
+
+#breadcrumbs .breadcrumb{
+	float: left; 
+}
+
+#breadcrumbs .breadcrumb.hover{
+    background: #aaa;
+}
+
+#filterArea{
+	float: right;
+	margin-right: 25px;
+	width: 150px;
+	border-left: 1px solid #000;
+	padding: 10px;
+	height: 380px;
+}

@@ -1,0 +1,90 @@
+header
+{
+    float: left;
+    clear: both;
+    width: 100%;
+    padding: 5px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #000; 
+    
+    background: #707070;
+    background: -moz-linear-gradient(left center, #707070, #888);
+    
+    /*background: #512100;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#804800), to(#804800));
+    background: -webkit-linear-gradient(left, #512100, #804800);
+    /*background: -moz-linear-gradient(left, #512100, #804800 75%);
+    /*background: -moz-radial-gradient( circle, #804800 , #512100);
+    background: -moz-radial-gradient(80% 20%, closest-corner, #804800, #512100);
+    background: -ms-linear-gradient(left, #512100, #804800);
+    background: -o-linear-gradient(left, #512100, #804800);*/    
+}
+
+
+#logo{
+    float: left;
+}
+
+#logo a{
+    background: url('../../images/logos/koolah-logo-100-trans.png') no-repeat;
+    width: 100px;
+    height: 90px;
+    display: block;
+    text-indent: -9999px;
+}
+
+header a{
+    color: #fff;
+}
+
+#mainNav{
+    float: left;
+    width: 200px;
+    position: relative;
+}
+
+#mainNav .menuItem{
+    float:left;
+    width: 200px;
+} 
+
+#mainNav .menuItem a{
+    display: block;
+    float:left;
+    clear: both;
+    width: 100px;
+    border-top: 1px solid #fff;
+}
+
+#mainNav .menuItem:first-child a{
+    border-top: 0;
+}
+
+#mainNav .menuItem .subMenu{
+    height: 100%; 
+    float: right;
+    width: 100px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 500;
+}
+
+#userOptions
+{
+    float: right;
+    margin-right: 20px;
+}
+
+#userOptions a
+{
+    border-left: 1px solid #fff;
+    margin-left: 5px;
+    padding-left: 5px;
+}
+#userOptions a:first-child
+{
+    border-left: none;
+    margin-left: 0;
+    padding-left: 0;
+}

@@ -1,0 +1,40 @@
+.aliasesForm .newAlias{
+    float: left;
+    background: #ccc;
+    color: #000;
+    border: 0;
+     height: 30px;
+    line-height: 25px;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 14px;
+    cursor: pointer;
+}
+
+.aliasesList .alias{
+    float: left;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background: #ccc;
+    color: #000;
+    font-size: 14px;
+    line-height: 14px;
+    
+    -webkit-box-shadow: 2px 0 2px -1px #ccc;
+       -moz-box-shadow: 2px 0 2px -1px #ccc;
+            box-shadow: 2px 0 2px -1px #ccc;
+    height: 20px;
+    padding: 2px 10px;
+}
+
+.aliasesList .alias:first-child{
+    margin-left: 5px;
+}
+
+.aliasesList .alias a{
+    margin-left: 10px;
+    
+}
+    

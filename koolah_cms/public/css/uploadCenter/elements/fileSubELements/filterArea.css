@@ -1,0 +1,35 @@
+#fileFilters
+{
+    float: left;
+    width: 250px;
+    border: 1px solid #000;
+}
+
+#fileFilters label{ display: none;}
+
+#fileFilters h2
+{
+    clear: both;
+}
+
+#fileFilters .top
+{
+    border-bottom: 1px solid #000;
+    height: 40px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+#addFile{
+    float: left;
+    width: 200px;
+    margin-left: 24px;
+    height: 25px;
+    cursor: pointer !important;
+    font-size: 14px;   
+    text-align: center;         
+}
+
+#fileFilterArea{
+    padding: 5px;
+}

@@ -1,0 +1,54 @@
+
+
+#roleForm{
+	float: left;
+	width: 400px;
+	border: 1px solid #ccc;
+	padding: 15px;
+	margin-left: 15px;
+}
+
+#roleForm fieldset{
+	float: left;
+	clear: both;
+	width: 100%;
+	margin: 5px 0;
+}
+
+#roleForm .cat{
+	float: left;
+	clear: both;
+	margin: 5px 5px 0 0;
+	padding: 5px;
+	border: 1px solid #ccc;
+}
+
+#roleForm > .cat{
+	clear: none;
+	width: 150px;
+}
+
+#roleForm .cat:first-child{	
+}
+
+#roleForm .cat .catPermissions{
+	margin-left: 5px;
+}
+
+#roleForm .cat .catPermissions label{
+	margin-left: 5px;
+}
+
+#roleNameFieldset{
+	border: 1px solid #ccc;
+	padding: 5px;	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box
+}
+
+#roleNameFieldset label,
+#roleNameFieldset input
+{
+	float: left;
+	clear: both;
+}

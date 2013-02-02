@@ -1,0 +1,128 @@
+#uploads h2{
+    width: 100%;
+    text-align: center;
+    background: #ddd;
+    color: #000;
+    padding: 5px 0;    
+    position: relative;
+}
+
+#uploads form legend{
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center
+}
+
+#uploads .commands{
+    float: right;
+    width: 90px;
+}
+
+#uploads li{
+    padding: 5px 0px 5px 5px;
+    border-top: 1px solid #665;
+}
+
+#uploads li:first-child{
+    border-top: none;
+}
+
+#uploads li:nth-child(even){
+    background: #eee;
+}
+
+/*
+#uploads .legend{
+    float: left;
+}
+
+.dropArea{
+    max-height: 150px;
+    overflow-y: auto;
+} 
+
+.dragButton{
+
+}
+
+.textSearch
+{
+    clear: both;
+    float: left;
+    position: relative;
+}
+
+.dropdown
+{
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}                                                                 
+.down{ background: url('../images/triangle-down.png') no-repeat; }
+.up{ background: url('../images/triangle-up.png') no-repeat; }
+
+.tagDropArea
+{
+    position: absolute;
+    top: 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+    
+}
+.tagDropArea ul
+{
+    padding: 5px;
+    margin: 0;
+}
+
+.tagDropArea li
+{
+    list-style: none;
+    width: 100%;
+    margin-top: 2px;
+}
+
+.tagDropArea li:first-child
+{
+    margin-top: 0;
+}
+
+.addTag
+{
+  float: left;
+}
+
+.tagButton
+{
+    float: left;
+    min-width: 150px;
+    border: 1px solid #ddd;
+    background: #eee;
+    margin: 5px;
+    padding: 5px;
+}
+
+.tagButton button
+{
+    float: right;
+}
+
+.tagWidget
+{
+    float: left;
+    width: 150px;
+    padding: 5px;
+    border: 1px solid #000;    
+}
+.tagName
+{
+    float: left;
+}
+.removeTag
+{
+    float: right;
+}
+*/

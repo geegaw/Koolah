@@ -1,0 +1,134 @@
+@mainNavWidth: 200px;
+@subNavWidth: 100px;
+
+@logoW: 100px;
+@logoH: 90px;
+
+header{
+    .fullWidth;
+    .background1;
+    .border-bottom(@color5, 5px);
+    padding: 5px 0;
+    height: @headerH;
+    
+    a{ color: @color4; }
+}
+
+#logo{ 
+    .left(); 
+    
+    a{
+        .background("@{logosDir}koolah-logo-100-trans.png");
+        .block;
+        .noText;
+        width: @logoW;
+        height: @logoH;   
+    }
+}
+
+@barR: 1px;
+@barH: @barR *2; 
+@barW: 30px;
+@barMargin: 8px;
+
+#globalNav{
+    .right();
+    height: @logoH;    
+    padding: floor((@logoH - @barMargin * 2 - @barH * 3)  /2);
+    
+    button{
+        .clearButton;
+         span{
+            .roundCorner( @barR );
+            .block;
+            .noText;
+            background: @color4;
+            width: @barW;
+            height: @barH;
+            margin-top: @barMargin;
+        }
+        span:first-child{ margin-top: 0; }
+    }
+}
+
+@navW: 150px;
+
+#mainNav{
+    .zLevel4;
+    .positionLeftTop( fixed, @navW*-1, 0 );
+    width: @navW;
+    height: 100%;
+    padding: 15px;
+    background: @color7;
+    opacity: .85;
+    
+    .menuItem{
+        .fullWidth;
+        .border-top( @color4, 5px, 5px );
+        background: @color7;
+    
+        a {
+            .bold;
+            .block;
+            color: @color4;
+            font: @font2;
+        }
+        a.active{
+          background: @color4;
+          color: @color7;
+        }
+        
+        .subMenu{
+            .left();
+            .zLevelN1;
+            .positionLeftTop( absolute, 0, 0 );
+            width: @navW;
+            height: 100%;
+            padding: 15px;
+            background: @color7;
+        }
+
+    }
+    .menuItem:first-child{
+        border-top: 0; 
+        margin-top: 0px; 
+      }
+    
+    #accountOptions{
+        .positionLeftBottom( absolute, 15px, 50px );
+    }
+}
+
+/*
+#mainNav{
+    .left(@mainNavWidth);
+    .relative;
+   .menuItem{ 
+     .left(@mainNavWidth); 
+    
+      a{
+          .leftBoth;
+          .border-top( @color4, 0 );
+          .block;    
+          width: @subNavWidth;        
+      }
+     
+      .subMenu{
+          .positionRightBottom( absolute, 0, 0 );
+          .right(@subNavWidth);
+          .zLevel4;
+          height: 100%;
+      }
+    } 
+     .menuItem:first-child > a{ border-top: 0;}
+    
+}
+
+#userOptions{
+    .right();
+    margin-right: 20px;
+    
+    a{ .border-left( @color4, 5px ); }
+    a:first-child{ .border-left( @color4, 0, none, none ); }
+}
+*/

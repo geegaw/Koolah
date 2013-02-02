@@ -1,0 +1,38 @@
+#firstTime {
+    margin: 15px auto;
+    clear: both;
+    width: 500px;
+    padding: 25px;
+    border: 1px solid #000;
+}
+
+#firstSuperForm fieldset {
+    margin: 5px 0;
+}
+
+#firstSuperForm fieldset label, 
+#firstSuperForm fieldset .description, 
+#firstSuperForm fieldset .errorText, 
+#firstSuperForm fieldset input:not([type="submit"]) {
+    clear: both;
+    float: left;
+}
+
+#firstSuperForm fieldset input:not([type="submit"]) {
+    line-height: 19px;
+    height: 20px;
+    padding: 4px;
+    width: 496px;
+}
+
+#firstSuperForm fieldset .description {
+    font-size: 14px;
+}
+
+#firstTime .whatToDo {
+    clear: both;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+}

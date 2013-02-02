@@ -1,0 +1,56 @@
+.setHeight{
+    min-height: @filesMinW;
+    max-height: @filesMaxW; 
+}
+
+#filesSection{
+    .left( @filesSectionW );
+    margin: 1%;
+    
+    .collapsibleBody{
+        .commonBox( 100% );
+        
+        #fileList{
+            .commonBox( @filesListW );
+            min-height: @filesMinW;
+            max-height: @filesMaxW; 
+            .setHeight;
+            
+            .type{ 
+                width:@fileListTypeW;
+                img{
+                    .left();
+                    max-height: 50px;
+                    max-width: 100%;
+                } 
+             }
+            .name{ width:@fileListNameW; }
+            .tags{ width:@fileListTagsW; }
+            .commands{ 
+                width:@fileListCommandsW;
+                .crop{ 
+                    .clearButton;
+                    .left( @fileListCropW );
+                    .background( "@{cropImg}" );
+                    .noText;
+                    .block; 
+                    height: @fileListCropH;
+                } 
+            }
+        }
+        
+        #fileFilters{
+            .commonBox( @fileFiltersW, 100%, 100% );
+            .setHeight;
+            border-left: none;
+            
+            input[type=submit]{ .halfWidth; }
+            //label{ .hide; }
+        }
+        
+        #closeFileSection{
+            .right();
+            margin-top: 20px;
+        }
+    }
+}
