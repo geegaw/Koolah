@@ -155,7 +155,7 @@ class customMongo {
 		$status = new StatusTYPE();
 		$id = null;			
 		try{
-			$this->collection->save( $bson, array('safe'=>$safe) );
+		    $this->collection->save( $bson );
 			$id = $bson['_id']->{'$id'};		
 		}
 		catch( MongoConnectionException $e){
@@ -199,6 +199,22 @@ class customMongo {
 		}
 		return $q;
 	}
+	
+    static public function cleanBson( $bson ){
+        $cleanBson = $bson;    
+        if ( is_array( $bson ) ){
+            $cleanBson = null;   
+            foreach( $bson as $k => $v ){
+                $k = customMongo::cleanBson($k);
+                $v = customMongo::cleanBson($v);
+                $cleanBson[$k]=$v;
+            }
+        }
+        elseif( is_string($bson) ){
+            $cleanBson = str_replace('""', null, $bson);
+        }
+        return $cleanBson;
+    }
 }
 
 ?>

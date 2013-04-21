@@ -108,4 +108,15 @@ function TemplateTYPE(){
     }    
     /***/
     
+    
+    this.getAllFields = function(){
+        var fields = [];
+        var sections = self.sections.sections();
+        for (var i = 0; i < sections.length; i++){
+            var section = sections[i];
+            var sectionFields = section.fields.fields;
+            fields = fields.concat( sectionFields );
+        }
+        return fields;
+    }
 }

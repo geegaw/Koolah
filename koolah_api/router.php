@@ -3,8 +3,10 @@ class Router{
     static function serveReq( $req=null ){
         global $cmsDB;  
 //debug::vardump($req);       
-        if ( !isset($req['f']) )
-            Loader::loadFile( PAGES_PATH."/home.php" );
+        if ( !isset($req['f'])){
+             if (!Router::loadReq( '/' ) )
+                Loader::loadFile( PAGES_PATH."/home.php" );
+        }
         else{
             list( $action, $req_uri, $params ) = Router::parseReq( $req['f'] );
             
@@ -20,7 +22,8 @@ class Router{
     
     private static function loadReq( $alias ){
         if ( !Router::loadAlias( $alias )  )
-            Loader::loadFile( HTTP_ERRORS_PATH."/404.php" );
+            return Loader::loadFile( HTTP_ERRORS_PATH."/404.php" );
+        return true;
     }
     
     private static function parseReq( $req ){
@@ -52,12 +55,11 @@ class Router{
             return false;
         $file = PAGES_PATH.'/'.$page->getTemplateFile().'.php';
         
-        //debug::vardump($file, 1); 
+        //debug::vardump($file); 
         
         if ( !file_exists( $file  ) )
             return false;
-        
-        
+        //debug::vardump($file, 1);        
         /***
          * NOTE: implement desired system here
          */         
@@ -67,6 +69,8 @@ class Router{
         //ob_end_clean();
         //echo $contents;
         $contents = ob_get_flush(); 
+        
+        //debug::vardump($file, 1);
         
         return true;       
     } 

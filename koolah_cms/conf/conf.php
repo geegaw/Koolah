@@ -150,7 +150,7 @@ define('SIGNOUT', '/signout');
 /***/
 
 /***
- * LOGGIND 
+ * LOGGING 
  */ 
 
 //
@@ -218,4 +218,9 @@ $VALID_AUDIO = array(
 
 $VALID_FILES = array_merge($VALID_IMAGES, $VALID_DOCS, $VALID_VIDS, $VALID_AUDIO);  
 /***/
+
+/**
+ * 
+ */
+ define( 'MAX_PAGE_HISTORY', '100' );
 ?>

@@ -1,7 +1,6 @@
+
+    <?php include( ELEMENTS_PATH."/nav.php" ); ?>    
     <footer>
-        <div id="copyright">
-            &copy;<?php echo date('Y'); ?> Vaugeois Photography
-        </div> 
     </footer>
 </body>
 </html>

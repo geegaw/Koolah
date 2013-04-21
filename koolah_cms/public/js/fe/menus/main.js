@@ -108,8 +108,10 @@ $(document).ready(function(){
     }
     
     function mkSortable(){
-        var menu = menus.menus()[0];
-        menu.mkSortable();
+        if ( menus && menus.menus() ){  
+            var menu = menus.menus()[0];
+            menu.mkSortable();
+        }
     }
     
     function resetStyle(){

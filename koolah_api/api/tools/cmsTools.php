@@ -62,7 +62,7 @@ class cmsToolKit{
 			$dirs = array($dirs);
 		foreach ( $dirs as $dir ){
 		    if ( ENV == 'dev' )
-                $files = array( $dir."/toc" );
+                $files = array( $dir."/index" );
             else
 			     $files = cmsToolKit::getFolderFiles($path.'/'.$dir, "*$ext", $dir);
 			if ( $files )
@@ -125,6 +125,39 @@ class cmsToolKit{
                 
         }    
         return $date->format($format); 
+    }
+    
+    public static function getMenu( $menuRef ){
+        $menus = new MenusTYPE();
+        $menus->get( array( 'ref'=>$menuRef ) );
+        if ( $menus->Menus() ){
+            $menus = $menus->Menus();
+            return  $menus[0]->getChildren();
+        }
+        return new MenusTYPE();
+    }
+    
+    public static function getPages( $templateRef, $q=null, $offline=false ){
+        $template = new TemplateTYPE();
+        $template->get( array( 'ref'=>$templateRef ) );
+        if ( $template->getID() ){
+            $pages = new PagesTYPE();
+            $query = array( 'templateID'=>$template->getID() );
+            if ( $q )
+                $query = array_merge($query, cmsToolKit::formatDataQuery($q));
+            
+            $pages->get( $query, $offline );
+            return  $pages->pages();
+        }
+        return new PagesTYPE();
+    }
+    
+    public static function formatDataQuery( array $q ){
+        $formatted = array();
+        foreach( $q as $key => $param ){
+            $formatted[ 'data.'.$key ] = $param;            
+        }
+        return $formatted; 
     }
 }
 

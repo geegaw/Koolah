@@ -48,7 +48,10 @@ class FieldTypeTYPE{
                 break;
             case 'date':
                 $html = $this->mkDateInput( $pageData, $field );
-                break;    
+                break;   
+            case 'query':
+                $html = $this->mkQueryInput( $pageData, $field );
+                break;                    
             case 'custom':
                 $html = $this->mkCustomInput( $pageData, $field );
                 break;
@@ -141,6 +144,36 @@ class FieldTypeTYPE{
         $html.= '</fieldset>';
         return $html;
     }
+    
+    public function mkQueryInput( $pageData, $field ){
+        $val = '';    
+        if( isset( $pageData[$field->getRef()]) && !empty($pageData[$field->getRef()]))
+            $val = $pageData[$field->getRef()];
+        
+        $query = new QueryTYPE();
+        $query->read($field->options);
+        $options = $query->execute();
+        $required = $this->getRequiredClass( $field );
+        
+        $html = '<fieldset class="field queryField" data-ref="'.$field->getRef().'">';
+        $html.=     '<label for="'.$field->getRef().'">'.$field->getLabel().'</label>';
+        $html.=     '<select id="'.$field->getRef().'" class="'.$required.'" autocomplete="off">';
+        $html.=         '<option value="no_selection">'.$field->getLabel().'</option>';
+        
+        if ( $options){
+            foreach( $options as $option ){
+               // debug::printr($option);
+        
+                if ( $val == $option->getID() )    
+                    $html.= '<option value="'.$option->getID().'"  selected>'.$option->label->label.'</option>';
+                else
+                    $html.= '<option value="'.$option->getID().'">'.$option->label->label.'</option>';
+            }
+        }
+        $html.=     '</select>';
+        $html.= '</fieldset>';
+        return $html;
+    }
 
     public function mkCustomInput( $pageData, $field ){
         if( isset( $pageData[$field->getRef()]) && !empty($pageData[$field->getRef()]) )
@@ -191,6 +224,7 @@ class FieldTypeTYPE{
 					'text', 
 					'paragraph',
 					'dropdown',
+					'query',
 					'file',
 					'date',
 					'custom',

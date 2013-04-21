@@ -99,5 +99,11 @@ class  ImageTYPE extends Node{
             $this->crop->read( $obj->crop );
         }    
     }
-
+    
+    static function isLandscapre($path){
+        $size = getimagesize($path); 
+        $width = $size[0]; 
+        $height = $size[1]; 
+        return $width > $height;
+    }
 }

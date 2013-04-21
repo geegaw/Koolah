@@ -50,6 +50,8 @@
   .zLevel5;
   background: @color4;
   padding: 15px; 
+  max-height: 500px;
+    overflow-y: auto;
 }
 
 #newFieldCommands{ padding: 10px 0; }
@@ -218,4 +220,37 @@
 #commands fieldset{
     .left( 50% );
     text-align: center;
+}
+
+#queryConditionals{
+  
+    .queryCondition{
+        .border( @color1 );
+        padding: 5px;
+        
+        .notFieldset{
+            line-height: @font3;
+            
+            .common{
+              clear: none !important;
+              line-height: @font3; 
+            }
+            
+            input{ 
+              .common;
+              width: auto;
+              text-align: bottom;
+            }
+            label{
+              .common;
+              width: 250px; 
+              margin-left: 5px;
+            }
+        }
+        
+        .remove{
+          .right();
+          
+        }
+    }
 }

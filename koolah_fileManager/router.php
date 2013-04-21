@@ -4,6 +4,8 @@ class Router{
         
         $id = cmsToolKit::getParam('id', $req);
         $format = cmsToolKit::getParam('format', $req);
+        $formatP = cmsToolKit::getParam('formatP', $req);
+        $formatL = cmsToolKit::getParam('formatL', $req);
         $download = cmsToolKit::getParam('download', $req);
         
         if ( !isset($req['id']) ){
@@ -11,6 +13,8 @@ class Router{
             exit;
         }    
         
+        if ( !$format && $formatL && $formatP )
+            $format = array( 'l'=>$formatL, 'p'=>$formatP );        
         $fm = new FileManager( $id, $format );
         $status = $fm->load();
         if ( !$status->success() ){

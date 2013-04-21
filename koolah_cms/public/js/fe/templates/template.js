@@ -42,14 +42,26 @@ console.log( template )
     
     $('#fieldType').change(function(){
         $('.furtherInfo').hide();
-        if ( $(this).val() == 'custom' )
-            $('#custom').show();
-        else if ( $(this).val() == 'dropdown' )
-            $('#dropdown').show();
-        else if ( $(this).val() == 'file' )
-            $('#fileType').show();
-        else if ( $(this).val() == 'date' )
-            $('#dateType').show();
+        switch( $(this).val() ){
+            case 'custom':
+                $('#custom').show();
+                break;
+            case 'dropdown':
+                $('#dropdown').show();
+                break;
+            case 'query':
+                $('#queryType').show();
+                var query = new QueryTYPE();
+                break;
+            case 'file':
+                $('#fileType').show();
+                break;
+            case 'date':
+                $('#dateType').show();
+                break;
+            default: 
+                break;
+        }
     });
     
     $('#addNewFieldNo').click(function(){

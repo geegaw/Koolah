@@ -47,9 +47,9 @@
         </fieldset>
         
         <fieldset  class="commands">
-            <input type="submit" id="cancelNewMenu" class="cancel" value="Cancel"  />
-            <input type="submit" id="resetNewMenu" class="reset" value="Reset"  />
-            <input type="submit" id="" class="save" value="Save" />
+            <input type="submit" id="cancelNewMenu" class="cancel noreset" value="Cancel"  />
+            <input type="submit" id="resetNewMenu" class="reset noreset" value="Reset"  />
+            <input type="submit" id="" class="save noreset" value="Save" />
         </fieldset>
     </form>
     

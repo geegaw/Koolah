@@ -4,7 +4,7 @@ function PageTYPE($msgBlock) {
     this.label = new LabelTYPE();
     this.label.label = 'New Page'
     this.seo = new seoTYPE();
-    this.publicationStatus = 'draft';
+    this.publicationStatus = $('#publicationStatus .status').html();
     this.templateID = '';
     this.data = {};
     
@@ -118,6 +118,8 @@ console.log( self )
             self.publicationStatus = $('.workflowOptions').val();
         self.seo.readForm( $form );
         self.readData( $form );
+        console.log( $form )
+        console.log( self )
     }
     
     this.readData = function($form){

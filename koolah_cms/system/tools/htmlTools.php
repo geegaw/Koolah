@@ -62,7 +62,7 @@ class htmlTools{
         if ( !$jsID )
             $jsID = 'pod'.uniqid();
         $html = '';
-        $html.= '<div id="'.$jsID.'" class="pod '.$extraClass.'"  data-id="'.$id.'">';
+        $html.= '<div id="'.$jsID.'" class="pod '.$extraClass.'"  data-id="'.$id.'" data-label="'.$label.'">';
         $html.=     '<input type="hidden" class="podID" value="'.$id.'" />';
         $html.=     '<span class="name">';
         if ( isset($params['action']) )

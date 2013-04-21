@@ -26,7 +26,7 @@ $(document).ready(function() {
     /*******************************
      *      System Elements        *
      *******************************/
-    var page = new PageTYPE();
+    var page = new PageTYPE($msgBlock);
     var files = new FilesTYPE( $filesMsgBlock ) ;
     var tags = new TagsTYPE( $filesMsgBlock ) ;
     /*******************************/
@@ -39,7 +39,7 @@ $(document).ready(function() {
     if (pageID)
         page.parent.id = pageID;        
     page.readForm( mainForm.$el );
-
+    
     $('textarea:not("#fileDescription")').ckeditor();
     $('.dateField input').datepicker({ 
         //buttonImage: "/images/datepicker.gif";

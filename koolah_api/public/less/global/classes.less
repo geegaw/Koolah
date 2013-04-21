@@ -1,0 +1,88 @@
+.hide{display:none;}
+.clear{clear:both;}
+.leftBoth{
+    .clear;
+    .left();
+}
+.rightBoth{
+    .clear;
+    .right();
+}
+.fullWidth{
+    .leftBoth;
+    width: 100%;
+}
+.halfWidth{ .left(50%); }
+.thirdWidth{ .left(33%); }
+.thirdWidthM{ .left(32%); }
+
+.error{ color: @errorColor;}
+.errorText{
+    .fullWidth; 
+    .error;
+    font-size: @font1;
+}
+.errorBorder{
+    .border(@errorColor);
+    .error;  
+}
+.success{color: @successColor;}
+.draggable{cursor: move;}
+
+.zLevel1{ z-index: @level1; }
+.zLevel2{ z-index: @level2; }
+.zLevel3{ z-index: @level3; }
+.zLevel4{ z-index: @level4; }
+.zLevel5{ z-index: @level5; }
+.zLevel6{ z-index: @level6; }
+.zLevel7{ z-index: @level7; }
+.zLevel8{ z-index: @level8; }
+.zLevel9{ z-index: @level9; }
+.zLevel10{ z-index: @level10; }
+
+.zLevelN1{ z-index: @level1*-1; }
+.zLevelN2{ z-index: @level2*-1; }
+
+.noText{ text-indent: -9999px; }
+
+.fixed{ position: fixed; }
+.absolute{ position: absolute; }
+.relative{ position: relative; }
+
+.block{ display:block; }
+
+.bold{ font-weight: bold; }
+.textCenter{ text-align: center; }
+
+
+input[type=submit],
+button, a{
+  cursor: pointer;
+}
+
+.clearButton{
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+}
+
+.scrollAuto{
+    //overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.shadow1{
+  .shadow( @color2, 5px, 15px, 15px );
+}
+
+fieldset{
+  .fullWidth;
+  margin-top: 10px;
+  
+  label, input, select, textarea{
+    .fullWidth;
+  }
+}

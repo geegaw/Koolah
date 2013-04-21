@@ -25,11 +25,22 @@ class FileManager extends Node{
             $status->setFalse();
         else{
             if ( $this->format ){
+                if ( is_array($this->format) ){
+                    if ( $file->isImage() ){
+                        if ( ImageTYPE::isLandscapre($file->getFull_Filename()) )
+                            $this->format = $this->format['l'];
+                        else                        
+                            $this->format = $this->format['p'];
+                    }
+                    else 
+                        $status->setFalse();
+                }
+             
                 $parts = explode('-', $this->format);
                 if ( !count($parts) == 2 )
                     $status->setFalse();
                 else
-                    $this->path = $file->getPath().$parts[0].'/'.$parts[1].'.'.$file->getExt();
+                    $this->path = $file->getPath().$parts[0].'/'.$parts[1].'.'.$file->getExt();                
             }
             else
                 $this->path = $file->getFull_Filename();

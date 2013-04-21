@@ -65,6 +65,12 @@
 					"menuItems"=> null,
 					"permission"=> '',
 				),
+				array( 
+                    "name"=> 'system',
+                    "url"=> '/system',
+                    "menuItems"=> null,
+                    "permission"=> '',
+                ),
 			), 
 			"permission"=> '',
 		),

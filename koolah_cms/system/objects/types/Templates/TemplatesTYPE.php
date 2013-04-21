@@ -1,7 +1,6 @@
 <?php
 
-class TemplatesTYPE extends Nodes
-{
+class TemplatesTYPE extends Nodes{
     //CONSTRUCT	
     public function __construct( $db=null, $collection = TEMPLATE_COLLECTION ){
     	parent::__construct( $db, $collection );	

@@ -1,4 +1,5 @@
 <?php
+    global $cmsMongo;
     global $ajaxAccess;
 	$status = $cmsMongo->status;
     $user = new SessionUser();

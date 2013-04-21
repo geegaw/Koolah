@@ -1,21 +1,27 @@
 <?php
-    $title = 'template';
-    $css = 'template';
-    $js = array('objects/types/templates', 'fe/templates');
-    include( ELEMENTS_PATH."/header.php" );
-    
     $type = 'page';
 	if ( isset($_REQUEST['templateType']))
 		$type = $_REQUEST['templateType'];
     $id = null;
-    if ( isset($_REQUEST['templateID']) )
+    if ( isset($_REQUEST['templateID']) ){
        $id = $_REQUEST['templateID'];
+       $template = new TemplateTYPE();
+       $template->getByID($id); 
+    }
     
-	$customFields = new TemplatesTYPE( $cmsMongo );
+	$customFields = new TemplatesTYPE();
     $q = array( 'templateType'=>'field' );
 	$customFields->get(  $q );
 
 	$types = FieldTypeTYPE::getTypes();
+    
+    if ($id)
+        $title = $template->label->label;
+    else
+        $title = 'template';
+    $css = 'template';
+    $js = array('objects/types/templates', 'fe/templates', 'objects/types/query', );
+    include( ELEMENTS_PATH."/header.php" );
 ?>  
 
 
@@ -140,6 +146,8 @@
 		                        	<option value="audio">Audio</option>
 		                        </select>
 		                    </fieldset>
+		                    
+		                    <?php include(ELEMENTS_PATH.'/template/queryField.php'); ?>
 		                    <!-- /furtherInfo -->
 		                    
 	                	</fieldset>

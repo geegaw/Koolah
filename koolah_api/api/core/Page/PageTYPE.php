@@ -17,6 +17,9 @@ class PageTYPE extends Node{
     }
     
     public function __get( $suspect ){
+        if ( $suspect == 'url' )
+            return $this->getUrl();
+        
         if (isset( $this->data[$suspect] ))    
             return $this->data[$suspect];
         return null;
@@ -27,6 +30,12 @@ class PageTYPE extends Node{
     public function getTemplateID(){ return $this->templateID; }
     public function getData(){ return $this->data; }
     public function getAliases(){ return $this->seo->getAliases(); }
+    public function getUrl(){
+        $aliases = $this->getAliases();
+        $alias = end($aliases);
+        return $alias->getAlias();
+    }
+    
     
     //SETTERS
     public function setPublicationStatus($status){ $this->publicationStatus=$status; }

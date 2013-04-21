@@ -23,8 +23,19 @@ class UserHistoryTYPE extends Nodes{
          return $els; 
     }
     
+    public function lastPageVisit(){
+        if ( $this->nodes && is_array($this->nodes)){
+            return $this->nodes[ count($this->nodes)-1 ];
+        }
+        return null;
+    }
+    
     public function update( $userID, $title, $url, $save=true ){
         $status = new StatusTYPE();
+        
+        $lastPage = $this->lastPageVisit();
+        if ( $lastPage && $lastPage->url == $url )
+            return $status;  
             
         $pageVisit = new PageVisitTYPE($userID, $this->db);
         $pageVisit->update($title, $url);    
@@ -59,5 +70,10 @@ class UserHistoryTYPE extends Nodes{
                 $this->append( $pageVisit );
             }
         }   
+    }
+    
+    public function save($bson=null){
+        $this->nodes = array_slice($this->nodes, (MAX_PAGE_HISTORY * -1) );
+        return parent::save($bson);   
     }
 }

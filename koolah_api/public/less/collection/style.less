@@ -1,0 +1,22 @@
+#slides{
+  text-align: center;  
+}
+
+#thumbs{
+    .fullWidth;
+    .positionLeftBottom( fixed, 0, @slideBarH + @slideBarMargin );
+    .border-top( @color1 );
+    .border-bottom( @color1 );
+    background: @color2;
+    color: @color1;
+    .zLevel3;
+    padding: 10px 0;
+    height: @thumbsH;
+    
+    overflow:hidden;
+    
+    img{
+      .left();
+      margin-left: 20px;
+    }
+}

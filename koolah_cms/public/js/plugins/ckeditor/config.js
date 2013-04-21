@@ -11,7 +11,7 @@ CKEDITOR.editorConfig = function( config )
 	//config.customConfig = '/path/to/custom/config'
 	config.toolbar = 'Koolah';
     config.toolbar_Koolah = [
-        { name: 'tools',       items : [ 'Maximize', '-','About' ] },
+        { name: 'tools',       items : [ 'Maximize', 'Source', '-','About' ] },
         { name: 'clipboard',   items : [ 'Cut','Copy','Paste','PasteFromWord','-','Undo','Redo' ] },
         { name: 'insert',      items : [ 'Image', 'Table','HorizontalRule','SpecialChar' ] },
         { name: 'editing',     items : [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ] },
@@ -22,5 +22,4 @@ CKEDITOR.editorConfig = function( config )
         { name: 'styles',      items : [ 'Styles','Format','FontSize' ] },
         { name: 'colors',      items : [ 'TextColor','BGColor' ] }
     ];
-        
 };

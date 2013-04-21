@@ -36,8 +36,7 @@ function FieldTypeTYPE(){
     }
     
     this.getTypes = function(){
-        var types = TEMPLATE_FIELD_TYPES;
-        return types;
+        return TEMPLATE_FIELD_TYPES;
     }
     /***/
 

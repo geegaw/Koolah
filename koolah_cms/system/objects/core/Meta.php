@@ -33,12 +33,11 @@ class CreationData{
 	public $created_at = null;
 	public $created_by = null;
 	
-	public function set()
+    public function set()
 	{
-		$this->created_at = microtime();
-		if (!session_id())
-            session_start();
-		$this->created_by = $_SESSION['user'];		
+		$this->created_at = date(TIMESTAMP_FORMAT);
+        $user = new SessionUser();
+		$this->created_by = $user->getID();		
 	}
 	
 	/***
@@ -67,20 +66,30 @@ class modificationHistory{
 		$modifications[] = new Modification();
 	}
 	
+    public function lastModified(){
+        if( $this->modifications ){
+            return end( $this->modifications );
+        }
+    }
+    
 	/***
 	 * MONGO FUNCTIONS
 	 */
 	public function prepare(){
 		$bson = null;
 		if ( $this->modifications ){
-			foreach ( $this->modifications as $modification )
-				$bson[]= $this->modification->prepare();
+			foreach ( $this->modifications as $modification ){
+			    if ( is_object( $modification ) && method_exists($modification, 'prepare'))
+				    $bson[]= $modification->prepare();
+                else
+                    $bson[] = $modification;
+            }
 		}
 		return array( 'modifications' => $this->modifications );
 	}
 	public function read( $bson ){
-		//if ( isset($bson['modifications']) )
-		//	$this->modifications->read($bson['modifications']);				
+		if ( isset($bson['modifications']) )
+            $this->modifications = $bson['modifications'];				
 	}	
 }
 
@@ -89,10 +98,9 @@ class Modification{
 	public $modified_by;
 	
 	public function __construct(){
-		$this->modified_at = microtime();
-		if (!session_id())
-            session_start();
-		$this->modified_by = $_SESSION['user'];		
+		$this->modified_at = date(TIMESTAMP_FORMAT);
+        $user = new SessionUser();
+		$this->modified_by = $user->getID();		
 	}
 	
 	

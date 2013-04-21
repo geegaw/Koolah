@@ -85,6 +85,11 @@ function FieldTYPE(){
             case 'file':
                 self.options = $('#fileTypeSelect').val();
                 break;
+            case 'query':
+                var query = new QueryTYPE();
+                query.readForm();
+                self.options = query.toAJAX();  
+                break;
             default:
                 break;
         }
@@ -112,6 +117,12 @@ function FieldTYPE(){
                 $('#fileTypeSelect option[value="'+self.options+'"]').attr('selected', 'selected');
                 $('#fileType').show();
                 break
+            case 'query':
+                var query = new QueryTYPE();
+                query.fromAJAX( self.options );
+                query.fillForm();  
+                $('#queryType').show();
+                break;
             default:
                 break;
         }

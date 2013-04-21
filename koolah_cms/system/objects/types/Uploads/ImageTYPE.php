@@ -19,27 +19,26 @@ class  ImageTYPE extends Node{
     
     //BOOL
     public function isModified(){
-        if ( !$this->getByID() )
+        if ( !$this->getID() )
             return true;
         
         $orig = new ImageTYPE();
-        $orig->getByID( $this->getByID() );
+        $orig->getByID( $this->getID() );
         
-        return md5( $this->crop ) === md5( $orig->crop );    
+        return !$this->crop->equals( $orig->crop );
     }
     
     //fetchers
     
     public function save($bson=null){
-        $status = new StatusTYPE();    
-        if ( $this->isModified() ){   
-            $status = parent::save($bson);
+        $status = new StatusTYPE();   
+        if ( $this->isModified() ){
+            parent::save($bson);   
             if ( $status->success() ){
                 $path = $this->getPath();
                 if ( $this->ratio->getID()  ){
                     foreach( $this->ratio->sizes->sizes as $size ){
                         $filename = $path.'/'.$size->label->getRef().'.'.$this->file->getExt();
-//echo $filename.'<br />';
                         $status = $this->crop( $filename, $size->w, $size->h );
                         if ( !$status->success() )
                             return $status;

@@ -1,7 +1,6 @@
 <?php
 
-class AliasesTYPE extends Nodes
-{
+class AliasesTYPE extends Nodes{
     //CONSTRUCT 
     public function __construct( $db=null, $collection = ALIAS_COLLECTION ){
         parent::__construct( $db, $collection );    
@@ -81,6 +80,9 @@ class AliasesTYPE extends Nodes
         }                       
     }
 
+    public function find( $suspect ){
+        return parent::find( $suspect );
+    }
     /***/ 
                
 } 

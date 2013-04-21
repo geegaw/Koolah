@@ -69,6 +69,7 @@ class Nodes{
 		$objs = array();
         if ( $this->nodes ){
             foreach( $this->nodes as $node ){
+                
                 if ( property_exists($node, 'compare') && $node->compare($suspect) ){
                     $objs[] = $node;
                 }

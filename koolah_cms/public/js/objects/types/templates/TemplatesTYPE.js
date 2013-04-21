@@ -5,7 +5,7 @@ function TemplatesTYPE(){
     /**
      * parent extensions
      */
-    this.get = function( callback, args, $el ){ self.parent.get( self.fromAJAX, callback, args, $el ); }
+    this.get = function( callback, args, $el, async ){ self.parent.get( self.fromAJAX, callback, args, $el, async ); }
     this.clear = function(){ self.parent.clear(); }
     this.append = function( template ){ self.parent.append( template ); }
     this.find = function( template ){  return self.parent.find( template ); }

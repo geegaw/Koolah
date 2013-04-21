@@ -9,7 +9,12 @@ class  CropTYPE{
     
     
     
-    
+    public function equals( $suspect ){
+        return( $suspect instanceof CropTYPE
+            && ( ($this->w != $suspect->w) || ($this->h != $suspect->h)) 
+            && ( implode(' ', $this->coords) !=  implode(' ', $suspect->coords))
+            );
+    }
     
     /***
      * MONGO FUNCTIONS

@@ -11,6 +11,8 @@ function TemplateSectionsTYPE(){
     /**
     * methods
     */
+    this.sections = function(){ return self.templateSections; }
+    
     this.clear = function(){ self.templateSections = []; }
    
     this.append = function( templateSection ){

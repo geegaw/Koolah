@@ -13,6 +13,16 @@ class debug{
 		if ( $die )
 			die;
 	}
+    
+    static public function h1( $t, $die=false ){
+        echo "<h1>$t</h1>";
+        if ( $die )
+            die;
+    }
+    
+    static public function divClear(){
+        echo '<div class="clear""></div>';
+    }
 
 }
 ?>

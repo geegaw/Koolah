@@ -35,12 +35,12 @@
         cmsToolKit::includeJS( "lib/jquery-ui-1.8.17.custom.min" );
         if ( ENV=='dev' )
             cmsToolKit::includeJS( "lib/less.min" );
-        if ( DEBUG )
-            cmsToolKit::includeJS( "debug" );
-        cmsToolKit::includeJS( "plugins" );
+        //if ( DEBUG )
+            //cmsToolKit::includeJS( "debug" );
+        //cmsToolKit::includeJS( "plugins" );
         
         include(PUBLIC_PATH.'/js/jsConf.php');
-        //cmsToolKit::includeJS( "global" );
+        cmsToolKit::includeJS( "global" );
         //cmsToolKit::includeJS( "toolkit" );
         if ( isset($js) )
             cmsToolKit::includeJS( $js );

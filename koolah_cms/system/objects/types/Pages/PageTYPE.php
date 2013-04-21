@@ -49,6 +49,7 @@ class PageTYPE extends Node{
         if ( !$this->seo->title ){
             $this->seo->title =  $this->label->label;
         }
+        
         if ( !count( $this->getAliases()) ){
             $template = new TemplateTYPE();
             $template->getByID( $this->templateID );
@@ -70,11 +71,14 @@ class PageTYPE extends Node{
         $status = new StatusTYPE();    
         if ( count($this->getAliases()) ){
             $toDelete = $this->getAliasesToDelete();
+            //debug::printr( $toDelete );
             if ( $toDelete->length() )
                 $status = $toDelete->del();
             
             if ( $status->success() ){
                 foreach( $this->getAliases() as $alias ){
+                    //debug::printr( $alias, 1 );
+                
                     if ( !$alias->getID() ){
                         $alias->setPageID( $this->getID() ); 
                         $sStatus = $alias->save();
@@ -96,10 +100,10 @@ class PageTYPE extends Node{
         if ( !count($origAliases->aliases()) )
             return $toDelete;
         
-        //debug::printr($origAliases, 1);
+        $thisAliases = $this->seo->getAliasesInstance();
         if (count($this->getAliases()) ){
             foreach( $origAliases->aliases() as $alias ){
-                $nodes = $this->seo->getAliasesInstance()->find( $alias->getAlias() );
+                $nodes = $thisAliases->find( $alias->getAlias() );
                 if ( empty($nodes) )
                     $toDelete->append( $alias );
             }
@@ -153,7 +157,7 @@ class PageTYPE extends Node{
     }
     
     public function readAssoc( $bson ){
-//debug::printr($bson, 1);        
+//debug::printr($bson);        
         $this->label->read($bson);
         if ( isset($bson['publicationStatus']) )
             $this->publicationStatus = $bson['publicationStatus'];
