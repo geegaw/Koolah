@@ -1,4 +1,17 @@
 <?php
+/**
+ * jsConf
+ * 
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */ 
+/**
+ * conf file to pass php constants to javascript
+ * 
+ * @author Christophe Vaugeois <cvaugeois@koolah.org>
+ * @package koolah\cms\public\js
+ */ 
+
     global $VALID_IMAGES;
     global $VALID_DOCS;
     global $VALID_VIDS;
@@ -26,4 +39,6 @@
 	var VALID_FILES = ['<?php echo implode("', '", $VALID_FILES); ?>'];
 	
 	var TEMPLATE_FIELD_TYPES = ['<?php echo implode("', '", FieldTypeTYPE::getTypes()); ?>'];
+	
+	var FM_URL = "<?php echo FM_URL; ?>"; 
 </script>

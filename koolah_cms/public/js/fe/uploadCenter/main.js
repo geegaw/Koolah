@@ -139,7 +139,7 @@ $(document).ready(function(){
         oReader.onload = function(e){
             var ext = new FileTYPE().getExtFromFilename( oFile.name );
             if ( !new FileTYPE().isValidType( ext ) )
-                errorMsg( $fileFormMsgBlock, 'Not a vaild file type' );
+                errorMsg( $fileFormMsgBlock, '['+ext+'] is not a vaild file type' );
             else if ( !new FileTYPE().isValidSize( oFile.size ) )
                 errorMsg( $fileFormMsgBlock, 'File is too large.' );
             else {

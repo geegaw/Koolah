@@ -1,67 +1,51 @@
+#pagesSection{
+    padding: 25px;   
+}
+
 #main{
-    .border( @color5 );
-    .leftBoth;
-    margin: 25px 0;
-    width: @mainW;
-    height: 400px;
+    .left(80%);
+    
+    #pagesSectionBody{
+        .commonBox( 100% );            
+    }
 }
 
 #pagesWidgets{
     .left( @pagesWidgetsW );
-    .relative;
     clear: left;
-    margin: 25px;
-}
-/*
-#pagesWidgets #tabs{
-    .positionLeftTop( relative, 0, 1px );
-    .zLevel2;
-}
-#pagesWidgets .tab{
-    .left();
-    .border( @color1 );
-    .border-bottom( @color5 );
-    .roundCorner( 0, 15px, 0, 0 ); 
-    .positionLeftTop( relative, -4px, 0 );
-    .zLevel1;
-    padding: 5px;
-    line-height: 25px;
-    background: @color4;    
-}
+    .relative;
+ }
 
-#pagesWidgets .tab:first-child{
-    left: 0;
-}
-
-#pagesWidgets .tab a{
-    color: @color1;
-}
-
-#pagesWidgets .tab.active{
-    .zLevel2;
-    border-color: @color5;
-    border-bottom: 1px solid #fff !important;  
-}
-#pagesWidgets .tab.active a{
-    color: @color5;
-}
-*/
 #breadcrumbs{
-    .left();
+    .fullWidth;
     margin-top: 5px;
+    
+    .breadcrumb{
+        .left();
+        &:hover{ background: @color10; } 
+    }
 }
 
-#breadcrumbs .breadcrumb{
-    .left(); 
-}
-
-#breadcrumbs .breadcrumb.hover{
-    background: @color10;
-}
 
 #filterArea{
-    .right( @filterAreaW );
-    .border-left(@color5, 10px, 25px);
-    padding: 10px;
-    height: 380px;
+    .commonBox( @filterAreaW, 100%, 100% );
+    .relative;
+    border-left: none;
+    margin-top: 37px;
+    height: @pageH;
+    
+    fieldset{
+      .fullWidth;
+      input[type=submit]{ .halfWidth; }
+    }
+}
+
+#filterAreaFilters{
+    .fullWidth;
+}
+
+#addPagesArea{
+    
+    .fullWidth;
+    .positionLeftBottom(absolute, 20px,  20px); 
 }

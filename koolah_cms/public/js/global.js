@@ -4,35 +4,25 @@ $(document).ready(function(){
     $('.hide').hide().removeClass('hide');    
     centerEls();    
     
-    /*
-    $('.no').live( 'click', function(){
-        closeOverlay();
-        return false;
-    });
-    */
-    
     $('#globalNav').click(function(){
         if ( $('#mainNav').is(':visible') )
              $('#mainNav').animate({ left: '-150px' }, NAV_DURATOIN, function(){ $(this).hide() } );
         else
             $('#mainNav').show().animate({ left: 0  }, NAV_DURATOIN );
-        
     })
     
     $('.subMenuTrigger').click(function(){ 
-        //$('.menuItem a.active').removeClass( 'active' );
-        //$(this).toggleClass('active');
-        
         var $subNav = $(this).parents('.menuItem:first').find('.subMenu');
         if ( $subNav.is(':visible') )
              closeSubnav($subNav);
         else{
+            console.log($subNav);
             if( $('.subMenu:visible').length )
                 closeSubnav( $('.subMenu:visible'), function(){ openSubnav($subNav) } )
             else
                 openSubnav($subNav);
         }        
-        function openSubnav($el){ $el.show().animate({ left: '150px'  }, NAV_DURATOIN ); }
+        function openSubnav($el){ console.log('opne'); $el.show().animate({ left: '150px'  }, NAV_DURATOIN ); }
         function closeSubnav($el, callback){ 
             $el.animate({ left: '0' }, NAV_DURATOIN, function(){ 
                 $(this).hide(); 
@@ -42,13 +32,6 @@ $(document).ready(function(){
         }
     });
     
-    /*
-    $('.menuItem').hoverIntent(
-    	function(){ $(this).find('.subMenu').show( 350 ); },
-    	function(){ $(this).find('.subMenu').hide( 350 ); }
-    );
-    */
-   
     $('.helpTrigger').live('click', function(){
     	var $parent = $(this).parents('.help');
     	$parent.find('.helpArea')
@@ -59,6 +42,7 @@ $(document).ready(function(){
     		   }, 500);
     	return false;
     })
+    
     $('.helpTriggerClose').live('click', function(){
     	var $parent = $(this).parents('.help');
     	$parent.find('.helpArea')
@@ -132,31 +116,7 @@ function centerVertEls(){
     });
 }
 
-/*
-function displayDeleteConfirmation(id, $el, toDelete)
-{
-    displayConfirmationMsg(id, $el, 'Are you sure you want to delete '+toDelete+'?', 'YES Delete', "NO Don't Delete");
-}
-function displayConfirmation(id, $el)
-{
-   displayConfirmationMsg(id, $el, 'Are you sure?', 'YES', 'NO');
-}
-function displayConfirmationMsg(id, $el, msg, yes, no)
-{
-    $('#overlay').remove();
-    $('#overlayBox').remove();
-    var html =''+
-    '<div id="overlay"></div>'+
-    '<div id="overlayBox">'+
-        '<div class="deleteMsg">'+msg+'</div>'+
-        '<div class="options">'+
-            '<a href="#" class="yes" id="'+id+'">'+yes+'</a>'+
-            '<a href="#" class="no">'+no+'</a>'+
-        '</div>'+
-    '</div>';
-    $el.append(html);
-}
-*/
+
 function closeOverlay()
 {
     $('#overlay').fadeOut( 400 );
@@ -194,14 +154,6 @@ function compareArrays( arr1, arr2 )
     return combined;
 }
 
-/*
-function mkDraggable( $els, helperFn ){
-	$els.each(function(){
-      var $this = $(this);
-      $this.draggable({ helper: helperFn });
- });
-}
-*/
 function mkDroppable( $els, dropFn ){
 	$els.each(function(){
 	  var $this = $(this);
@@ -209,20 +161,6 @@ function mkDroppable( $els, dropFn ){
   	});
 }    
 
-/*
-
-function mkSortable( $els ){
-	if ( $els.length === 1 ){
-		$els.sortable();
-	}
-	else if ( $els.length > 1 ){
-		$els.each(function(){
-	      var $this = $(this);
-	      $this.sortable();
-	  	});
-  	}
-}    
-*/
 function successMsg( $el ){
 	$el.removeClass('error').addClass('success').html( 'Success' ).show();  
     setTimeout(function(){

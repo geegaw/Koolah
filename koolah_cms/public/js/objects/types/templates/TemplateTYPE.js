@@ -9,7 +9,7 @@ function TemplateTYPE(){
      * parent extensions
      */
     this.save = function( callback, $el ){ self.parent.save( self.toAJAX(), null,  callback, $el );}
-    this.get = function( callback, $el ){ self.parent.get( self.fromAJAX, callback, $el ); }    
+    this.get = function( callback, $el, async ){ self.parent.get( self.fromAJAX, callback, $el, async ); }    
     this.del = function( callback, $el ){ self.parent.del(null, callback, $el ); }
     this.getID = function(){ return self.parent.getID(); }
     this.equals = function( template ){ return self.parent.equals( template ); }

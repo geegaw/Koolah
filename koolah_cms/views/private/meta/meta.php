@@ -15,12 +15,12 @@
             <?php if (isset($lastMofidiedBy)): ?>
                 <div class="grouping">
                     <div> <span>Last Modified By:</span><span><?php echo cmsToolKit::displayUser($creator); ?></span> </div>
-                    <div> <span>Last Modified On:</span><span><?php echo cmsToolKit::displayDate($lastMofidied->modified_at); ?></span> </div>
+                    <div> <span>Last Modified On:</span><span><?php echo koolahToolKit::displayDate($lastMofidied->modified_at); ?></span> </div>
                 </div>
             <?php endif; ?>
             <div class="grouping">
                 <div> <span>Created By:</span><span><?php echo cmsToolKit::displayUser($creator); ?></span> </div>
-                <div> <span>Created On:</span><span><?php echo cmsToolKit::displayDate($meta->creationData->created_at); ?></span> </div>
+                <div> <span>Created On:</span><span><?php echo koolahToolKit::displayDate($meta->creationData->created_at); ?></span> </div>
             </div>    
             <?php if (isset($metaFile)) include( META_PATH.$metaFile.'.php' ); ?>
         </div>

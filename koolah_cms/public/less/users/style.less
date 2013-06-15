@@ -1,118 +1,79 @@
-#saveCancel input{
-    clear: none;
-    margin-left: 5px;
-}
-#saveCancel input:first-child{
-    margin-left: 0px;
+body > section{
+     padding-left: 2%;
+     padding-right: 2%;
 }
 
-#rolesArea label,
-#rolesArea input{
-    .left();
-    clear: none;
-}
-#rolesArea label{
-    margin-left: 5px;
-}
-
-.roleWrapper{
-    .left();  
+#adminNav{
+    .left( 10% );
+    
+    #adminNavSectionBody{
+        .commonBox( 100% );
+    }
 }
 
-#userForm
-#userInfoArea,
-#userInfoArea label,
-#userInfoArea input,
-#userInfoArea span,
-#rolesArea,
-.roleCheckBox,
-.roleCheckBox input,
-.roleCheckBox label,
-.roleCheckBox span,
-#permissionsArea,
-#saveCancel,
-#leftCol,
-#rightCol,
-#bottom,
-#rolesArea,
-#userForm,
-.cat{
-    .left();    
+#mainBlock{
+    .left( 80% );
+    margin-left: 5%;
+    
+    #mainBlockSectionBody{
+        .commonBox( 100% );
+    }
 }
 
-#userInfoArea label,
-#userInfoArea input,
-#userInfoArea span,
-#bottom{
-    .clear;    
+form{ 
+    .commonForm(60%);
+    .col{
+          padding: 0 15px;
+          .halfWidth;
+          clear: none;
+     }  
+     
+    label{ 
+      clear: none;
+      margin-left: 5px; 
+    }
+    span{ 
+        .left;
+        padding: 2px; 
+    }
+    
+    .leftCol{
+        .col;
+    }
+    
+    .rightCol{
+        .col;
+        .border-left(@color1);
+        overflow-y: auto;
+        margin: 0;
+        
+        #permissionsArea{
+            fieldset.permission{
+                .left;
+                clear: none;
+                margin-left: 15px;
+                width: auto;
+            } 
+        }
+    }
+    
+    .cat{
+        .fullWidth;
+        margin-top: 15px;
+        &:first-child{ margin-top: 0; }
+        
+        .catName{ 
+          .bold;
+          .ucWords; 
+        }
+        .catPermissions{
+            padding-left: 15px;
+        }
+    }
 }
 
-#userForm{
-    width: @userFormW;
-}
-#permissionsArea{
-    width: @permissionsAreaW;
-}
-#leftCol{
-    width: @leftColW;    
-}
-
-#rightCol{
-    width: @rightColW;    
-}
-
-
-#rolesArea,
 #saveCancel{
-    width: 250px;
-}
-
-.colorBox{
-    .block;
-    .noText;
-    width: 15px;
-    height: 15px;    
-}
-
-.roleGuideWrapper,
-.roleWrapper{
-    padding: 2px;    
-}
-
-.roleCheckBox label{
-    width: @roleCheckBoxLabelW;
-    margin-left: 5px;
-}
-
-.roleCheckBox span{
-    margin: 2px 5px 0 0;
-}
-
-.roleCheckBox{
-    border: none;
-    clear: both;
-    margin: 0;
-    padding: 3px;
-}
-
-#userInfoArea{
-    width: @userInfoArea;
-}
-
-.cat{
-    width: @catW;
-    padding: 10px;
-    margin: 5px;
-}
-
-#allPermissions,
-.allCat,
-.aPerm{
-    border: none;
-}
-
-#custom{
-    width: 24px;
-    height: 22px;
-    background: @color5;
+  .border-top(@color1);
+  .border-bottom(@color1);
+  padding: 10px 0;
 }

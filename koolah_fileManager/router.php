@@ -1,12 +1,31 @@
 <?php
+/**
+ * Router
+ * 
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */ 
+/**
+ * Router handles all page requests
+ * 
+ * @author Christophe Vaugeois <cvaugeois@koolah.org>
+ * @package koolah\fileManager
+ */ 
 class Router{
+        
+    /**
+     * serveReq
+     * receives a request and loads the request
+     * @access  public
+     * @param assocArray $req
+     */    
     static function serveReq( $req=null ){
         
-        $id = cmsToolKit::getParam('id', $req);
-        $format = cmsToolKit::getParam('format', $req);
-        $formatP = cmsToolKit::getParam('formatP', $req);
-        $formatL = cmsToolKit::getParam('formatL', $req);
-        $download = cmsToolKit::getParam('download', $req);
+        $id = koolahToolKit::getParam('id', $req);
+        $format = koolahToolKit::getParam('format', $req);
+        $formatP = koolahToolKit::getParam('formatP', $req);
+        $formatL = koolahToolKit::getParam('formatL', $req);
+        $download = koolahToolKit::getParam('download', $req);
         
         if ( !isset($req['id']) ){
             Loader::loadFile( VIEWS_PATH."/400.php" );
@@ -21,7 +40,7 @@ class Router{
             Loader::loadFile( VIEWS_PATH."/400.php" );
             exit;
         }  
-        
+
         switch( $fm->type ){
             case 'img':
                 include( VIEWS_PATH."/image.php" );
@@ -40,9 +59,6 @@ class Router{
                 exit;
                 break;
         }
-        
     }
-    
-   
 }
 ?>

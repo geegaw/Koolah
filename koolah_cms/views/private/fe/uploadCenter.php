@@ -9,9 +9,8 @@
      );
     $css = 'uploadCenter';
     include( ELEMENTS_PATH."/header.php" );
-    
 ?>    
-<section id="uploads" class="fullWidth">        
+<section id="uploads">        
     <?php include( ELEMENTS_PATH.'/files/filesSection.php'  ); ?>
     <?php include( ELEMENTS_PATH.'/uploadCenter/tagsSection.php'  ); ?>    
 </section>

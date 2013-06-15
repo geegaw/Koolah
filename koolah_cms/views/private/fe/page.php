@@ -1,6 +1,6 @@
 <?php
-    $templateID = cmsToolKit::getParam('template', $_GET);
-    $pageID     = cmsToolKit::getParam('id', $_GET);
+    $templateID = koolahToolKit::getParam('template', $_GET);
+    $pageID     = koolahToolKit::getParam('id', $_GET);
     
     $page = null;
     if ( $pageID ){
@@ -36,6 +36,7 @@
     
     $metaFile = '/page/meta'; 
     $js = array(
+        'objects/types/templates', 
         'objects/types/pages',
         'objects/types/uploads',
         'objects/types/tags', 
@@ -60,6 +61,8 @@
     <?php include( ELEMENTS_PATH.'/page/templateInfo.php' ); ?>
     <?php include( ELEMENTS_PATH.'/page/rightSection.php' ); ?>
     <?php $close = true; include( ELEMENTS_PATH.'/page/fileForm.php' ); ?>
+    <?php include( ELEMENTS_PATH."/common/recent.php" ); ?>
 </section>
+
 <div style="clear:both"><?php //debug::printr($page); ?></div>
 <?php include (ELEMENTS_PATH . "/footer.php"); ?>

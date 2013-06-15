@@ -333,3 +333,4 @@ function FileTYPE( $msgBlock ) {
         self.del( null, self.$msgBlock, false );
     })
 }
+$.extend(FileTYPE, Node);

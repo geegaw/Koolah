@@ -4,8 +4,9 @@
 	 */
     $active = array('admin', 'users');
     $title = 'users-admin';
-    $css = array('userRoles', 'users');
-	$js = array('objects/types/roles', 'objects/types/users', 'users' );
+    //$css = array('userRoles', 'users');
+    $css = array('users');
+	$js = array('objects/types/roles', 'objects/types/users', 'fe/users' );
     include( ELEMENTS_PATH."/header.php" );
 	/***/
 	
@@ -26,20 +27,32 @@
 	$roles = new RolesTYPE($cmsMongo);
     $roles->get();
 	/***/
-?>    
-<section id="users">        
-	<div class="leftBlock"> 
-		<?php $adminNav->display( $active, 'div', true ); ?> 
-	</div>
+?>
+<section id="users" >
+    <section id="adminNav"  class="collapsible"> 
+        <div class="commandBar fullWidth"><h3>User Nav</h3><button type="button" class="toggle open">&#8211;</button></div>
+        <nav  id="adminNavSectionBody" class="collapsibleBody">
+            <?php $adminNav->display( $active, 'div', true ); ?>
+         </nav> 
+    </section>    
     
-    <div class="mainBlock">
-        <div id="msgBlock"></div>
-        <?php if ($user->can('add_user') ): ?><div id="addNewUser"><a href="">Add New User</a></div><?php endif ?>      
-        <ul id="usersList"></ul>
-    </div>
-            
-    <form id="userForm" class="usersRolesForm hide">
-    	<div id="leftCol">    
+        
+	
+    
+    <section id="mainBlock"  class="collapsible">
+        <div class="commandBar fullWidth"><h3>Users</h3><button type="button" class="toggle open">&#8211;</button></div>
+        <div  id="mainBlockSectionBody" class="collapsibleBody">
+            <div class="heading fullWidth">
+                <h2>Users</h2>
+                <?php if ($user->can('add_user') ): ?><button id="addNewUser"> + </button><?php endif ?> 
+            </div>
+            <div id="usersList" class="list"><ul></ul></div>
+            <div id="msgBlock"></div>
+        </div>
+    </section>        
+    
+    <form id="userForm" class="hide">
+    	<div id="userFormLeftCol"  class="leftCol">    
             <fieldset id="userInfoArea">
                 <legend>User Info:</legend>
 		    	<fieldset>
@@ -64,57 +77,54 @@
 		        	</fieldset>
 		    	</fieldset>
 		    	
-			</fieldset>                    
-        </div>
-        
-        <div id="rightCol">
-            <fieldset id="saveCancel">
-           			<input type="submit" class="cancel" id="cancel" value="Cancel" />
-		        	<input type="submit" class="reset" id="reset" value="Reset" />
-		        	<input type="submit" class="save submit" id="save" value="Save" />
-		        	<input type="hidden" id="userID" value="" />
+			</fieldset>
+			
+			<fieldset id="saveCancel">
+                    <input type="submit" class="cancel noreset" id="cancel" value="Cancel" />
+                    <input type="submit" class="reset noreset" id="reset" value="Reset" />
+                    <input type="submit" class="save submit noreset" id="save" value="Save" />
+                    <input type="hidden" id="userID" value="" />
             </fieldset>
             
             <fieldset id="rolesArea">
                 <legend>Roles:</legend>
                 
                 <?php if ($user->isSuper()) : ?>
-                	<fieldset  class="role">
-						<input type="checkbox" id="superuser" class="role userRole" value="superuser" />
-						<label for="superuser">Super User</label>
-						<?php cmsToolKit::mkHelp('Super Users have all permissions. Only superuses can delete users permanately'); ?>
-					</fieldset>
+                    <fieldset  class="role">
+                        <input type="checkbox" id="superuser" class="role userRole" value="superuser" />
+                        <label for="superuser">Super User</label>
+                        <?php htmlTools::mkHelp('Super Users have all permissions. Only superuses can delete users permanately'); ?>
+                    </fieldset>
                 <?php endif; ?>
                 
                 <?php if ($user->isAdmin()) : ?>
-                	<fieldset  class="role">
-						<input type="checkbox" id="admin" class="role userRole" value="admin" />
-						<label for="admin">Admin</label>		
-						<?php cmsToolKit::mkHelp('Only admins can grant roles and permissions.'); ?>
-					</fieldset>
+                    <fieldset  class="role">
+                        <input type="checkbox" id="admin" class="role userRole" value="admin" />
+                        <label for="admin">Admin</label>        
+                        <?php htmlTools::mkHelp('Only admins can grant roles and permissions.'); ?>
+                    </fieldset>
                 <?php endif; ?>
                 
                 <?php 
-                	$i=0;		
-                	foreach ( $roles->roles() as $role ):
-						if( $user->canGrant( $role->getID() ) ): 
+                    $i=0;       
+                    foreach ( $roles->roles() as $role ):
+                        if( $user->canGrant( $role->getID() ) ): 
                 ?>
-                	<fieldset  class="role">
-                		<input type="checkbox" id="<?php echo $role->getID(); ?>" class="role userRole" value="<?php echo $role->getID(); ?>" />
-						<label for="<?php echo $role->getID(); ?>"><?php echo $role->label->label; ?></label>
-						<input type="hidden" class="rolePermissions" value='<?php echo json_encode( $role->permissions ); ?>' />
-						<input type="hidden" class="roleColor" value='<?php echo $colors[($i%$numColors)]; ?>' />
-					</fieldset>
-				<?php 
-							$i++; 
-						endif;				
-					endforeach; 
-				?>
-            </fieldset>
-        </div>        
+                    <fieldset  class="role">
+                        <input type="checkbox" id="<?php echo $role->getID(); ?>" class="role userRole noreset" value="<?php echo $role->getID(); ?>" />
+                        <label for="<?php echo $role->getID(); ?>"><?php echo $role->label->label; ?></label>
+                        <input type="hidden" class="rolePermissions noreset" value='<?php echo json_encode( $role->permissions ); ?>' />
+                        <input type="hidden" class="roleColor noreset" value='<?php echo $colors[($i%$numColors)]; ?>' />
+                    </fieldset>
+                <?php 
+                            $i++; 
+                        endif;              
+                    endforeach; 
+                ?>
+            </fieldset>       
+        </div>
         
-        
-		<div id="bottom">
+        <div id="userFormRightCol"  class="rightCol">
          	<fieldset id="permissionsArea">
                 <legend>Permissions:</legend>
                 <?php $permissions->mkForm('userPermission'); ?>			

@@ -74,7 +74,7 @@ function ImageTYPE( $msgBlock ) {
             coords = self.crop.coordsToArray();
         
         $('#cropImg')
-            .attr('src',  UPLOADS_PATH+self.file.filename )
+            .attr('src',  fileManager.formatUrl(self.file.parent.id) )
             .Jcrop({
                             bgColor:     '#000',
                             bgOpacity:   .25,

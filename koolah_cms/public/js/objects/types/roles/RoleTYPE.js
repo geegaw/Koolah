@@ -35,9 +35,9 @@ function RoleTYPE(){
 	this.mkInput = function(){
 		var html = '';
 		html+= '<li class="role">';
-		html+=		'<span class="roleName">'+self.name+'</span>';
+		html+=		'<span class="roleName" date-id="'+self.getID()+'">'+self.name+'</span>';
 		html+=  	'<input type="hidden" class="roleID" value="'+self.getID()+'" />';
-		html+=		'<span class="roleOptions">';
+		html+=		'<span class="commands">';
 		html+= 		'<button class="edit">edit</button>';
 		html+= 		'<button class="del">del</button>';
 		html+=		'</span>'; 
@@ -51,7 +51,8 @@ function RoleTYPE(){
 		
 		self.permissions = [];
 		$form.find('.permission:checked').each(function(){
-					self.permissions[ self.permissions.length ] = $(this).val();
+            console.log($(this))
+            self.permissions[ self.permissions.length ] = $(this).val();
 		})
 	}
 	

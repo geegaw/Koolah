@@ -1,4 +1,19 @@
 <?php
+/**
+ * firstTimeSignIn
+ * 
+ * @ignore
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+/**
+ * install portion
+ * 
+ * @TODO: install script not yet complete
+ * @author Christophe Vaugeois <cvaugeois@koolah.org>
+ * @package koolah\system\core
+ */ 
+ 
 	global $cmsMongo;
 	
 	$errors = null;
@@ -51,18 +66,18 @@
 <head>
     <title>Sign In</title>    
     <?php 
-    	cmsToolKit::includeCSS( "reset.min" );
-    	cmsToolKit::includeCSS( "main" );
-		cmsToolKit::includeCSS( "setup" );
+    	koolahToolKit::includeCSS("reset.min" );
+    	koolahToolKit::includeCSS("main" );
+		koolahToolKit::includeCSS("setup" );
 	?>
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<?php	
-		cmsToolKit::includeJS( "jquery.1.7.1.min" );
-		cmsToolKit::includeJS( "jquery-ui-1.8.17.custom.min" );
-		cmsToolKit::includeJS( "global" );
-		cmsToolKit::includeJS( "signin" );
-		cmsToolKit::includeJS( "forms" );
-		cmsToolKit::includeJS( "setup" );
+		koolahToolKit::includeJS( "jquery.1.7.1.min" );
+		koolahToolKit::includeJS( "jquery-ui-1.8.17.custom.min" );
+		koolahToolKit::includeJS( "global" );
+		koolahToolKit::includeJS( "signin" );
+		koolahToolKit::includeJS( "forms" );
+		koolahToolKit::includeJS( "setup" );
 	?>                 
 </head>
 <body>

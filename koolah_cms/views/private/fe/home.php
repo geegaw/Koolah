@@ -6,6 +6,6 @@
 ?>    
     <section id="home"> 
         <?php include( ELEMENTS_PATH."/home/mainCommands.php" ); ?>
-        <?php include( ELEMENTS_PATH."/home/recent.php" ); ?>
+        <?php include( ELEMENTS_PATH."/common/recent.php" ); ?>
     </section>
 <?php include( ELEMENTS_PATH."/footer.php" ); ?>

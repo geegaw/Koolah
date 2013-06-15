@@ -2,23 +2,24 @@ $(document).ready(function(){
     var $msgBlock = $('#msgBlock');
     var activeFolder;
     
-    var pages, widgets;
+    var pages = new PagesTYPE($msgBlock);
+    var widgets;
     var root = new FolderTYPE(null, $msgBlock);
     root.getRoot(init, $msgBlock);
     
     var tabs = new TabSection( $('#pagesWidgets .tabSection:first') );    
     
     $('.tab a').click(function(){
-        if ( $(this).html() == 'Pages' ){
-            $('#pagesBreadcrumbs').show();
-            $('#widgetsBreadcrumbs').hide();
-        }
-        else{
-            $('#widgetsBreadcrumbs').show();
-            $('#pagesBreadcrumbs').hide();            
-        }
+        var newTab = $(this).data().tabid;
+        $('.breadcrumbSection:visible').hide();
+        $('#'+newTab+'Breadcrumbs').show();
     });
-   
+    
+    
+    $('#listViewPlease').click(function(){
+        pages.get(updatePageList);            
+    })
+    
     $('.newPageWidget').click(function(){
         var $parent = $(this).parents('.newPageWidgetBlock');
         $parent.find('.newPageWidgetOptions').show();
@@ -204,5 +205,9 @@ $(document).ready(function(){
         activeFolder.save( file.removeEl, $msgBlock );
         to.save( null, $msgBlock );
         file.save(null, $msgBlock );
+    }
+    
+    function updatePageList(){
+        $('#pagesList ul').html( pages.mkList() );
     }
 });

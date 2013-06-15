@@ -45,25 +45,25 @@
     <title>Sign In</title>    
     <?php if (ENV == 'dev'): ?> <script type="text/javascript"> var less = { env: 'development'};</script> <?php endif; ?>
     <?php 
-    	//cmsToolKit::includeCSS( "reset.min" );
-    	//cmsToolKit::includeCSS( "global" );
-		cmsToolKit::includeCSS( "signin" );
+    	//koolahToolKit::includeCSS("reset.min" );
+    	//koolahToolKit::includeCSS("global" );
+		koolahToolKit::includeCSS("signin" );
 	?>
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<?php	
-		cmsToolKit::includeJS( "lib/jquery.1.7.1.min" );
-		cmsToolKit::includeJS( "lib/jquery-ui-1.8.17.custom.min" );
+		koolahToolKit::includeJS( "lib/jquery.1.7.1.min" );
+		koolahToolKit::includeJS( "lib/jquery-ui-1.8.17.custom.min" );
         if ( ENV=='dev' )
-            cmsToolKit::includeJS( "lib/less.min" );
+            koolahToolKit::includeJS( "lib/less.min" );
 		if ( DEBUG )
-			cmsToolKit::includeJS( "debug" );
-		cmsToolKit::includeJS( "plugins" );
+			koolahToolKit::includeJS( "debug" );
+		koolahToolKit::includeJS( "plugins" );
 		
 		include(PUBLIC_PATH.'/js/jsConf.php');
-		cmsToolKit::includeJS( "global" );
-		cmsToolKit::includeJS( "objects/core" );
-		cmsToolKit::includeJS( "fe/signin" );
-	    $username = cmsToolKit::getParam('username', $_POST, ''); 
+		koolahToolKit::includeJS( "global" );
+		koolahToolKit::includeJS( "objects/core" );
+		koolahToolKit::includeJS( "fe/signin" );
+	    $username = koolahToolKit::getParam('username', $_POST, ''); 
 	?>                 
 </head>
 <?php flush(); ?>

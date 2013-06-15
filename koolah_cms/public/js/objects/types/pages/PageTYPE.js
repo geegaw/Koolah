@@ -6,6 +6,7 @@ function PageTYPE($msgBlock) {
     this.seo = new seoTYPE();
     this.publicationStatus = $('#publicationStatus .status').html();
     this.templateID = '';
+    this.template = new TemplateTYPE($msgBlock);
     this.data = {};
     
     this.jsID = 'page'+UID(); 
@@ -26,6 +27,7 @@ function PageTYPE($msgBlock) {
     /***/
     
     this.get_class = function(){ return 'PageTYPE'; }
+    this.getTemplate = function(){ self.template.get(null, $msgBlock, false);}
     
     this.compare = function( suspect ){
         switch( typeof suspect ){
@@ -42,12 +44,14 @@ function PageTYPE($msgBlock) {
      * methods
      */
     this.fromAJAX = function(data) {
-    console.log(data)
+        if (!self.parent.id)
+            self.parent.fromAJAX(data);
         self.label.fromAJAX(data);
         self.seo.fromAJAX(data.seo);
         self.publicationStatus = data.publicationStatus;
         self.templateID = data.templateID;
-        self.data = data.data;
+        self.template.parent.id = self.templateID; 
+        self.data = data.data;        
     }
 
     this.toAJAX = function() {
@@ -111,7 +115,26 @@ console.log( self )
         html+=          '</div>';    
         return html;
     }
-
+    
+    this.mkList = function( params, tagParams ){
+        self.getTemplate();
+        var html = '';
+        html+= '<li id="'+self.jsID+'" class="page" data-id="'+self.parent.id+'" data-label="'+self.label.label+'" >';
+        html+=      '<span class="type">Page</span>';
+        html+=      '<span class="name"><a href="page?id='+self.parent.id+'" class="pageClick">'+self.label.label+'</a></span>';
+        html+=      '<span class="template"><a href="template?templateID='+self.templateID+'" class="pageClick">'+self.template.label.label+'</a></span>';
+        html+=      '<span class="pageFolder">'+'&nbsp;'+'</span>';
+        html+=      '<span class="status">'+self.publicationStatus+'</span>';
+        html+=      '<span class="commands">';
+        if ( params && params.editable ){
+            html+=       '<button class="edit">edit</button>';
+            html+=       '<button class="del">X</button>';
+        }
+        html+=      '</span>';
+        html+= '</li>';
+        return html;
+    }
+    
     this.readForm = function($form) {
         self.label.label = $('#newPageWidgetName').val();
         if ($('.workflowOptions').val() != 'no_selection')

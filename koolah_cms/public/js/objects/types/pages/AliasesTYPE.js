@@ -24,7 +24,7 @@ function AliasesTYPE($el) {
     this.aliases = function(){ return self.parent.nodes; }
     
     this.fromAJAX = function(data) {
-console.log( data );        
+//console.log( data );        
         if (data && data.aliases && data.aliases.length){
             for(var i=0; i < data.aliases.length; i++ ){
                 var alias =  new AliasTYPE();

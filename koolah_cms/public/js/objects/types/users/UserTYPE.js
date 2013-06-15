@@ -51,7 +51,7 @@ function UserTYPE(){
 		html+= '<li class="user">';
 		html+=		'<span class="userName">'+self.name+'</span>';
 		html+=  	'<input type="hidden" class="userID" value="'+self.getID()+'" />';
-		html+=		'<span class="userOptions">';
+		html+=		'<span class="commands">';
 		html+= 		'<button class="edit">edit</button>';
 		html+= 		'<button class="del">del</button>';
 		if ( !self.active )

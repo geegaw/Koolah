@@ -66,18 +66,23 @@ header{
         .fullWidth;
         .border-top( @color4, 5px, 5px );
         background: @color7;
-    
+        
+        &:first-child{
+            border-top: 0; 
+            margin-top: 0px; 
+        }
+        
         a {
             .bold;
             .block;
             color: @color4;
             font: @font2;
+            &active{
+              background: @color4;
+              color: @color7;
+            }
         }
-        a.active{
-          background: @color4;
-          color: @color7;
-        }
-        
+
         .subMenu{
             .left();
             .zLevelN1;
@@ -87,48 +92,19 @@ header{
             padding: 15px;
             background: @color7;
         }
-
     }
-    .menuItem:first-child{
-        border-top: 0; 
-        margin-top: 0px; 
-      }
     
     #accountOptions{
         .positionLeftBottom( absolute, 15px, 50px );
+        
+         .subMenu{
+            .left();
+            .zLevelN1;
+            .positionLeftTop( absolute, 0, 0 );
+            width: @navW;
+            height: 100%;
+            padding: 15px;
+            background: @color7;
+        }
     }
 }
-
-/*
-#mainNav{
-    .left(@mainNavWidth);
-    .relative;
-   .menuItem{ 
-     .left(@mainNavWidth); 
-    
-      a{
-          .leftBoth;
-          .border-top( @color4, 0 );
-          .block;    
-          width: @subNavWidth;        
-      }
-     
-      .subMenu{
-          .positionRightBottom( absolute, 0, 0 );
-          .right(@subNavWidth);
-          .zLevel4;
-          height: 100%;
-      }
-    } 
-     .menuItem:first-child > a{ border-top: 0;}
-    
-}
-
-#userOptions{
-    .right();
-    margin-right: 20px;
-    
-    a{ .border-left( @color4, 5px ); }
-    a:first-child{ .border-left( @color4, 0, none, none ); }
-}
-*/

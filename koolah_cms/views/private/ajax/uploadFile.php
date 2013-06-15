@@ -21,8 +21,9 @@
                          && $_POST['id'] 
                          && $_POST['id'] != 'null'
                          && isset($_FILES["file"])
-                    ){ 
+                    ){
                         $obj->getByID( $_POST['id'] );
+
                         $status = $obj->upload( $_FILES["file"] );
                         if ( $status->success() ){
                             $user = new SessionUser();

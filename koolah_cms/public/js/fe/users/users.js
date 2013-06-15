@@ -1,12 +1,13 @@
 $(document).ready(function(){
+    var PREFIXES = ['grantablePermission', 'grantableRole', 'userPermission'];
 	var $msgBlock = $('#msgBlock');
     
     var userForm = new FormTYPE( $('#userForm'), saveUser );
-	userForm.setResetExlude( 'rolesArea' );
+	//userForm.setResetExlude( 'rolesArea' );
 	
 	var users = new UsersTYPE();
 	users.get(displayUsers, null, $msgBlock);
-	console.log(users);
+	
 	function saveUser(){
 		var user = new UserTYPE();
 		user.readForm( $('#userForm') );
@@ -25,18 +26,12 @@ $(document).ready(function(){
 				html += user.mkInput();
 			}
 		}
-		$('#usersList').html(html);
+		$('#usersList ul').html(html);
 	}
 	
 	var roles = new RolesTYPE();
 	readRoles();
 	addRoleClasses();
-	
-	
-	
-	
-	
-	
 	
 		
 	$('#addNewUser').click(function(){
@@ -170,23 +165,19 @@ $(document).ready(function(){
 	}) 
 	
 	$('#superuser').live('click', function(){
-		if ( $(this).attr('checked') ){
+		if ( $(this).attr('checked') )
 			superDisplay();
-		}
-		else{
-			$('#bottom').show();
-			$('fieldset.role').show();
-		}
+		else
+			commonDisplay();
+		
 	})
 	
 	$('#admin').live('click', function(){
-		if ( $(this).attr('checked') ){
+		if ( $(this).attr('checked') )
 			adminDisplay();
-		}
-		else{
-			$('#bottom').show();
-			$('fieldset.role').show();
-		}
+		else
+			commonDisplay();
+		
 	})
 	
 	$('#userPermission_roles_grant').live('click', function(){
@@ -237,15 +228,20 @@ $(document).ready(function(){
 	
 	function superDisplay(){
 		$('#bottom').hide();
-		$('fieldset.role').hide();
-		$('#superuser').parents('fieldset.role').show();
+        $('fieldset.role').hide();
+        $('#permissionsArea').hide();
+        $('#superuser').parents('fieldset.role').show();
 	}
 	
 	function adminDisplay(){
-		$('#bottom').hide();
-		$('fieldset.role').hide();
-		$('#superuser').parents('fieldset.role').show();
+	    superDisplay()
 		$('#admin').parents('fieldset.role').show();
+	}
+	
+	function commonDisplay(){
+	    $('#bottom').show();
+        $('fieldset.role').show();
+        $('#permissionsArea').show();
 	}
 	
 	function hideForm(){
@@ -257,9 +253,10 @@ $(document).ready(function(){
 	 function resetForm(){
 	 	userForm.resetForm();
 	 	unwrapRoles();
-	 	$('#bottom').show();
-		$('fieldset.role').show();
-		$('#rolesArea input[type=checkbox]').removeAttr('checked');
+	 	commonDisplay();
+	 	$('#grantableRoles').hide();
+	 	$('#grantablePermissions').hide();
+		//$('#rolesArea input[type=checkbox]').removeAttr('checked');
 	 }
 	
 	function readRoles(){
@@ -303,17 +300,24 @@ $(document).ready(function(){
 	 		for ( var i=0; i<roles.roles().length; i++ ){
 	 			var role = roles.roles()[i].id;
 	 			var color = getRoleColor( role );
-	 			if (color)
-	 				unwrapRole( color ); 
+	 			if (color){
+	 			    for(var j=0; j < PREFIXES.length; j++){
+	 			        var prefix = PREFIXES[j];
+	 			       unwrapRole( prefix, color, true );    
+	 			    }
+	 				
+	 		    } 
 	 			$('#'+role).removeAttr('checked');
 	 		}
 	 	}
 	}
 	
 	function wrapRole(id, prefix, color){
-		$('.'+prefix+'.'+id).attr('checked', 'checked')
-					 .wrap('<span class="roleWrapper '+color+'"></span>')
-					 .parent().css('background', color);
+	    if (id && color){
+    		$('.'+prefix+'.'+id).attr('checked', 'checked')
+    					 .wrap('<span class="roleWrapper '+color+'"></span>')
+    					 .parent().css('background', color);
+	   }
 	}	
 	
 	function getRoleColor( role ){ return $('#'+role).parents('fieldset.role').find('.roleColor').val(); }

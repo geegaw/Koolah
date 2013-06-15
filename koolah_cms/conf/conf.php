@@ -1,4 +1,17 @@
 <?php
+/**
+ * conf
+ * 
+ * @ignore
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+ /**
+ * conf
+ * 
+ * @author Christophe Vaugeois <cvaugeois@koolah.org>
+ * @package koolah\cms
+ */ 
 /***
  * TIMEZONE
  */
@@ -12,61 +25,29 @@ define( 'DEBUG', true );
 define( 'ENV', 'dev' );
 /***/
 
-/***
- * COLLECTIONS
- */	
-define('USER_COLLECTION', 'users');
-define('ROLES_COLLECTION', 'roles');
-define('PERMISSIONS_COLLECTION', 'permissions');
-define('USER_HISTORY_COLLECTION', 'user_history');
-define('FIELD_COLLECTION', 'fields');
-define('TEMPLATE_COLLECTION', 'templates');
-define('FOLDER_COLLECTION', 'folders');
-define('MENU_COLLECTION', 'menus');
-define('ALIAS_COLLECTION', 'alias');
-define('PAGES_COLLECTION', 'pages');
-define('TAGS_COLLECTION', 'tags');
-define('UPLOADS_COLLECTION', 'uploads');
-define('IMAGES_COLLECTION', 'images');
-define('RATIOS_COLLECTION', 'ratios');
-//***/
-
-
+/****
+ * STYLE SHEET TYPE 
+ */
+define( 'STYLE_SHEET_TYPE',  'less' ); 
+/***/
 
 /***
  * FOLDER LOCATIONS
  */	
 
 //CONF
-define( 'CONF', ROOT_DIR.'/conf');
+define( 'CONF', CMS_DIR.'/conf');
  
-//SYSTEM FOLDER
-define('SYSTEM_PATH', ROOT_DIR.'/system');
-
-//OBJECTS FOLDER
-define('OBJECTS_PATH', SYSTEM_PATH.'/objects');
-
-//CORE OBJECTS FOLDER
-define('CORE_OBJECTS_PATH', OBJECTS_PATH.'/core');
-
-//DB OBJECTS FOLDER
-define('DB_OBJECTS_PATH', OBJECTS_PATH.'/db');
-
-//TYPES OBJECTS FOLDER
-define('TYPES_OBJECTS_PATH', OBJECTS_PATH.'/types');
-
-//KOOLAH OBJECTS FOLDER
-define('KOOLAH_OBJECTS_PATH', OBJECTS_PATH.'/koolahObjects');
 
 //AJAX ACCESS OBJECTS FOLDER
-define('AJAX_ACCESS_OBJECTS_PATH', OBJECTS_PATH.'/AjaxAccessObjects');
+define('AJAX_ACCESS_OBJECTS_PATH', CMS_DIR.'/AjaxAccessObjects');
 
 //TOOLS FOLDER
-define('TOOLS_PATH', SYSTEM_PATH.'/tools');
+define('LOCAL_TOOLS_PATH', CMS_DIR.'/tools');
 
 
 //VIEWS FOLDER
-define('VIEWS_PATH', ROOT_DIR.'/views'); 
+define('VIEWS_PATH', CMS_DIR.'/views'); 
 
 //HTTP ERRORS Folder
 define('HTTP_ERRORS_PATH', VIEWS_PATH.'/HTTP_ERRORS'); 
@@ -88,7 +69,7 @@ define('META_PATH', VIEWS_PATH.'/private/meta');
 define('NAVS_PATH', ELEMENTS_PATH.'/navs'); 
  
 //public
-define( 'PUBLIC_PATH', ROOT_DIR.'/public' );
+define( 'PUBLIC_PATH', CMS_DIR.'/public' );
 
 //CSS FOlDER
 define( 'CSS_PATH', PUBLIC_PATH.'/css' );
@@ -103,11 +84,7 @@ define( 'JS_PATH', PUBLIC_PATH.'/js' );
 define( 'IMAGES_PATH', PUBLIC_PATH.'/images' );
 
 //TMP FOLDER
-define( 'TMP_PATH', ROOT_DIR.'/tmp');
-
-//UPLOADS FOLDER
-define( 'UPLOADS_PATH',  '/uploads');
-define( 'UPLOADS_DIR',  ROOT_DIR.'/uploads');
+define( 'TMP_PATH', CMS_DIR.'/tmp');
 
 /**
  * File upload director structure will work off
@@ -178,10 +155,12 @@ define( 'AJAX_REACTIVATE', '/'.AJAX_CALL.'/reactivate' );
 /***
  * FIRST TIME LOGIN
  */	
-define('SETUP', ROOT_DIR.'/setup');
+define('SETUP', CMS_DIR.'/setup');
 define('FIRST_TIME_LOGIN', '/'.SETUP_CALL.'/firstTimeSignIn');
 define('FIRST_TIME_LOGIN_UP', 'koolah@cms.com:abc123');
 /***/
+
+define( 'FM_URL', 'http://files.koolah.local');
 
 /***
  * 
@@ -189,34 +168,6 @@ define('FIRST_TIME_LOGIN_UP', 'koolah@cms.com:abc123');
  
 define( 'FOLDER_COLLECTION_ROOT', MD5('rootFolder') );
  
-/***/
- 
- /****
-  * Valid File Types
-  */
-$VALID_IMAGES = array(
-    'jpg', 'jpeg',
-    'png',
-    'gif'
-);
-$VALID_DOCS = array(
-    'doc', 'docx',
-    'xls', 'xlsx',
-    'ppt', 'pptx',
-    'pdf', 
-);
-$VALID_VIDS = array(
-    'flv', 
-    'mp4',
-    'ogg',
-    'webm' 
-);
-$VALID_AUDIO = array(
-    'mp3', 
-    'wav'
-);  
-
-$VALID_FILES = array_merge($VALID_IMAGES, $VALID_DOCS, $VALID_VIDS, $VALID_AUDIO);  
 /***/
 
 /**
