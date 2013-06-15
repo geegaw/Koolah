@@ -13,4 +13,3 @@ Documentor
 
     pathto jsDoc\jsdoc-toolkit>java -jar jsrun.jar app/run.js -a -t=templa
     tes/jsdoc pathToKoolah\koolah_cms\public\js -r
-
