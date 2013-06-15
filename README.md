@@ -1,6 +1,12 @@
 Koolah
 ======
 
+Overview
+-------------
+
+Koolah is an open source CMS project. It uses primaril PHP, jQuery, and mongodb.
+
+
 Documentor
 -----------------
 
