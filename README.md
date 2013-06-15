@@ -4,7 +4,7 @@ Koolah
 Overview
 -------------
 
-Koolah is an open source CMS project. It uses primaril PHP, jQuery, and mongodb.
+Koolah is an open source CMS project. It uses primarily PHP, jQuery, and mongodb.
 
 
 Documentor
