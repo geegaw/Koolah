@@ -1,22 +1,116 @@
-function TemplateTYPE(){
-    this.parent = new Node( 'KoolahTemplate' );
-    this.label = new LabelTYPE();
-    this.sections = new TemplateSectionsTYPE();    
-    this.templateType = '';
-    var self = this;
+/**
+ * @fileOverview defines TemplateTYPE
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+/**
+ * TemplateTYPE
+ * 
+ * @author <a href="mailto:cvaugeois@koolah.org">Christophe Vaugeois</a> 
+ * @package koolah\cms\public\js\objects\types\templates
+ * @extends Node
+ * @class - handles data for a template
+ * @constructor
+ * @param jQuery dom object $msgBlock
+ */
+function TemplateTYPE($msgBlock){
     
     /**
-     * parent extensions
+     * parent - extend Node
+     *@type Node
+     */
+    this.parent = new Node( 'KoolahTemplate' );
+    
+    /**
+     * label - page label
+     * @type LabelTYPE
+     * @default 'New Page'
+     */
+    this.label = new LabelTYPE();
+    
+    /**
+     * sections - sections inside of template
+     * @type TemplateSectionsTYPE
+     */
+    this.sections = new TemplateSectionsTYPE();    
+    
+    /**
+     * templateType - type of template 
+     * @type string
+     * @default ''
+     */
+    this.templateType = '';
+    
+    /**
+     * jsID - unique id for dom 
+     * @type string
+     */
+    this.jsID = 'template'+UID(); 
+    
+    /**
+     * $msgBlock - dom reference to where to display messages
+     *  @type jQuery dom object
+     */
+    this.$msgBlock = $msgBlock;
+    var self = this;
+    
+    //*** parent extensions ***//
+    /**
+     * save
+     * - calls ajax to save and displays the status
+     * @param string callback - function name
+     * @param jQuery dom object $el - where the message will be displayed
      */
     this.save = function( callback, $el ){ self.parent.save( self.toAJAX(), null,  callback, $el );}
+    
+    /**
+     * get
+     * - gets a node by id and classname stored internally
+     * display status upon error
+     * @param string callback - function name
+     * @param jQuery dom object $el - where the message will be displayed
+     * @param bool async - determine whether to run asynchronously 
+     */
     this.get = function( callback, $el, async ){ self.parent.get( self.fromAJAX, callback, $el, async ); }    
-    this.del = function( callback, $el ){ self.parent.del(null, callback, $el ); }
+    
+    /**
+     * del
+     * - deletes a node by id and classname stored internally
+     * display status, remove self from dom
+     * @param string callback - function name
+     * @param jQuery dom object $el - optional - where the message will be displayed
+     * @param bool async - determine whether to run asynchronously
+     */
+    this.del = function( callback, $el, async ){ self.parent.del(null, callback, $el, async ); }
+    
+    /**
+     * getID:
+     * - return id
+     * @returns string id
+     */
     this.getID = function(){ return self.parent.getID(); }
+    
+    /**
+     * equals
+     * - compare two ids to determine
+     * if object is same
+     * @param string folder - suspect id
+     * @returns bool
+     */
     this.equals = function( template ){ return self.parent.equals( template ); }
-    /***/
+    
+    /**
+     * get_class
+     * - return class name
+     * @returns string
+     */
+    this.get_class = function(){ return 'TemplateTYPE'; }
+    //*** /parent extensions ***//
 
     /**
-     * methods
+     * fromAJAX
+     * - convert ajax json response into proper Node
+     * @param array data
      */
     this.fromAJAX = function( data ){
         self.label.fromAJAX( data );
@@ -24,6 +118,12 @@ function TemplateTYPE(){
         self.templateType = data.templateType;
     }
 
+    /**
+     * toAJAX
+     * - convert to assoc array object for 
+     * easy json encoding for ajax
+     * @returns object
+     */
     this.toAJAX = function(){
         var tmp = self.label.toAJAX();
             tmp.sections = self.sections.toAJAX();
@@ -31,11 +131,11 @@ function TemplateTYPE(){
         return tmp;
     }
     
-    this.mkInput = function(){
-        var html = '';
-        return html;
-    }
-    
+    /**
+     * mkList
+     * - make html list view of page
+     * @returns string
+     */
     this.mkList = function(){
         var html = '';
         html+= '<li id="'+self.parent.id+'" class="template fullWidth">';
@@ -48,6 +148,11 @@ function TemplateTYPE(){
         return html;
     }
     
+    /**
+     * readForm
+     * - read data from form and fill in data
+     * @param jQuery dom obj $form - form to read from 
+     */
     this.readForm = function( $form){
         self.parent.id = $('#templateID').val();
         self.templateType = $('#templateType').val();
@@ -65,11 +170,23 @@ function TemplateTYPE(){
         return self;
     }
     
+    /**
+     * fillForm
+     * - fill in a form 
+     */
     this.fillForm = function(){
         $('#templateName').val( self.label.label );    
         self.sections.fillForm();
     }
     
+    /**
+     * compare
+     * - compare two pages
+     * - can expand this function to accept more
+     * types, and/or return more then equals 
+     * @param mixed suspect
+     * @returns mixed|bool
+     */
     this.compare = function( suspect ){
         switch( typeof suspect ){
             case 'string':
@@ -81,6 +198,12 @@ function TemplateTYPE(){
         return false;
     }
     
+    /**
+     * regex
+     * - compare two ratio sizes with regex
+     * @param mixed suspect
+     * @returns mixed|bool
+     */
     this.regex = function( suspect ){
         switch( typeof suspect ){
             case 'string':
@@ -93,9 +216,10 @@ function TemplateTYPE(){
         return false;
     }
        
-    /***
-     *
-     *  
+    /**
+     * getTypes
+     * - get all template types
+     * @returns array
      * NOTE: if adding types also must add in TemplateTYPE.php 
      */
     this.getTypes = function(){
@@ -106,9 +230,12 @@ function TemplateTYPE(){
                 ];
         return types;
     }    
-    /***/
     
-    
+    /**
+     * getAllFields
+     * - get all fields in template
+     * @returns array
+     */
     this.getAllFields = function(){
         var fields = [];
         var sections = self.sections.sections();

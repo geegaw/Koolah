@@ -1,7 +1,35 @@
+/**
+ * @fileOverview defines Nav
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+/**
+ * Nav
+ * 
+ * @author <a href="mailto:cvaugeois@koolah.org">Christophe Vaugeois</a> 
+ * @package koolah\cms\public\js\objects\elements\nav
+ * @class - works with nav elemetns
+ * @constructor
+ * @param jQuery dom object $el
+ */
 function Nav( $el ){
+    
+    /**
+     * $el - dom reference to nav element
+     *  @type jQuery dom object
+     */
     this.$el = $el;
     
+    /**
+     * openFn - function to call upon open
+     * @type string
+     */
     this.openFn = null;
+    
+    /**
+     * closeFn - function to call upon close
+     * @type string
+     */
     this.closeFn = null;
     
     var self = this;

@@ -31,7 +31,7 @@ function FolderTYPE( parentID, $msgBlock ) {
     /**
      * label - folder label
      *@type LabelTYPE
-     * @default New Folder
+     * @default 'New Folder'
      */
     this.label = new LabelTYPE();
     this.label.label = 'New Folder';
@@ -119,6 +119,19 @@ function FolderTYPE( parentID, $msgBlock ) {
      * @returns string
      */
     this.get_class = function(){ return 'FolderTYPE'; }
+
+    /**
+     * clear
+     * - empties nodes
+     */
+    this.clear = function(){ self.children=[]; }
+    
+    /**
+     * append
+     * - appends a node
+     * @param mixed node - node to append
+     */
+    this.append = function( child ){ self.children[ self.children.length ] = child; }
     
     /**
      * getRoot
@@ -147,18 +160,6 @@ function FolderTYPE( parentID, $msgBlock ) {
         }        
     }
     
-    /**
-     * clear
-     * - empties nodes
-     */
-    this.clear = function(){ self.children=[]; }
-    
-    /**
-     * append
-     * - appends a node
-     * @param mixed node - node to append
-     */
-    this.append = function( child ){ self.children[ self.children.length ] = child; }
 
        
    /**
@@ -226,7 +227,8 @@ function FolderTYPE( parentID, $msgBlock ) {
     
     /**
      * mkFolder
-     * - make folder html 
+     * - make folder html
+     * @returns string 
      */
     this.mkFolder = function(){
         var label = self.label.label
@@ -247,7 +249,8 @@ function FolderTYPE( parentID, $msgBlock ) {
     
     /**
      * mkOptions
-     * - make folder options html 
+     * - make folder options html
+     * @returns string 
      */
     this.mkOptions = function(){
         var html = '';

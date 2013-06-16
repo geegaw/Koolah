@@ -1,5 +1,23 @@
-function QueryTYPE(  ){
+/**
+ * @fileOverview defines QueryTYPE
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+/**
+ * QueryTYPE
+ * 
+ * @author <a href="mailto:cvaugeois@koolah.org">Christophe Vaugeois</a> 
+ * @package koolah\cms\public\js\objects\types\query
+ * @class - a user built query
+ * @constructor
+ * @param jQuery dom object $msgBlock
+ */
+function QueryTYPE(){
     
+   /**
+     * $msgBlock - dom reference to where to display messages
+     *  @type jQuery dom object
+     */
     this.$msgBlock = $('#msgBlock');
     
     if ( typeof TemplatesTYPE === 'undefined' ){
@@ -7,25 +25,56 @@ function QueryTYPE(  ){
         return;
     }
     
-    if (typeof templates === 'undefined' ){
-        var templates = new TemplatesTYPE();
-         if ( templates.empty() ){
-            templates.get(null, null, this.$msgBlock, false);
+    if (typeof this.templates === 'undefined' ){
+        this.templates = new TemplatesTYPE();
+         if ( this.templates.isEmpty() ){
+            this.templates.get(null, null, this.$msgBlock, false);
         }
     }
-    templates.sort();
+    this.templates.sort();
         
+    /**
+     * query - fully built query string 
+     * @type string
+     * @default ''
+     */
     this.query = '';
     
+    /**
+     * type - template type (Page/Widget/Field)
+     * @type string
+     * @default ''
+     */
     this.type = '';
-    this.templateID = '';
-    this.conditions = new ConditionsTYPE();
     
+    /**
+     * templateID - templateID querying from 
+     * @type string
+     * @default ''
+     */
+    this.templateID = '';
+    
+    /**
+     * conditions - query conditions 
+     * @type ConditionsTYPE
+     * @default ''
+     */
+    this.conditions = new ConditionsTYPE();
         
     var self = this;
     
     /**
-     * methods
+     * get_class
+     * - return class name
+     * @returns string
+     */
+    this.get_class = function(){ return 'QueryTYPE'; }
+    
+    
+    /**
+     * fromAJAX
+     * - convert ajax json response into proper Node
+     * @param array response
      */
     this.fromAJAX = function( data ){
         self.type = data.type;
@@ -33,6 +82,12 @@ function QueryTYPE(  ){
         self.conditions.fromAJAX( data.conditions );
     }
 
+    /**
+     * toAJAX
+     * - convert to assoc array object for 
+     * easy json encoding for ajax
+     * @returns object
+     */
     this.toAJAX = function(){
         var tmp = {};
             tmp.type = self.type;
@@ -41,6 +96,11 @@ function QueryTYPE(  ){
         return tmp;
     }
     
+    /**
+     * readForm
+     * - read data from form and fill in data
+     * @param jQuery dom obj $el - element to read from 
+     */
     this.readForm = function(){
         self.type = $('#queryTemplateType').val();
         self.templateID = $('#queryTemplateId').val();  
@@ -49,10 +109,13 @@ function QueryTYPE(  ){
                 condition.readForm( $(this) );
                 self.conditions.append( condition );
         })
-        
-        console.log( self );                  
     }
     
+    /**
+     * fillForm
+     * - fill in a form 
+     * @param jQuery dom obj $el - element to fill
+     */
     this.fillForm = function(){
         $('#queryTemplateType').val( self.type );
         self.resetTemplatesDropdown();
@@ -75,14 +138,25 @@ function QueryTYPE(  ){
         }  
     }
     
+    /**
+     * resetTemplatesDropdown
+     * - reset dropdown to no value selected 
+     * @param jQuery dom obj $el - element to fill
+     */
     this.resetTemplatesDropdown = function(){
         var $noSelection = $('#queryTemplateId option:first');
         $('#queryTemplateId').html( $noSelection );
     }
     
+    /**
+     * fillTemplatesDropdown
+     * - fill template dropdown with all appropriate
+     * templates 
+     * @param jQuery dom obj $el - element to fill
+     */
     this.fillTemplatesDropdown = function(type){
-        var typeTemplates = templates[type];
-        if (templates){
+        var typeTemplates = self.templates[type];
+        if (self.templates){
             for( var i =0; i < typeTemplates.length; i++ ){
                 var template = typeTemplates[i];
                 $('#queryTemplateId').append( '<option value="'+template.parent.id+'">'+template.label.label+'</option>' );
@@ -90,6 +164,11 @@ function QueryTYPE(  ){
         }
     }
     
+    /**
+     * showConditionForm
+     * - show a query form 
+     * @param jQuery dom obj $el - element to fill
+     */
     this.showConditionForm = function(){
         $('#queryCondition').clone().appendTo( '#queryConditionals' );
         var $queryCondition = $('#queryConditionals .queryCondition:last');
@@ -99,6 +178,11 @@ function QueryTYPE(  ){
         $('#queryConditionals .queryCondition:last').removeAttr('id').show();
     }
     
+    /**
+     * resetFieldDropdown
+     * - reset query dropdown to no selection 
+     * @param jQuery dom obj $queryCondition - element to reset
+     */
     this.resetFieldDropdown = function($queryCondition){
         var $noSelection = $queryCondition.find('.queryTemplateFields option:first');
         $queryCondition.find('.queryTemplateFields').html( $noSelection );
@@ -106,7 +190,7 @@ function QueryTYPE(  ){
     
     this.fillFieldDropdown = function($queryCondition){
         var templateID = $('#queryTemplateId').val();
-        var template = templates.find( templateID );
+        var template = self.templates.find( templateID );
         var fields = template.getAllFields();
         
         var $selection = $queryCondition.find('.queryTemplateFields');
@@ -117,9 +201,7 @@ function QueryTYPE(  ){
             }
         }
     }
-    
-    
-    
+    /** dom actions **/
     $('#queryTemplateType').change(function(){
         var $this = $(this);
         if ( $this.val() != 'no_selection' ){

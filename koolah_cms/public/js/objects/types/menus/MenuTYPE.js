@@ -1,42 +1,150 @@
+/**
+ * @fileOverview defines MenuTYPE
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+/**
+ * MenuTYPE
+ * 
+ * @author <a href="mailto:cvaugeois@koolah.org">Christophe Vaugeois</a> 
+ * @package koolah\cms\public\js\objects\types\menus
+ * @extends Node
+ * @class - data for a menu item
+ * @constructor
+ * @param string parentID
+ * @param jQuery dom object $msgBlock
+ */
 function MenuTYPE(parentID, $msgBlock){
+    
+    /**
+     * parent - extend Node
+     * @type Node
+     */
     this.parent = new Node('KoolahMenu');
     
+    /**
+     * parentID - parent menu's id
+     * @type string
+     */
     this.parentID = parentID;
+    
+    /**
+     * label - folder label
+     * @type LabelTYPE
+     * @default 'New Menu'
+     */
     this.label = new LabelTYPE();
     this.label.label = 'New Menu'
     
+    /**
+     * url - url for menu item to go to
+     * @type string
+     * @default ''
+     */
     this.url = '';
+    
+    /**
+     * newTab - should menu open in new tab
+     * @type bool
+     * @default false
+     */
     this.newTab = false;
     
+    /**
+     * children - sub menu items
+     * @type array
+     */
     this.children = [];
     
+    /**
+     * jsID - unique id for dom 
+     *@type string
+     */
     this.jsID = 'menu'+UID(); 
     
+    /**
+     * $msgBlock - dom reference to where to display messages
+     *@type jQuery dom object
+     */
     this.$msgBlock = $msgBlock;
     
     var self = this;
     
+    //*** parent extensions ***//
     /**
-     * parent extensions
+     * save
+     * - calls ajax to save and displays the status
+     * @param string callback - function name
+     * @param jQuery dom object $el - where the message will be displayed
      */
-    //this.save = function(callback, $el) {}
     this.save = function(callback, $el) { self.parent.save(self.toAJAX(), null, callback, $el); }
+    
+    /**
+     * get
+     * - gets a node by id and classname stored internally
+     * display status upon error
+     * @param string callback - function name
+     * @param jQuery dom object $el - where the message will be displayed
+     * @param bool async - determine whether to run asynchronously 
+     */
     this.get = function(callback, $el, aysnc) { self.parent.get(self.fromAJAX, callback, $el, aysnc); }
-    this.getID = function() { return self.parent.getID(); }
-    this.equals = function(page) { return self.parent.equals(page); }
-    /***/
-    this.get_class = function(){ return 'MenuTYPE'; }
-    this.clear = function(){ self.children=[]; }
-    this.append = function( child ){ self.children[ self.children.length ] = child; }
-    this.del = function(callback, $el) {
+    
+    /**
+     * del
+     * - deletes a node by id and classname stored internally
+     * display status, remove self from dom
+     * @param string callback - function name
+     * @param jQuery dom object $el - optional - where the message will be displayed
+     * @param bool async - determine whether to run asynchronously
+     */
+    this.del = function(callback, $el, async) {
         self.delChildren($el); 
         self.removeFromParent($el);
-        self.parent.del(null,callback, $el); 
+        self.parent.del(null,callback, $el, async); 
     }
     
+    /**
+     * getID:
+     * - return id
+     * @returns string id
+     */
+    this.getID = function() { return self.parent.getID(); }
     
-     /**
-     * methods
+    /**
+     * equals
+     * - compare two ids to determine
+     * if object is same
+     * @param string folder - suspect id
+     * @returns bool
+     */
+    this.equals = function(page) { return self.parent.equals(page); }
+    
+    /**
+     * get_class
+     * - return class name
+     * @returns string
+     */
+    this.get_class = function(){ return 'MenuTYPE'; }
+    //*** /parent extensions ***//
+    
+    /**
+     * clear
+     * - empties nodes
+     */
+    this.clear = function(){ self.children=[]; }
+    
+    /**
+     * append
+     * - appends a node
+     * @param mixed node - node to append
+     */
+    this.append = function( child ){ self.children[ self.children.length ] = child; }
+    
+    
+    /**
+     * fromAJAX
+     * - convert ajax json response into proper Node
+     * @param array response
      */
     this.fromAJAX = function(data){
         self.parentID = data.parentID;
@@ -56,6 +164,12 @@ function MenuTYPE(parentID, $msgBlock){
         }
     }
 
+    /**
+     * toAJAX
+     * - convert to assoc array object for 
+     * easy json encoding for ajax
+     * @returns object
+     */
     this.toAJAX = function(){
         var tmp = self.label.toAJAX();
         tmp.url = self.url;
@@ -71,6 +185,14 @@ function MenuTYPE(parentID, $msgBlock){
         return tmp;
     }
     
+    /**
+     * compare
+     * - compare two folders
+     * - can expand this function to accept more
+     * types, and/or return more then equals 
+     * @param mixed suspect
+     * @returns mixed|bool
+     */
     this.compare = function( suspect ){
         switch( typeof suspect ){
             case 'string':
@@ -82,6 +204,11 @@ function MenuTYPE(parentID, $msgBlock){
         return false;
     }
     
+    /**
+     * mkInput
+     * - make html for menus 
+     * @returns string
+     */
     this.mkInput = function(){
         var html = '';
         html+='<li id="'+self.jsID+'" class="fullWidth menuItem">';
@@ -110,6 +237,11 @@ function MenuTYPE(parentID, $msgBlock){
         return html;
     }
     
+    /**
+     * mkChildren
+     * - make children menus html
+     * @returns string 
+     */
     this.mkChildren = function(){
         var html = '';
         if ( self.children ){
@@ -122,6 +254,11 @@ function MenuTYPE(parentID, $msgBlock){
         return html;
     }
     
+    /**
+     * delChildren
+     * - delete children and display message
+     * @param jQuery dom object $el
+     */
     this.delChildren = function( $el ){
         if ( self.chilren ){
             for( var i=0; i< self.children.length; i++ ){
@@ -131,6 +268,11 @@ function MenuTYPE(parentID, $msgBlock){
         }
     }
     
+    /**
+     * removeFromParent
+     * - remove deleted menu from its parent
+     * @param jQuery dom object $el
+     */
     this.removeFromParent = function($el){
         if ( self.parentID ){
             var parentMenu = new MenuTYPE( null, self.$msgBlock );
@@ -141,15 +283,38 @@ function MenuTYPE(parentID, $msgBlock){
         }
     }
     
-    this.removeChild = function( child ){
-        var pos = self.findPos( child );
+    /**
+     * removeChild
+     * - remove child from children
+     * @param string childID
+     */
+    this.removeChild = function( childID ){
+        var pos = self.findPos( childID );
         self.children.splice(pos, 1);
     }
 
+    /**
+     * find
+     * - finds suspect in the list
+     * @param mixed suspect - suspect to look for
+     * @returns mixed|null
+     */
     this.find = function( suspect ){ return findInList(self.children, suspect); }
+    
+    /**
+     * findPos
+     * - finds the position of suspect in the list
+     * \n- returns -1 if not found
+     * @param mixed suspect - suspect to look for
+     * @returns int
+     */
     this.findPos = function( suspect ){ return findPosInList(self.children, suspect); }
     
     
+    /**
+     * mkSortable
+     * - make children menu items sortable
+     */
     this.mkSortable = function(){
         $('.items').sortable({
             connectWith: '.items',
@@ -157,6 +322,15 @@ function MenuTYPE(parentID, $msgBlock){
         }).disableSelection();
     }
  
+    /**
+     * determineAction
+     * - determine whether menu,
+     * is being moved to its parent,
+     * is being moved to a child,
+     * is being moved to a new order
+     * @param obj e - jQuery event object
+     * @param obj ui - jQuery ui object
+     */
     this.determineAction = function(e, ui){
         var $item = ui.item;
         var movingID = $item.find('.menuID').val();
@@ -206,8 +380,13 @@ function MenuTYPE(parentID, $msgBlock){
         
     }
     
+    /**
+     * mv
+     * - move menu to new destination
+     * - display message
+     * @pararm string toID - id of new menu item where being moved
+     */
     this.mv = function( toID ){
-console.log('mv')        
         if (toID){
             var to = new MenuTYPE( null, self.$msgBlock )
             to.parent.id = toID;
@@ -227,21 +406,18 @@ console.log('mv')
         if (!toID)
             self.parentID = -1;
         
-        if (debug){
-            console.log( toID )
-            console.log(to.label.label)
-            console.log(self)
-            console.log(previousParent.label.label)
-            console.log(previousParent.children.length)
-        }
         self.save( null, self.$msgBlock );
         if (previousParent)
             previousParent.save( null, self.$msgBlock );
         if (toID)
             to.save( null, self.$msgBlock );
-                            
     }
     
+    /**
+     * updateChildrenOrder
+     * - move menu to new destination
+     * @pararm string toID - id of new menu item where being moved
+     */
     this.updateChildrenOrder = function(){
         console.log(self.label.label)
         
@@ -267,9 +443,7 @@ console.log('mv')
         }
     }
     
-    debug = false;
-    
-    
+    /* Actions */
     $('body').on('click', '#'+self.jsID+' a.aMenu', function(){    
         $('#menuID').val( self.parent.id );
          

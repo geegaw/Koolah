@@ -1,5 +1,9 @@
 /**
+ * @fileOverview UID creates a uniue id
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
  * @source: http://docs.cksource.com/CKEditor_3.x/Developers_Guide 
+ * @ignore
  */
 CKEDITOR.editorConfig = function( config ){
     

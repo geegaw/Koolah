@@ -1,3 +1,17 @@
+/**
+ * @fileOverview defines Tab
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+/**
+ * Tab
+ * 
+ * @author <a href="mailto:cvaugeois@koolah.org">Christophe Vaugeois</a> 
+ * @package koolah\cms\public\js\objects\elements\tabs
+ * @class - handles a tabs
+ * @constructor
+ * @param jQuery dom object $div
+ */
 function TabSection( $div ){
     this.id = 'tabSection_'+( new Date().getTime() );
     this.tabs = [];

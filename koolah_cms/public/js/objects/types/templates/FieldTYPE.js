@@ -1,22 +1,71 @@
+/**
+ * @fileOverview defines FieldTYPE
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+/**
+ * FieldTYPE
+ * 
+ * @author <a href="mailto:cvaugeois@koolah.org">Christophe Vaugeois</a> 
+ * @package koolah\cms\public\js\objects\types\templates
+ * @class - handles information about a field type 
+ * @constructor
+ */
 function FieldTYPE(){
+   
+    /**
+     * required - field is required
+     * @type bool
+     * @default false
+     */
     this.required = false;
+    
+    /**
+     * many - field can have multiple values
+     * @type bool
+     * @default false
+     */
     this.many = false;
+    
+    /**
+     * label - page label
+     * @type LabelTYPE
+     */
     this.label = new LabelTYPE();
     
-    //this.type = new FieldTypeTYPE();
+    /**
+     * options - field internal options 
+     * @type string
+     * @default ''
+     */
     this.options = '';
+    
+    /**
+     * type - field type 
+     * @type string
+     * @default ''
+     */
     this.type = '';
     
+    /**
+     * jsID - unique id for dom 
+     * @type string
+     */
     this.jsID = 'field'+UID(); 
+    
     var self = this;
 
     /**
-     * parent extensions
+     * get_class
+     * - return class name
+     * @returns string
      */
-    /***/
-
+    this.get_class = function(){ return 'FieldTYPE'; }
+    
     /**
-     * methods
+     * fromAJAX
+     * - convert ajax json response into proper Node
+     * @param array data
      */
     this.fromAJAX = function( data ){
         if (data){
@@ -29,6 +78,12 @@ function FieldTYPE(){
         }
     }
 
+    /**
+     * toAJAX
+     * - convert to assoc array object for 
+     * easy json encoding for ajax
+     * @returns object
+     */
     this.toAJAX = function(){
         var tmp = self.label.toAJAX();
             tmp.required = self.required;
@@ -39,6 +94,11 @@ function FieldTYPE(){
         return tmp;
     }
     
+    /**
+     * mkCapsule
+     * - make html capsule 
+     * @returns string
+     */
     this.mkCapsule = function(){
         var html = ''+ 
         '<div id="'+ self.jsID +'" class="field fullWidth">'+
@@ -64,14 +124,12 @@ function FieldTYPE(){
         return html;
     }
     
+    /**
+     * readForm
+     * - read data from form and fill in data
+     * @param jQuery dom obj $form - form to read from 
+     */
     this.readForm = function( $form ){
-        /*
-        self.name = $form.find('.fieldName').html();
-        self.type = $form.find('.fieldType').html();
-        self.required = $form.find('.isRequired').length;
-        self.many = $form.find('.many').length; 
-        self.options = $form.find('.fieldOptions').html();
-        */
         self.label.label = $.trim( $('#newFieldName').val() );
         self.label.ref = $.trim( $('#newFieldNameRef').val() );
         self.type = $('#fieldType').val();
@@ -99,6 +157,10 @@ function FieldTYPE(){
         return self;
     }
     
+    /**
+     * fillForm
+     * - fill in a form 
+     */
     this.fillForm = function(){
         $('#newFieldName').val( self.label.label );
         $('#newFieldNameRef').val( self.label.ref );
@@ -134,6 +196,14 @@ function FieldTYPE(){
             $('#many').attr('checked', 'checked');
     }
     
+    /**
+     * compare
+     * - compare two pages
+     * - can expand this function to accept more
+     * types, and/or return more then equals 
+     * @param mixed suspect
+     * @returns mixed|bool
+     */
     this.compare = function( suspect ){
         switch( typeof suspect ){
             case 'string':
@@ -143,6 +213,4 @@ function FieldTYPE(){
                 
         }
     }
-    /***/
-    
 }

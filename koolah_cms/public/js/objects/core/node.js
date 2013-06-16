@@ -151,7 +151,7 @@ function Node(childClass){
 	/**
      * fromAJAX
      * - convert ajax json response into proper Node
-     * @param json data
+     * @param array data
      */
     this.fromAJAX = function( data ){
 		self.id = self.getNodeID( data ); // get mongo id

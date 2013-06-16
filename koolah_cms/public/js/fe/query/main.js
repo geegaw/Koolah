@@ -10,7 +10,7 @@ $(document).ready(function(){
         var templates = new TemplatesTYPE();
     
     $('#queryTemplateType').change(function(){
-        if ( templates.empty() ){
+        if ( templates.isEmpty() ){
             templates.get(null, null, $msgBlock, false);
             templates.sort();
         }

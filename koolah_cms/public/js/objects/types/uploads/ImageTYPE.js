@@ -1,38 +1,127 @@
+/**
+ * @fileOverview defines ImageTYPE
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+/**
+ * ImageTYPE
+ * 
+ * @author <a href="mailto:cvaugeois@koolah.org">Christophe Vaugeois</a> 
+ * @package koolah\cms\public\js\objects\types\uploads
+ * @extends Node
+ * @class - handles data for an image
+ * @constructor
+ * @param jQuery dom object $msgBlock
+ */
 function ImageTYPE( $msgBlock ) {
-    this.parent = new Node( 'KoolahImage' );
-    this.file = new FileTYPE( $msgBlock );
-    this.ratio = new RatioTYPE( $msgBlock );
-    this.crop = new CropTYPE();
-    
-    this.$msgBlock = $msgBlock;
-    
-    this.jsID = 'file'+UID();    
-    var self = this;
     
     /**
-     * parent extensions
+     * parent - extend Node
+     *@type Node
+     */
+    this.parent = new Node( 'KoolahImage' );
+    
+    /**
+     * file - parent file
+     * @type FileTYPE
+     */
+    this.file = new FileTYPE( $msgBlock );
+    
+    /**
+     * ratio - ratio image has been cropped to
+     * @type RatioTYPE
+     */
+    this.ratio = new RatioTYPE( $msgBlock );
+    
+    /**
+     * crop - crop for image
+     * @type CropTYPE
+     */
+    this.crop = new CropTYPE();
+    
+    /**
+     * $msgBlock - dom reference to where to display messages
+     *  @type jQuery dom object
+     */
+    this.$msgBlock = $msgBlock;
+    
+    /**
+     * jsID - unique id for dom 
+     * @type string
+     */
+    this.jsID = 'file'+UID();    
+    
+    var self = this;
+    
+    //*** parent extensions ***//
+    /**
+     * save
+     * - calls ajax to save and displays the status
+     * @param string callback - function name
+     * @param jQuery dom object $el - where the message will be displayed
      */
     this.save = function( callback, $el ){ 
         if (!$el)
             $el = self.$msgBlock;
         self.parent.save( self.toAJAX(), null,  callback, $el );
     }
+    
+    /**
+     * get
+     * - gets a node by id and classname stored internally
+     * display status upon error
+     * @param string callback - function name
+     * @param jQuery dom object $el - where the message will be displayed
+     * @param bool async - determine whether to run asynchronously 
+     */
     this.get = function( callback, $el, async ){ 
         if (!$el)
             $el = self.$msgBlock; 
         self.parent.get( self.fromAJAX, callback, $el, async ); 
      }    
+    
+    /**
+     * del
+     * - deletes a node by id and classname stored internally
+     * display status, remove self from dom
+     * @param string callback - function name
+     * @param jQuery dom object $el - optional - where the message will be displayed
+     * @param bool async - determine whether to run asynchronously
+     */
     this.del = function( callback, $el, aysnc ){ 
         if (!$el)
             $el = self.$msgBlock; 
         self.parent.del(null, callback, $el, aysnc ); 
     }
+    
+    /**
+     * getID:
+     * - return id
+     * @returns string id
+     */
     this.getID = function(){ return self.parent.getID(); }
+    
+    /**
+     * equals
+     * - compare two ids to determine
+     * if object is same
+     * @param string folder - suspect id
+     * @returns bool
+     */
     this.equals = function( file ){ return self.parent.equals( file ); }
-    /***/
+    
+    /**
+     * get_class
+     * - return class name
+     * @returns string
+     */
+    this.get_class = function(){ return 'ImageTYPE'; }
+    //*** /parent extensions ***//
 
     /**
-     * methods
+     * fromAJAX
+     * - convert ajax json response into proper Node
+     * @param array data
      */
     this.fromAJAX = function( data ){
         self.parent.fromAJAX( data );        
@@ -41,6 +130,12 @@ function ImageTYPE( $msgBlock ) {
         self.crop.fromAJAX( data.crop )
     }
 
+    /**
+     * toAJAX
+     * - convert to assoc array object for 
+     * easy json encoding for ajax
+     * @returns object
+     */
     this.toAJAX = function(){
         var tmp = {};
         tmp.ratio = self.ratio.parent.id;
@@ -49,17 +144,11 @@ function ImageTYPE( $msgBlock ) {
         return tmp;
     }
     
-    this.mkInput = function(){
-        var html = '';
-        return html;
-    }
-    
-    this.mkList = function( ratios ){
-        var html = '';
-        return html;
-    }
-    
-    
+    /**
+     * readForm
+     * - read data from form and fill in data
+     * @param jQuery dom obj $form - form to read from 
+     */
     this.readForm = function(){
         self.crop.readForm(); 
         if ( $('#cropRatioID').val() ) 
@@ -67,7 +156,10 @@ function ImageTYPE( $msgBlock ) {
         return self;
     }
     
-
+    /**
+     * fillForm
+     * - fill in a form 
+     */
     this.fillForm = function(){
         var coords = [ 0, 0, 150, 150 ];
         if ( self.crop && self.crop.coords )
@@ -88,10 +180,17 @@ function ImageTYPE( $msgBlock ) {
                             $('#cropImgWidth span').html( $('#cropImg').width()+'px' )
                             koolahToolkit.center( $('#cropSection'), $(window), 'absolute' ); 
                         }
-                     );
-               
+            );
     }
     
+    /**
+     * compare
+     * - compare two pages
+     * - can expand this function to accept more
+     * types, and/or return more then equals 
+     * @param mixed suspect
+     * @returns mixed|bool
+     */
     this.compare = function( suspect ){
         switch( typeof suspect ){
             case 'string':
@@ -102,6 +201,12 @@ function ImageTYPE( $msgBlock ) {
         return false;
     }
     
+    /**
+     * regex
+     * - compare two ratio sizes with regex
+     * @param mixed suspect
+     * @returns mixed|bool
+     */
     this.regex = function( suspect ){
         switch( typeof suspect ){
             case 'string':

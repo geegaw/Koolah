@@ -1,28 +1,145 @@
-function UserTYPE(){
-	this.parent = new Node( 'KoolahUser' );
-	this.name = '';
-	this.username = '';
-	this.active = true;
-	this.roles = [];
-	this.permissions = [];
-	this.grantableRoles = [];
-	this.grantablePermissions = [];
-	var self = this;
+/**
+ * @fileOverview defines UserTYPE
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+/**
+ * UserTYPE
+ * 
+ * @author <a href="mailto:cvaugeois@koolah.org">Christophe Vaugeois</a> 
+ * @package koolah\cms\public\js\objects\types\users
+ * @extends Node
+ * @class - handles data for a user
+ * @constructor
+ * @param jQuery dom object $msgBlock
+ */
+function UserTYPE($msgBlock){
 	
 	/**
-	 * parent extensions
-	 */
-	this.save = function( callback, $el ){ self.parent.save( self.toAJAX(), null,  callback, $el );}
-	this.get = function( callback, $el ){ self.parent.get( self.fromAJAX, callback, $el ); }	
-	this.del = function( callback, $el ){ self.parent.del(null, callback, $el ); }
-	this.getID = function(){ return self.parent.getID(); }
-	this.equals = function( user ){ return self.parent.equals( user ); }
-	/***/
+     * parent - extend Node
+     *@type Node
+     */
+    this.parent = new Node( 'KoolahUser' );
+	
+	/**
+     * name - user's name -ex Firstname Lastname 
+     * @type string
+     */
+    this.name = '';
+	
+	/**
+     * username - username(email) 
+     * @type string
+     */
+    this.username = '';
+	
+	/**
+     * active - if user is still active
+     * - NOTE: only super users can perm delete a user 
+     * @type bool
+     * @default true
+     */
+    this.active = true;
+	
+	/**
+     * roles - user roles
+     * @type array
+     */
+    this.roles = [];
+	
+	/**
+     * roles - user permission in addition to their roles
+     * @type array
+     */
+    this.permissions = [];
+	
+	/**
+     * grantableRoles - roles user is allowed to grant
+     * TODO decide if wanted
+     * @type array
+     */
+    this.grantableRoles = [];
+	
+	/**
+     * grantablePermissions - permissions user is allowed to grant
+     * TODO decide if wanted
+     * @type array
+     */
+    this.grantablePermissions = [];
+	
+	/**
+     * jsID - unique id for dom 
+     * @type string
+     */
+    this.jsID = 'user'+UID(); 
+    
+    /**
+     * $msgBlock - dom reference to where to display messages
+     *  @type jQuery dom object
+     */
+    this.$msgBlock = $msgBlock;
+    
+	var self = this;
+	
+	//*** parent extensions ***//
+    /**
+     * save
+     * - calls ajax to save and displays the status
+     * @param string callback - function name
+     * @param jQuery dom object $el - where the message will be displayed
+     */
+    this.save = function( callback, $el ){ self.parent.save( self.toAJAX(), null,  callback, $el );}
+	
+	/**
+     * get
+     * - gets a node by id and classname stored internally
+     * display status upon error
+     * @param string callback - function name
+     * @param jQuery dom object $el - where the message will be displayed
+     * @param bool async - determine whether to run asynchronously 
+     */
+    this.get = function( callback, $el ){ self.parent.get( self.fromAJAX, callback, $el ); }	
+	
+	/**
+     * del
+     * - deletes a node by id and classname stored internally
+     * display status, remove self from dom
+     * @param string callback - function name
+     * @param jQuery dom object $el - optional - where the message will be displayed
+     * @param bool async - determine whether to run asynchronously
+     */
+    this.del = function( callback, $el ){ self.parent.del(null, callback, $el ); }
+	
+	/**
+     * getID:
+     * - return id
+     * @returns string id
+     */
+    this.getID = function(){ return self.parent.getID(); }
+	
+	/**
+     * equals
+     * - compare two ids to determine
+     * if object is same
+     * @param string folder - suspect id
+     * @returns bool
+     */
+    this.equals = function( user ){ return self.parent.equals( user ); }
+	
+	/**
+     * get_class
+     * - return class name
+     * @returns string
+     */
+    this.get_class = function(){ return 'UserTYPE'; }
+    //*** /parent extensions ***//
 
 	/**
-	 * methods
-	 */
-	this.fromAJAX = function( data ){
+     * fromAJAX
+     * - convert ajax json response into proper Node
+     * @param array data
+     */
+    this.fromAJAX = function( data ){
 		self.name = data.name;
 		self.username = data.username;
 		self.active = data.active;
@@ -32,7 +149,13 @@ function UserTYPE(){
 		self.grantablePermissions = data.grantablePermissions;
 	}
 
-	this.toAJAX = function(){
+	/**
+     * toAJAX
+     * - convert to assoc array object for 
+     * easy json encoding for ajax
+     * @returns object
+     */
+    this.toAJAX = function(){
 		var tmp = {}
 			tmp.name = self.name;
 			tmp.username = self.username;
@@ -46,7 +169,12 @@ function UserTYPE(){
 		return tmp;
 	}
 	
-	this.mkInput = function(){
+	/**
+     * mkInput
+     * - make html for page 
+     * @returns string
+     */
+    this.mkInput = function(){
 		var html = '';
 		html+= '<li class="user">';
 		html+=		'<span class="userName">'+self.name+'</span>';
@@ -61,7 +189,12 @@ function UserTYPE(){
 		return html;
 	}
 	
-	this.readForm = function( $form){
+	/**
+     * readForm
+     * - read data from form and fill in data
+     * @param jQuery dom obj $form - form to read from 
+     */
+    this.readForm = function( $form){
 		self.parent.id = $('#userID').val();
 		self.username = $('#userName').val();
 		self.name = $('#name').val();
@@ -95,7 +228,11 @@ function UserTYPE(){
 		}
 	}
 	
-	this.fillForm = function(){
+	/**
+     * fillForm
+     * - fill in a form 
+     */
+    this.fillForm = function(){
 		$('#userID').val( self.getID() );
 		$('#userName').val( self.username );
 		$('#name').val( self.name );
@@ -121,16 +258,44 @@ function UserTYPE(){
 		}
 	}
 	
-	
-	this.reactivate = function( callback, $el ){ 
+	/**
+     * reactivate
+     * - reactivate a user
+     * @param string callback - callback function  
+     * @param jQuery dom obj $el - elemnet where to show message
+     */
+    this.reactivate = function( callback, $el ){ 
 		self.active = true;
 		self.parent.save( self.toAJAX(), null,  callback, $el );
 	}
 	
-	this.hasRole = function( role ){ return listHas( self.roles, role ); }
-	this.hasPermission = function( permission ){ return listHas( self.permissions, permission ); }
-	this.isSuper = function(){ return self.hasRole( 'superuser' ); }
-	this.isAdmin = function(){ return (self.hasRole( 'superuser' ) || self.hasRole( 'admin' )); }
-	/***/
+	/**
+     * hasRole
+     * - check if user has a desired role
+     * @param string role   
+     * @return bolol
+     */
+    this.hasRole = function( role ){ return listHas( self.roles, role ); }
 	
+	/**
+     * hasPermission
+     * - check if user has a desired permission
+     * @param string permission   
+     * @return bolol
+     */
+    this.hasPermission = function( permission ){ return listHas( self.permissions, permission ); }
+	
+	/**
+     * isSuper
+     * - check if user super user
+     * @return bolol
+     */
+    this.isSuper = function(){ return self.hasRole( 'superuser' ); }
+	
+	/**
+     * isAdmin
+     * - check if user super admin
+     * @return bolol
+     */
+    this.isAdmin = function(){ return (self.hasRole( 'superuser' ) || self.hasRole( 'admin' )); }
 }

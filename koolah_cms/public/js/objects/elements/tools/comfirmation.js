@@ -1,3 +1,17 @@
+/**
+ * @fileOverview defines Comfirmation
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+/**
+ * Comfirmation
+ * 
+ * @author <a href="mailto:cvaugeois@koolah.org">Christophe Vaugeois</a> 
+ * @package koolah\cms\public\js\objects\elements\tools
+ * @class - handles a comfirmation message
+ * @constructor
+ * @param string type
+ */
 function Comfirmation(type){
     this.type = type;
     if (!this.type)

@@ -1,3 +1,17 @@
+/**
+ * @fileOverview defines Pod
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+/**
+ * Pod
+ * 
+ * @author <a href="mailto:cvaugeois@koolah.org">Christophe Vaugeois</a> 
+ * @package koolah\cms\public\js\objects\elements\tools
+ * @class - handles an html pod
+ * @constructor
+ * @param string jsID
+ */
 function Pod(jsID){
     this.label = '';
     this.id = '';

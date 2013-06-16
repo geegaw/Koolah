@@ -1,3 +1,17 @@
+/**
+ * @fileOverview defines Tab
+ * @license http://opensource.org/licenses/GPL-3.0
+ * @copyright Copyright (c) 2013 Christophe Vaugeois
+ */
+/**
+ * Tab
+ * 
+ * @author <a href="mailto:cvaugeois@koolah.org">Christophe Vaugeois</a> 
+ * @package koolah\cms\public\js\objects\elements\tabs
+ * @class - handles a tab
+ * @constructor
+ * @param jQuery dom object $div
+ */
 function Tab( $div ){
     this.id = 'tab_'+( new Date().getTime() );
     this.label = '';

@@ -107,7 +107,7 @@ console.log(page.toAJAX())
     
     $('.selectFile').click(function(){
         $fileSelector = $(this).parents('.fileField:first');
-        if ( files.empty() ){
+        if ( files.isEmpty() ){
             files.get(null, null, $msgBlock, false);
             tags.get(null, null, $msgBlock, false);
         }
