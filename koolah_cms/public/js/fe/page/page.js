@@ -116,6 +116,18 @@ console.log(page.toAJAX())
         return false;
     }) 
     
+    $('#preview button').click(function(){
+        if ( mainForm.validate() ){
+            page.readForm( mainForm.$el.find('.tabsBody') );
+            page.getTemplate();
+            var data = page.toAJAX();
+            var alias = page.seo.aliases.aliases()[0].alias;
+            var template = page.template.label.ref;    
+            var url = PREVIEW_URL+'?template='+template+'&data='+JSON.stringify(data)+'&alias='+alias;
+            window.open(url, '_blank');
+        }
+        return false;
+    })
     
     /***
      * Files 

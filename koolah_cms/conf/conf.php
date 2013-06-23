@@ -174,4 +174,11 @@ define( 'FOLDER_COLLECTION_ROOT', MD5('rootFolder') );
  * 
  */
  define( 'MAX_PAGE_HISTORY', '100' );
+ 
+ /**
+  * 
+  */
+define('INTERNAL_PREVIEW_URL', '/preview');
+define('PREVIEW_URL', 'preview.vaugeoisphotography.local');
+define('PREVIEW_SECRET_KEY', 'AJ8gy&$f45');
 ?>

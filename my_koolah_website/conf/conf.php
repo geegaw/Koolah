@@ -80,3 +80,8 @@ define( 'AJAX_CALL', 'ajax' );
  */
 define( 'STYLE_SHEET_TYPE',  'less' ); 
 /***/
+
+/**
+  * 
+  */
+ define('PREVIEW_SECRET_KEY', 'AJ8gy&$f45');

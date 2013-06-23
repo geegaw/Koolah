@@ -22,9 +22,8 @@
         $unpublished = 'inactive';
     }
     
-    
     if ( $page ){
-        $title = $page->label->label;
+        $title = "Edit ".$page->label->label;
         $meta = $page->getMeta();
     }
     elseif( $template ){
@@ -61,7 +60,6 @@
     <?php include( ELEMENTS_PATH.'/page/templateInfo.php' ); ?>
     <?php include( ELEMENTS_PATH.'/page/rightSection.php' ); ?>
     <?php $close = true; include( ELEMENTS_PATH.'/page/fileForm.php' ); ?>
-    <?php include( ELEMENTS_PATH."/common/recent.php" ); ?>
 </section>
 
 <div style="clear:both"><?php //debug::printr($page); ?></div>

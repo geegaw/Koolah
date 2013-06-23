@@ -224,7 +224,7 @@ class Node{
      * @param JSON string $json
      */
     public function readJSON( $json ){
-        $bson = json_decode($json);
+        $bson = json_decode($json, true);
         self::read( $bson );
     }
     

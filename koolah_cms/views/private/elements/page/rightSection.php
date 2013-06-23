@@ -10,6 +10,7 @@
                     <a href="#" id="publish" class="<?php echo $published ?>">PUBLISHED</a>
                     <a href="#"id="unpublish" class="<?php echo $unpublished?>">OFFLINE</a>
                 </div>
+                <div id="preview"><button type="button">Preview</button></div>
                 <div id="publicationStatus">Current Status: <span class="status"><?php if ($page) echo $page->getPublicationStatus(); else echo 'Draft' ?></span></div>
                 <div id="workflowCommands"><?php echo $template->mkWorkflow(); ?></div>
             </div>

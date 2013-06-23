@@ -38,6 +38,16 @@ class Router{
     }
     
     /**
+     * servePreview
+     * receives a request and loads the request
+     * @access  public
+     * @param assocArray $req
+     */    
+    static function servePreview($file, $data ){
+            Router::loadPreview( $file, $data );
+    }
+    
+    /**
      * loadReq
      * laod the requests corresponding file
      * @access  private
@@ -100,6 +110,30 @@ class Router{
         //$contents = ob_get_contents();
         //ob_end_clean();
         //echo $contents;
+        $contents = ob_get_flush(); 
+        
+        return true;       
+    } 
+    
+    /**
+     * loadAlias
+     * load the corresponding page for the alias
+     * 
+     * @access  private
+     * @param array $alias
+     * @return array
+     */    
+    private static function loadPreview( $file, $data ){
+        $page = new API_PageTYPE();
+        $data = json_decode($data, true);
+        $page->read($data);
+        $file = PAGES_PATH.'/'.$file .'.php';
+
+        if ( !file_exists( $file  ) )
+            return false;
+
+        ob_start();
+        require($file);
         $contents = ob_get_flush(); 
         
         return true;       

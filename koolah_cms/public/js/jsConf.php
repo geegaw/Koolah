@@ -40,5 +40,6 @@
 	
 	var TEMPLATE_FIELD_TYPES = ['<?php echo implode("', '", FieldTypeTYPE::getTypes()); ?>'];
 	
-	var FM_URL = "<?php echo FM_URL; ?>"; 
+	var FM_URL = "<?php echo FM_URL; ?>";
+	var PREVIEW_URL = "<?php echo INTERNAL_PREVIEW_URL; ?>"; 
 </script>

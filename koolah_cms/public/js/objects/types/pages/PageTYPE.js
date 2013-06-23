@@ -139,7 +139,11 @@ function PageTYPE($msgBlock) {
      * - fetch the parent template via ajax
      * @returns string
      */
-    this.getTemplate = function(){ self.template.get(null, $msgBlock, false);}
+    this.getTemplate = function(){
+        if (!self.template.getID())
+             self.template.parent.id = self.templateID;
+        self.template.get(null, $msgBlock, false);
+    }
     
     /**
      * fromAJAX

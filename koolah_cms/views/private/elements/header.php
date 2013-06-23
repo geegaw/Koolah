@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title><?php if ( isset($title) )echo $title.' | ' ?>koolah</title>
+	<title><?php if ( isset($title) ) echo $title.' | ' ?>koolah</title>
     
     <?php if (ENV == 'dev'): ?> <script type="text/javascript"> var less = { env: 'development'};</script> <?php endif; ?>
         

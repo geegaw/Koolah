@@ -2,9 +2,9 @@
     global $cmsMongo;
     
     if ( isset($title) ) 
-        $title =  '| '.$title;
+        $title = $title. ' | ';
     elseif (isset($page) && $page->seo && $page->seo->title)
-        $title =  '| '.$page->seo->title;
+        $title =  $page->seo->title.' | ';
     else
         $title = '';
     
@@ -21,7 +21,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Vaugeois Photography <?php echo $title; ?></title>
+    <title><?php echo $title; ?>Vaugeois Photography</title>
     <meta name="description" content="<?php echo $description; ?>"> 
     
     <?php if (ENV == 'dev'): ?> <script type="text/javascript"> var less = { env: 'development'};</script> <?php endif; ?>
