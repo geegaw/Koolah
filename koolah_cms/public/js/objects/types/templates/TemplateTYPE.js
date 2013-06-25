@@ -139,10 +139,11 @@ function TemplateTYPE($msgBlock){
     this.mkList = function(){
         var html = '';
         html+= '<li id="'+self.parent.id+'" class="template fullWidth">';
-        html+=      '<span class="templateName">'+self.label.label+'</span>';
+        html+=      '<span class="templateName name">'+self.label.label+'</span>';
         html+=      '<span class="commands">';
-        html+=          '<a class="edit" href="template/?templateType='+self.templateType+'&templateID='+self.parent.id+'" >edit</a>';
-        html+=          '<a class="del" href="'+self.parent.id+'" >X</a>';
+        html+=          '<a class="edit" href="template/?templateType='+self.templateType+'&templateID='+self.getID()+'" >edit</a>';
+        html+=          '<a class="download" href="download/?classname='+self.parent.childClass+'&id='+self.getID()+'" >&#8595;</a>';
+        html+=          '<a class="del" href="'+self.getID()+'" >X</a>';
         html+=      '</span>';
         html+= '</li>';
         return html;

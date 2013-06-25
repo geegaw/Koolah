@@ -60,6 +60,16 @@ class TemplateSectionTYPE extends Node{
 	}
 
     /**
+     * export
+     * prepares for sending to another user
+     * @access  public
+     * @return assocArray
+     */
+    public function export(){
+        return parent::export() + array('name'=>$this->name) + $this->fields->export(); 
+    }
+    
+    /**
      * read
      * reads from db - clears and handles children's reading
      * calls appropriate method based on $bson type

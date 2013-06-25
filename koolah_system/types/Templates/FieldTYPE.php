@@ -152,9 +152,32 @@
 	       'type'=>$this->type
          );
         return parent::prepare() + $this->label->prepare() + $bson;
-		//return parent::prepare() + $this->label->prepare() + $this->type->prepare() + array( 'required'=>$this->required, 'many'=>$this->many );		
 	}
-
+    
+    /**
+     * export
+     * prepares for sending to another user
+     * @access  public
+     * @return assocArray
+     */
+    public function export(){
+        $bson = array( 
+           'required'=>$this->required, 
+           'many'=>$this->many,
+           'options'=>$this->options,  
+           'type'=>$this->type
+         );
+         
+         if ($this->type == 'custom'){
+                $bson['options'] = '';
+                $requiredTemplate = new TemplateTYPE();
+                $requiredTemplate->getByID( $this->options );
+                $bson['requiredTemplate'] = $requiredTemplate->export();
+         }
+         
+        return parent::export() + $this->label->export() + $bson; 
+    }
+    
     /**
      * read
      * reads from db - clears and handles children's reading
@@ -163,7 +186,7 @@
      * @param assocArray|object|string $bson
      */
     public function read( $bson ){
-        if ( is_array($bson) )
+       if ( is_array($bson) )
             self::readAssoc($bson);
         elseif( is_object($bson) )
             self::readObj( $bson );
@@ -171,7 +194,7 @@
             $this->readJSON( $bson );
         else 
             // TODO return error
-            return;  
+            return;
     }
     
     /**
@@ -190,7 +213,16 @@
             $this->options = $bson['options'];
         if ( isset($bson['type']) )
             $this->type = $bson['type'];
-                        
+        
+        // special case
+        // coming from an import
+        if ($this->type == 'custom' && isset($bson['requiredTemplate'])){
+                $requiredTemplate = new TemplateTYPE();
+                $requiredTemplate->read( $bson['requiredTemplate'] );
+                $status = $requiredTemplate->save();
+                if ($status->success())
+                    $this->option = $requiredTemplate->getID();
+         }                        
     }
     
     /**

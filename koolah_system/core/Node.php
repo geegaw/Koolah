@@ -167,6 +167,16 @@ class Node{
     }
     
     /**
+     * export
+     * prepares for sending to another user
+     * @access  public
+     * @return array
+     */
+    public function export(){
+        return array();
+    }
+    
+    /**
      * read
      * reads from db
      * calls appropriate method based on $bson type
@@ -227,6 +237,23 @@ class Node{
         $bson = json_decode($json, true);
         self::read( $bson );
     }
+    
+    /**
+     * toJSON
+     * prepares for json
+     * @access  public
+     * @return string
+     */
+    public function toJSON(){
+        return json_encode(
+            array(
+                'classname'=> get_class($this), 
+                'data' => $this->export()
+            )
+        );
+    }
+    
+    
     
 }
 

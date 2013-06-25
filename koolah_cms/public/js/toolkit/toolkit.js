@@ -47,3 +47,14 @@ var koolahToolkit = {};
         } 
         
     }
+    
+    /**
+     * getExtFromFilename
+     * - get extention from a file name 
+     * @param string filename
+     * @returns string
+     */
+    koolahToolkit.getExtFromFilename = function (filename){
+        ext = filename.split('.');
+        return ext[ (ext.length -1) ].toLowerCase(); 
+    }

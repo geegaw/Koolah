@@ -58,7 +58,17 @@ class FieldsTYPE extends Nodes{
     public function prepare(){
 		return array( 'fields'=>parent::prepare() );
 	}
-
+    
+    /**
+     * export
+     * prepares for sending to another user
+     * @access  public
+     * @return assocArray
+     */
+    public function export(){
+        return array( 'fields'=>parent::export() ); 
+    }
+    
     /**
      * read
      * reads from db - clears object ahead of time

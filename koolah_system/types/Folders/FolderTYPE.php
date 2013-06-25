@@ -152,12 +152,12 @@ class FolderTYPE extends Node{
      * @access  public
      * @return assocArray
      */
-    public function prepare(){
+    public function prepare( $clean=false ){
 	    $bson = array( 
            'children'  => $this->prepareChildren(),
            'parentID'  => $this->parentID,
          );
-         return parent::prepare() + $this->label->prepare() + $bson;		
+         return parent::prepare( $clean ) + $this->label->prepare( $clean ) + $bson;		
     }
     
     /**

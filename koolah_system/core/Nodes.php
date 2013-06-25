@@ -245,6 +245,22 @@ class Nodes{
     }
     
     /**
+     * export
+     * prepares for sending to another user
+     * @access  public
+     * @return assocArray
+     */
+    public function export(){
+        $bson = null;
+        if ( $this->numNodes ){
+            foreach ( $this->nodes as $node )
+                if( @get_class( $node ) && method_exists($node, 'export') )
+                    $bson[] = $node->export();
+        }
+        return $bson; 
+    }
+    
+    /**
      * read
      * reads from db
      * clears self and then adds newly read items

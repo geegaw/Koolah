@@ -193,6 +193,16 @@ class LabelTYPE{
 	}	
 	
     /**
+     * export
+     * prepares for sending to another user
+     * @access  public
+     * @return assocArray
+     */
+    public function export(){
+        return array ( 'label'=>$this->label, 'ref'=>'' ); 
+    }
+    
+    /**
      * read
      * reads from db
      * calls appropriate method based on $bson type

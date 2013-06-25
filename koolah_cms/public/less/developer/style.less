@@ -4,73 +4,56 @@
 
 #filterArea{
     .left();
-    .border( @color1 );
-    padding: 5px;
-}
+    
+    .collapsibleBody{
+        .commonBox( 100% );
+        
+        #filterTypes{
+            fieldset{
+                .left();
+                clear: none;
+                margin-left: 15px;
+                
+                &:first-child{
+                    margin-left: 0;
+                }
+            }
+            label, input{
+                clear: none;
+            }
+            label{
+                margin-left: 5px;
+            }
+        }
+    }
+}    
 
-#filterArea fieldset{
-    .left();
-    border: none;
-}
+#templates{ 
+    .right(); 
 
-#filterArea fieldset label,
-#filterArea fieldset input{
-    .leftBoth;
-    width: @inputW;
-}
-#filterArea ul{ 
-  .left();
-  margin: 10px 0 0 15px; 
-}
-
-#filterArea ul label,
-#filterArea ul input{
-    .left();
-    clear: none;
-}
-#filterArea ul label{
-    margin-left: 5px;
-}
-
-#templates{ .right(); }
-
-.tabSection{
-  .left( @tabSectionW );
-  .border( @color5 );
-  padding: 5px;
-  margin-left: 15px;
-}
-.tabSection:first-child{ margin-left: 0; }
-.tabSection .heading{ .border-bottom( @color5 );}
-.tabSection .heading h2{ .left(); }
-.tabSection .heading a{
-  .right();
-  line-height: 29px;
-  font-size: @font5;
-  font-weight: bold;
-  margin-right: 15px;
-}
-
-.tabSection ul{
-  .leftBoth;
-  padding: 0;
-  margin: 5px 0;
-  width: 100%;
-  height: 250px;
-  overflow: auto;
-}
-
-.tabSection li{
-  padding: 2px 0 2px 5px;
-  line-height: 25px;
-  margin-top: 5px;
-}
-.tabSection li:nth(odd){ background: @color3; }
-.tabSection li button{ .right(); }
-.templateList .templateName{ .left() }
-.templateList .commands{ .right(); }
-.templateList .commands a{
-    .left( 25px );
-    text-align: center;
-    margin-left: 5px;
+    .tabSection{
+        .left( @tabSectionW );
+        margin-left: 15px;
+        &:first-child{ margin-left: 0; }
+      
+        .collapsibleBody{
+            .commonBox( 100% );
+            
+            .commands{
+                a{
+                    margin-left: 5px;
+                    &:first-child{
+                        margin-left: 0;
+                    }
+                }
+            }
+            
+            .import{
+                .fullWidth;
+                margin-top: 15px;
+                padding-top: 5px;
+                .border-top( @color1, 10px, 5px, solid, 7px  ); 
+            }
+        }
+    }
 }

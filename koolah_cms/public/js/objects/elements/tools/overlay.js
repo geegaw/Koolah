@@ -37,12 +37,16 @@ function Overlay( $el, type, fadeTime ){
         }
         if (!callback)
             callback = self.openFn;
-        self.$overlay.fadeIn( self.fadeTime, callback );
+        self.$overlay.fadeIn( self.fadeTime );
+        callback();
     }
     
     this.close = function( callback ){
+        if (!callback)
+            callback = self.closeFn;
         if (self.$overlay){
-            self.$overlay.fadeOut( self.fadeTime, callback );
+            self.$overlay.fadeOut( self.fadeTime);
+            callback();
         }
     }
     

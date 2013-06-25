@@ -146,6 +146,7 @@ define( 'AJAX_GET_URL', '/'.AJAX_CALL.'/get' );
 define( 'AJAX_GET_ONE_URL', '/'.AJAX_CALL.'/getOne' );
 define( 'AJAX_SAVE_URL', '/'.AJAX_CALL.'/save' );
 define( 'AJAX_UPLOAD_URL', '/'.AJAX_CALL.'/uploadFile' );
+define( 'AJAX_IMPORT_URL', '/'.AJAX_CALL.'/importFile' );
 define( 'AJAX_DEL_URL', '/'.AJAX_CALL.'/del' );
 define( 'AJAX_DEACTIVATE', '/'.AJAX_CALL.'/deactivate' );
 define( 'AJAX_REACTIVATE', '/'.AJAX_CALL.'/reactivate' );
@@ -174,6 +175,11 @@ define( 'FOLDER_COLLECTION_ROOT', MD5('rootFolder') );
  * 
  */
  define( 'MAX_PAGE_HISTORY', '100' );
+ 
+ /**
+  * 
+  */
+define('IMPORT_FILE_TYPES', 'kol,');
  
  /**
   * 

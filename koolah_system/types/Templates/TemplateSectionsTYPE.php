@@ -117,6 +117,17 @@ class TemplateSectionsTYPE extends Nodes{
 		return array( 'sections'=>parent::prepare() );
 	}
 	
+    /**
+     * export
+     * prepares for sending to another user
+     * @access  public
+     * @return assocArray
+     */
+    public function export(){
+        return array( 'sections'=>parent::export() ); 
+    }
+    
+    
 	/**
      * read
      * reads from db - clears object ahead of time

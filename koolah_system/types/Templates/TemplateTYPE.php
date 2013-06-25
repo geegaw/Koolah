@@ -140,7 +140,20 @@ class TemplateTYPE extends Node{
 		$bson = array('templateType'=>$this->templateType);
 		return parent::prepare() + $bson + $this->label->prepare() + $this->sections->prepare();		
 	}
-
+    
+    /**
+     * export
+     * prepares for sending to another user
+     * @access  public
+     * @return assocArray
+     */
+    public function export(){
+        $bson = array('templateType'=>$this->templateType);
+        return parent::export() + $bson + $this->label->export() + $this->sections->export();
+    }
+    
+    
+    
     /**
      * read
      * reads from db - clears and handles children's reading
