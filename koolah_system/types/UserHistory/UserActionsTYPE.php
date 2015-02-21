@@ -41,7 +41,7 @@ class UserActionsTYPE extends Nodes{
      * @param array $orderBy -- defaul by label asc
      * @param bool $distinct        
      */    
-    public function get( $q=null, $fields=null, $orderBy=null, $distinct=null  ){}
+    public function get( $q=null, $fields=null, $orderBy=null, $offset=0, $limit=null, $distinct=null  ){}
     
     /**
      * get

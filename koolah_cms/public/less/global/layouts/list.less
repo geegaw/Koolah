@@ -1,0 +1,46 @@
+.list{
+    @listMaxW: 350px; 
+    @nameW:50%;
+    @listCommandsW: 28%;
+     
+    .fullWidth;
+    .border-top( @color3, 7px  ); 
+    padding-top: 10px;
+    margin-top: 5px;
+    .relative;
+    height: @listMaxW;
+    .scrollAuto;    
+    
+    ul{
+        .fullWidth;
+        
+        li{
+            .fullWidth;
+            .border-top( @color3 );
+            padding: 5px 0 5px 2px;
+            
+            span{ .left(); }
+             
+            .name{
+                .left();
+                font-size: @font2;
+                max-width: @nameW;
+            }
+            
+            .commands{
+                .right();
+                max-width: @listCommandsW;
+                
+                button{ margin-left: 5px;}
+                button:first-child{ margin-left: 0; }
+            }
+        }
+        
+        li:first-child{ 
+            border-top: none;
+            padding-top: 0; 
+        }
+        
+        li:nth-child(even){ background: @color1; }
+    }
+}

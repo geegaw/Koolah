@@ -22,13 +22,13 @@
         
         <div id="topRight" class="command">
             <div class="main">
-                <a href="uploadCenter" id="uploads"><span class="center">upload center</span></a>
+                <a href="/uploadCenter" id="uploads"><span class="center">upload center</span></a>
             </div>
             <div class="second hide">
-                <a href="pages" id="pages"><span class="center">pages</span></a>
+                <a href="/pages" id="pages"><span class="center">pages</span></a>
             </div>
             <div class="third hide">
-                <a href="developer" id="developer"><span class="center">developer</span></a>
+                <a href="/developer" id="developer"><span class="center">developer</span></a>
             </div>
             <div class="fourth hide">
                 <a href="#" id="website"><span class="center">website</span></a>
@@ -40,7 +40,7 @@
                 <a href="#" class="third" id="admin"><span class="center">admin</span></a>
             </div>
             <div class="second hide">
-                <a href="menus" id="menus"><span class="center">menus</span></a>
+                <a href="/menus" id="menus"><span class="center">menus</span></a>
             </div>
             <div class="third hide">
                 <a href="#" class="main" id="admin"><span class="center">admin</span></a>
@@ -55,10 +55,10 @@
                 <a href="#" id="social"><span class="center">social</span></a>
             </div>
             <div class="second hide">
-                <a href="keyords" id="keywords"><span class="center">keywords</span></a>
+                <a href="/taxonomy" id="taxonomy"><span class="center">taxonomy</span></a>
             </div>
             <div class="third hide">
-                <a href="users" id="users"><span class="center">users</span></a>
+                <a href="/users" id="users"><span class="center">users</span></a>
             </div>
             <div class="fourth hide">
                 <a href="#" id="website"><span class="center">users</span></a>

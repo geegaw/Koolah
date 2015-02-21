@@ -68,7 +68,7 @@ class MenuItemsTYPE extends Nodes {
 			if ( !is_array( $active ) )	
 				$active = array( $active );
 			foreach ( $this->menuItems() as $menuItem ){
-				if ( !$menuItem->getPermission() || ( $this->sessionUser->can($menuItem->getPermission()) ))
+				if ( $menuItem->userHasPermission() )
 					$menuItem->display( $active, $wrapper, $rec, $class, $levels );
 			}
 		}			

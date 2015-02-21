@@ -77,6 +77,7 @@ class TemplateSectionTYPE extends Node{
      * @param assocArray|object|string $bson
      */
     public function read( $bson ){
+    	
         parent::read($bson);
         if ( is_array($bson) )
             self::readAssoc($bson);
@@ -87,7 +88,7 @@ class TemplateSectionTYPE extends Node{
         else 
             // TODO return error
             return;  
-    }
+	}
     
     /**
      * readAssoc

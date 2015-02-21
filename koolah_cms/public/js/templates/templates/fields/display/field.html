@@ -1,0 +1,14 @@
+<div data-id="<%= model.id %>" class="field">
+   <div class="fieldInfo">
+       <div class="fieldDetails">
+       		<div class="fieldType"><%= model.type %></div>
+       		<% if ( model.required ){ %><div class="isRequired">Required</div><% } %>
+			<% if ( model.many ){ %><div class="many">can be many</div><% } %>
+       </div>
+       <div class="fieldName"> <%= model.label %></div>
+   </div>
+   <div class="fieldInfoCommands">
+       <button class="edit">edit</button>
+       <button class="del">X</button>
+   </div>
+</div>

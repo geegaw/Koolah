@@ -5,11 +5,10 @@
 @closedBoxMargin: (@collapsibleH - @closedBox) / 2;
  
 .collapsible{
-  .left();  
   
   .commandBar{
       .fullWidth;
-      background: @color1;
+      background: @color3;
       padding: 3px 5px;
       height: @collapsibleH;
       
@@ -24,7 +23,7 @@
             .block;
             .right( @closedBox );
             text-align: center;
-            color: @color4;
+            color: @white;
             font-weight: bold;
             height: @collapsibleH;
             margin-right: 5px;
@@ -37,7 +36,7 @@
         
        .closed{
           .noText;
-          .border( @color3, 3px );
+          .border( @color1, 3px );
           height: @closedBox;      
           margin: @closedBoxMargin 0;
        }     

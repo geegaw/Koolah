@@ -1,5 +1,6 @@
 <?php
 ob_clean();
+
 if ( $download )
     header('Content-Disposition: attachment; filename="'.$fm->name.'.'.$fm->ext.'"');
 else

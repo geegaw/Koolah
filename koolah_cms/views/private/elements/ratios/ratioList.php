@@ -6,7 +6,7 @@
    <div id="ratioListBody" class="collapsibleBody">    
         <div class="heading">
             <h2>Ratios</h2>
-            <button id="addRatio">+</button>
+            <button id="addRatio" class="add">+</button>
         </div>
         <div class="filterArea"> 
                 <fieldset class="filterInput">
@@ -19,6 +19,6 @@
                  </fieldset>
             </div>     
         <div id="ratioList" class="list"><ul></ul></div>                
-        <div id="msgBlock"></div>
+        <div class="msgBlock"></div>
      </div>
 </section>                

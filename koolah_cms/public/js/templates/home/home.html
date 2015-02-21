@@ -1,0 +1,23 @@
+<section id="speedCommands" class="koolahBasicContainer collapsible">
+    <div class="commandBar">
+        <h3></h3>
+        <button type="button" class="toggle open">&#8211;</button>
+    </div>
+    <div id="speedCommandsBody" class="collapsibleBody">
+    	<legend>Home</legend>
+    	<% if (usercan('pages_m')){%><div class="speed"><a href="/pages">pages</a></div><%}%>
+        <% if (usercan('menus_m')){%><div class="speed"><a href="/menus">menus</a></div><%}%>
+        <% if (usercan('taxonomy_m')){%><div class="speed"><a href="/taxonomy">taxonomy</a></div><%}%>
+        <% if (usercan('files_m')){%><div class="speed"><a href="/uploadcenter">upload center</a></div><%}%>
+        <% if (usercan('stats_view')){%><div class="speed"><a href="stats" id="stats">stats</a></div><%}%>
+<!--        
+        <% if (usercan()){%><div class="speed"><a href="#" id="social">social</a></div><%}%>
+-->
+        <% if (usercan('ratios_m')){%><div class="speed"><a href="/ratios">ratios</a></div><%}%>
+        <% if (usercan('admin')){%><div class="speed"><a href="/users">users</a></div><%}%>
+        <% if (usercan('admin')){%><div class="speed"><a href="/roles">roles</a></div><%}%>
+        <% if (usercan('templates_pages_m')){%><div class="speed"><a href="/templates">page templates</a></div><%}%>
+        <% if (usercan('templates_widgets_m')){%><div class="speed"><a href="/widgets">widget templates</a></div><%}%>
+        <% if (usercan('templates_fields_m')){%><div class="speed"><a href="/fields">field templates</a></div><%}%>
+    </div>
+</section>

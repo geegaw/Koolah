@@ -1,0 +1,13 @@
+<ul>
+<% _.each(collection, function(model) { %>
+  	<li class="<%= classname %>" data-id="<%= model.id %>">
+  		<span class="type <%= model.type %>"><%if(model.type=='img'){%><img src="<%=model.url%>" /><%}%></span>
+		<span class="name"><%= model.label %></span>
+		<span class="commands">
+			<%if(model.type == 'img' && usercan(classname+"_crop")){%><button class="crop">crop</button><%}%>
+			<%if(usercan(classname+"_m")){%><button class="edit">edit</button><%}%>
+			<%if(usercan(classname+"_d")){%><button class="del">X</button><%}%>
+		</span>
+	</li>
+<% }); %>
+</ul>

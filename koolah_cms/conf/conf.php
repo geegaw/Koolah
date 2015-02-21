@@ -142,6 +142,7 @@ define('TIMESTAMP_FORMAT', DATE_FORMAT.'-'.TIME_FORMAT);
  */	
 
 //
+define( 'AJAX_CONTROLLER', '/'.AJAX_CALL.'/koolahRESTController' );
 define( 'AJAX_GET_URL', '/'.AJAX_CALL.'/get' );
 define( 'AJAX_GET_ONE_URL', '/'.AJAX_CALL.'/getOne' );
 define( 'AJAX_SAVE_URL', '/'.AJAX_CALL.'/save' );
@@ -152,6 +153,8 @@ define( 'AJAX_DEACTIVATE', '/'.AJAX_CALL.'/deactivate' );
 define( 'AJAX_REACTIVATE', '/'.AJAX_CALL.'/reactivate' );
 /***/
 
+//Max elements to return in page
+define( 'MAX_PER_PAGE', 25);
 
 /***
  * FIRST TIME LOGIN

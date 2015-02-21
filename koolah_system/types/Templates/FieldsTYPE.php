@@ -82,8 +82,11 @@ class FieldsTYPE extends Nodes{
                 $bson = json_decode($bson);
                 return self::read($bson);
             }
-            elseif ( is_array($bson) && isset($bson['fields']) )
-                $fields = $bson['fields'];
+            elseif ( is_array($bson) && array_key_exists('fields', $bson) ){
+            	$fields = $bson['fields'];
+				if (!$fields)
+					$fields = array();
+			}
             elseif( is_object($bson) )
                 $fields = $bson->fields;    
             else 
@@ -96,6 +99,7 @@ class FieldsTYPE extends Nodes{
             }                 
         }
     }	   
+	
 }
 
  

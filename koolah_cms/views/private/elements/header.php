@@ -6,34 +6,15 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title><?php if ( isset($title) ) echo $title.' | ' ?>koolah</title>
     
-    <?php if (ENV == 'dev'): ?> <script type="text/javascript"> var less = { env: 'development'};</script> <?php endif; ?>
-        
-    <?php koolahToolKit::includeCSS($css ); ?>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/public/js/lib/select2/select2.css"/>
+    <?php koolahToolKit::includeCSS( 'koolah', true ); ?>    
+    <?php if (isset($css))koolahToolKit::includeCSS($css ); ?>
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     
-    <?php	
-    	koolahToolKit::includeJS( "lib/jquery.1.7.1.min" );
-		koolahToolKit::includeJS( "lib/jquery-ui-1.8.17.custom.min" );
-        if ( ENV=='dev' )
-            koolahToolKit::includeJS( "lib/less.min" );
-		if ( DEBUG )
-			koolahToolKit::includeJS( "debug" );
-		koolahToolKit::includeJS( "plugins" );
-		
-		include(PUBLIC_PATH.'/js/jsConf.php');
-		koolahToolKit::includeJS( "global" );
-        koolahToolKit::includeJS( "toolkit" );
-		koolahToolKit::includeJS( "objects/core" );
-        koolahToolKit::includeJS( "objects/elements/tools" );
-        koolahToolKit::includeJS( "objects/elements/tabs" );
-        koolahToolKit::includeJS( "objects/elements/actions" );
-        if ( isset($js) )
-        	koolahToolKit::includeJS( $js );
-	?>
-	
+    <?php include(PUBLIC_PATH.'/js/jsConf.php');; ?>
+    <script data-main="/public/js/main" src="/public/js/lib/require/require.min.js"></script>
     
 </head>
 <body>
@@ -47,7 +28,7 @@
             </button>
         </div>
     </header>
-    <nav id="mainNav" class="hide">
+    <nav id="mainNav" class="menuItem hide">
         <?php
             if (!isset($active))
                 $active = '';
@@ -59,13 +40,15 @@
         <div class="menuItem">
             <a href="#"  class="subMenuTrigger">recent</a>
             <div class="subMenu hide">
-                <?php foreach( $user->history->pageVisits(10, 0, true) as $pageVisit ): ?>
-                    <div class="menuItem"><a href="<?php echo $pageVisit->url; ?>"><?php echo $pageVisit->title; ?></a></div>
-                <?php endforeach; ?>
+            	<?php if ($user->history->length()): ?>
+	                <?php foreach( $user->history->pageVisits(10, 0, true) as $pageVisit ): ?>
+	                    <div class="menuItem"><a href="<?php echo $pageVisit->url; ?>"><?php echo $pageVisit->title; ?></a></div>
+	                <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>  
         <div  id="accountOptions">        
-            <div class="menuItem"><a href="editInfo.php">my account</a></div>
+            <div class="menuItem"><a href="/account">my account</a></div>
             <div class="menuItem"><a href="<?php echo SIGNOUT ?>">sign out</a></div>
         </div>
     </nav>

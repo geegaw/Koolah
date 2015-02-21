@@ -53,9 +53,9 @@ class KoolahUsers extends UsersTYPE{
      * @param bool $distinct
      * @return UsersTYPE
      */    
-    public function get( $q=null, $fields=null, $orderBy=null, $distinct=null  ){
+    public function get( $q=null, $fields=null, $orderBy=null, $offset=0, $limit=null, $distinct=null  ){
 		if ( $this->sessionUser->isSuper() )
-			return parent::get($q, $fields, $orderBy);
+			return parent::get($q, $fields, $orderBy, $offset, $limit, $distinct);
 		$params = array( 'active'=>1 );
 		if ( $q )
 			$q = array_merge( $q, $params );

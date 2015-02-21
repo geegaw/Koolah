@@ -27,11 +27,11 @@ class Router{
         }
         else{
             list( $action, $req_uri, $params ) = Router::parseReq( $req['f'] );
-            if ( $action === 400 )
+			
+			if ( $action === 400 )
                 Loader::loadFile( HTTP_ERRORS_PATH."/400.php" );
-            //TODO 
             elseif( $action==AJAX_CALL )
-                Router::loadReq( AJAX_PATH."/$req_uri" );
+                Loader::loadFile( AJAX_PATH."/$req_uri.php" );
             else
                 Router::loadReq( $req_uri );
         }
@@ -73,11 +73,13 @@ class Router{
         $parts = explode( '/', $req );
         if ( in_array(AJAX_CALL, $parts )){
             $action = AJAX_CALL;
-            $parts = explode( AJAX_CALL, $req );
             unset( $parts[0] );     
             $parts = array_merge( $parts );
         }
-            
+        
+		$req = $parts[0];
+		unset( $parts[0] );
+		$params = $parts;    
         return array($action, $req, $params);       
     }
     

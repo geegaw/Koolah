@@ -22,7 +22,7 @@ class FileTYPE extends Node{
     public $label;
     
     /**
-     * alt tag for an image
+     * alt term for an image
      * @var string
      * @access public
      */
@@ -33,21 +33,21 @@ class FileTYPE extends Node{
      * @var string
      * @access public
      */
-    public $description = '';  
-    
-    /**
-     * tags associated with file
-     * @var TagsTYPE
+    public $description = '';
+	
+	/**
+     * credits
+     * @var string
      * @access public
      */
-    public $tags;
+    public $credits = '';  
     
     /**
-     * template type
-     * @var string
-     * @access private
+     * taxonomy associated with file
+     * @var TaxonomyTYPE
+     * @access public
      */
-    private $templateType;
+    public $taxonomy;
     
     /**
      * filename of orig file
@@ -55,6 +55,27 @@ class FileTYPE extends Node{
      * @access private
      */
     private $filename = '';
+	
+	/**
+     * file in base64
+     * @var string
+     * @access private
+     */
+    private $file = null;
+	
+	/**
+     * size of file
+     * @var int
+     * @access public
+     */
+    public $size = 0;
+	
+	/**
+     * ext
+     * @var string
+     * @access public
+     */
+    public $ext = '';
     
     /**
      * list of crops
@@ -72,7 +93,8 @@ class FileTYPE extends Node{
         parent::__construct( $db, UPLOADS_COLLECTION );
         $this->label = new LabelTYPE( $db, UPLOADS_COLLECTION );
         $this->label->label = 'New File';
-        $this->tags = new TagsTYPE($db);
+        $this->taxonomy = new TaxonomyTYPE($db);
+		$this->crops = new CropsTYPE();
     }
     
     /**
@@ -82,8 +104,7 @@ class FileTYPE extends Node{
      * @return string     
      */    
     public function getCrops(){
-        $this->crops = new ImagesTYPE( $this->db );
-        $this->crops->get( array('file'=>$this->getID() ));        
+        return $this->crops->crops();   
     }
     
     /**
@@ -95,7 +116,18 @@ class FileTYPE extends Node{
      */    
     public function save($bson=null){
         $bson = $this->prepare(true);
-        return parent::save($bson);
+        $status = parent::save($bson);
+		if ($status->success() && $this->file){
+			if (!$this->getFull_Filename()){	
+				$this->setFull_Filename();
+				$status = $this->save();
+			}
+			if ($status->success())
+				$status = $this->upload();
+		}
+		if ($status->success() && $this->crops->length())
+			$status = $this->crops->save($this->id, $this->getFull_Filename(), $this->ext);
+		return $status;
     }
     
     /**
@@ -108,7 +140,7 @@ class FileTYPE extends Node{
     public function isImage($ext=null){
         global $VALID_IMAGES;
         if (!$ext)
-            $ext = $this->getExtFromFileName();  
+            $ext = $this->ext;  
         return (in_Array( $ext, $VALID_IMAGES )); 
     }
    
@@ -122,7 +154,7 @@ class FileTYPE extends Node{
      public function isDoc($ext=null){
         global $VALID_DOCS;
         if (!$ext)
-            $ext = $this->getExtFromFileName();  
+            $ext = $this->ext;  
         return (in_array( $ext, $VALID_DOCS )); 
     }
     
@@ -136,7 +168,7 @@ class FileTYPE extends Node{
      public function isVid($ext=null){
         global $VALID_VIDS;
         if (!$ext)
-            $ext = $this->getExtFromFileName();  
+            $ext = $this->ext;  
         return (in_array( $ext, $VALID_VIDS )); 
     }
     
@@ -150,7 +182,7 @@ class FileTYPE extends Node{
      public function isAudio($ext=null){
         global $VALID_AUDIO;
         if (!$ext)
-            $ext = $this->getExtFromFileName();  
+            $ext = $this->ext;  
         return (in_array( $ext, $VALID_AUDIO )); 
     }
     
@@ -164,7 +196,7 @@ class FileTYPE extends Node{
      public function isValidType( $ext=null ){
         global $VALID_FILES;
         if (!$ext)
-            $ext = $this->getExtFromFileName();  
+            $ext = $this->ext;  
         return (in_array( $ext, $VALID_FILES )); 
     }
     
@@ -206,7 +238,19 @@ class FileTYPE extends Node{
      * @access public   
      * @return string     
      */    
-    public function getFull_Filename(){ return $this->filename; }
+    public function getFull_Filename(){
+    	 return $this->filename; 
+	}
+	
+	/**
+     * setFull_Filename
+     * get the full filename with path
+     * @access public   
+     * @return string     
+     */    
+    public function setFull_Filename(){
+    	 $this->filename =  $this->setDestination().'/'.$this->id.'.'.$this->ext;; 
+	}
     
     /**
      * getPath
@@ -232,56 +276,39 @@ class FileTYPE extends Node{
         $bson = array( 
            'alt'=>$this->alt,
            'description'=>$this->description,
-           'tags'=>$this->prepareTags(),
+           'credits'=>$this->credits,
+           'taxonomy'=>$this->prepareTaxonomy(),
+           'crops'=>$this->crops->prepare(),
+           'ext' => $this->ext,
+           'size' => $this->size,
          );
-         if ( $forSave )
-            $bson['filename'] = $this->filename;
-         else{ 
-             $bson['filename'] = $this->getPublic_Filename();
-             if ( $this->isImage() ){
-                 $this->getCrops();
-                 $bson['crops'] = $this->prepareCrops();
-             }
+         if ( $forSave ){
+            if ($this->getFull_Filename())
+				$bson['filename'] = $this->getFull_Filename();
          }
+		 elseif ($this->isImage()){
+         	$bson['crops'] = $this->crops->prepare();
+		 }
          return parent::prepare() + $bson + $this->label->prepare();
     }
     
     /**
-     * prepareTags
-     * prepage the tags
+     * prepareTaxonomy
+     * prepage the taxonomy
      * @access  private
      * @return assocArray
      */
-    private function prepareTags(){
-        $tags = null;
-        if ( $this->tags->tags() ){
-            foreach($this->tags->tags() as $tag){
-                $tags[] = array( 'id'=>$tag->getID(), 'label'=>$tag->label->label );
+    private function prepareTaxonomy(){
+        $taxonomy = null;
+        if ( $this->taxonomy->terms() ){
+            foreach($this->taxonomy->terms() as $term){
+                $taxonomy[] = array( 
+                	'id'=>$term->getID(), 
+                	'label'=>$term->label->label 
+				);
             }
         }
-        return $tags;
-    }
-    
-    /**
-     * prepareCrops
-     * prepage the crops
-     * @access  private
-     * @return assocArray
-     */
-    private function prepareCrops(){
-        $crops = null;
-        if ( $this->crops->images() ){
-            foreach($this->crops->images() as $crop){
-                if ( $crop->ratio->getID() )
-                    $label = $crop->ratio->label->label;
-                else
-                    $label = $crop->crop->w.' x '.$crop->crop->h;
-                $bson = $crop->prepare();
-                $bson['label'] = $label;
-                $crops[] = $bson;
-            }
-        }
-        return $crops;
+        return $taxonomy;
     }
     
     /**
@@ -313,13 +340,27 @@ class FileTYPE extends Node{
      */
     public function readAssoc( $bson ){
         $this->label->read($bson);
-        if (isset($bson['alt']))
+        if (array_key_exists('alt', $bson))
             $this->alt = $bson['alt'];
-        if (isset($bson['description']))
+		if (array_key_exists('description', $bson))
             $this->description = $bson['description'];
-        if (isset($bson['filename']))
+		if (array_key_exists('credits', $bson))
+            $this->credits = $bson['credits'];
+		if (array_key_exists('file', $bson))
+            $this->file = $bson['file'];
+		if (array_key_exists('filename', $bson))
             $this->filename = $bson['filename'];
-        $this->readTags($bson['tags']);
+		if (array_key_exists('size', $bson))
+            $this->size = $bson['size'];
+		if (array_key_exists('ext', $bson))
+            $this->ext = $bson['ext'];
+		if (array_key_exists('taxonomy', $bson))
+        	$this->readTaxonomy($bson['taxonomy']);
+		if (array_key_exists('crops', $bson))
+        	$this->crops->read($bson);
+		if (array_key_exists('file', $bson))
+            $this->file = $bson['file'];
+		
     }
     
     /**
@@ -333,67 +374,70 @@ class FileTYPE extends Node{
             $this->label->read($obj->label);    
             $this->alt = $bson->alt;
             $this->description = $bson->description;
+			$this->credits = $bson->credits;
+			$this->file = $bson->file;
             $this->filename = $bson->filename;
-            $this->readTags($bson->tags);
+            $this->readTaxonomy($bson->taxonomy);
         }    
     }
     
     /**
-     * readTags
-     * reads array of tag ids and converts to tag
+     * readTaxonomy
+     * reads array of term ids and converts to term
      * @access  private
-     * @param array $tags
+     * @param array $taxonomy
      */
-    private function readTags( $tags ){
-        $this->tags->clear();
-        if ($tags){
-            foreach( $tags as $tag ){
-                if (is_object($tag))
-                    $id = $tag->id;
-                elseif(is_array($tag))
-                    $id = $tag['id'];
+    private function readTaxonomy( $taxonomy ){
+        $this->taxonomy->clear();
+        if ($taxonomy){
+            foreach( $taxonomy as $term ){
+                if (is_object($term))
+                    $id = $term->id;
+                elseif(is_array($term))
+                    $id = $term['id'];
                 else 
-                    $id = $tag;
+                    $id = $term;
                 if ( $id ){
-                    $tag = new TagTYPE();
-                    $tag->getByID($id);
-                    $this->tags->append( $tag );
+                    $term = new TermTYPE();
+                    $term->getByID($id);
+                    $this->taxonomy->append( $term );
                 }
             }
         }
     }
+	
     
     /**
      * upload
      * uploads the actual file, and stores and renames the file
-     * @access  public
+     * @access  private
      * @param file $file
      * @return StatusTYPE
      */
-    public function upload( $file ){
+    private function upload(){
         global $VALID_FILES;
         $status = new StatusTYPE();
-        if ( $this->getID()  && $file ){
-            if ( $ext = $this->getExtFromFileName($file['name']) ){
-                if ( in_array( $ext, $VALID_FILES ) ){
-                    if ( $file["name"] <= MAX_FILE_SIZE ){
-                        $this->filename = $this->setDestination().'/'.$this->id.'.'.$ext;
-                        if ( @move_uploaded_file($file['tmp_name'], $this->filename) )
-                            $status = $this->save();
-                        else
-                            $status->setFalse('could not  move file');
-                    }
-                    else
-                        $status->setFalse = 'file is too large';
-                }
-                else
-                    $status->setFalse = 'not a valid file extension';
-            }
-            else
-                $status->setFalse = 'could not get extension';
+		try{
+			if ( !$this->getID() || !$this->file || !$this->ext || !$this->size)
+				throw new Exception('Missing Param(s)');
+            if ( !in_array( $this->ext, $VALID_FILES ) )
+				throw new Exception($this->ext.' is not a valid file extension');
+			if ( $this->size > MAX_FILE_SIZE )
+				throw new Exception('file is too large');
+			
+			if (!$this->getFull_Filename())
+				$this->setFull_Filename();
+            $filename = $this->getFull_Filename();
+			
+			$data = explode('base64', $this->file);
+			$data = $data[1];
+			$success = file_put_contents($filename, base64_decode($data));
+            if ( !$success )
+				throw new Exception('could not upload file');
         }
-        else
-            $status->setFalse('Missing File or  ID');            
+		catch (Exception $e){
+			$status->setFalse($e->getMessage());
+		}            
         return $status;        
     }
     
@@ -421,7 +465,7 @@ class FileTYPE extends Node{
      * @access public   
      * @return string     
      */    
-    public function getExt(){ return $this->getExtFromFileName(); }
+    public function getExt(){ return $this->ext; }
     
     /**
      * getExtFromFileName
@@ -448,23 +492,37 @@ class FileTYPE extends Node{
      * @return string     
      */    
     private function setDestination( $force=false ){
-        if ( (!$this->filename || !$force) && $this->id  ){
-                $path = UPLOADS_DIR;
-                
-                $structure = str_split(UPLOAD_FOLDER_STRUCTURE);
-                foreach( $structure as $unit ){
-                    $path.= '/'.date($unit);
-                    if (!cmsToolKit::checkDir( $path )) 
-                        return null;
-                }
-                
-                $path.= '/'.$this->id;
-                if (cmsToolKit::checkDir( $path ))
-                    return $path;
-        }                              
-        return null; 
+        if ( !$this->id  )
+        	throw new Exception('file does not exist');
+		
+        $path = UPLOADS_DIR;
+        
+        $structure = str_split(UPLOAD_FOLDER_STRUCTURE);
+        foreach( $structure as $unit ){
+            $path.= '/'.date($unit);
+            if (!cmsToolKit::checkDir( $path )) 
+                return null;
+        }
+        
+        $path.= '/'.$this->id;
+        if (cmsToolKit::checkDir( $path ))
+            return $path;
     }
-    
+	
+	/**
+     * setCrops
+     * create destination folders and name structure based
+     * on date created
+     * @access public   
+     * @param multi CropsTYPE, null
+     */    
+    public function setCrops( $crops ){
+        if ($crops instanceof CropsTYPE)
+			$this->crops = $crops;
+		else 
+			$this->crops->clear();
+    }
+	    
     /**
      * del
      * delete file from db, remove all files from file system
@@ -473,23 +531,11 @@ class FileTYPE extends Node{
      */    
     public function del(){
         $status = new StatusTYPE();
-        if ( $this->isImage() ){
-            $this->getCrops();
-            foreach( $this->crops->images() as $crop ){
-                $status = $crop->del();
-                if ( !$status->success() )
-                    return $status;
-            }
-        }
-
-        if ( unlink( $this->filename ) ){
-            if ( rmdir( $this->getPath() ) )
-                $status =  parent::del();
-            else
-                $status->setFalse('could not delete folder');    
-        }
+		$path = str_replace($this->id.'.'.$this->ext, '', $this->getFull_Filename());
+      	if ( cmsToolKit::rmDirDashR( $path ) )
+            $status =  parent::del();
         else
-            $status->setFalse('could not delete file');
+            $status->setFalse('could not delete folder');    
         
         return $status;
     }

@@ -34,12 +34,19 @@ define( 'ENV', 'dev' );
 //CONF
 define( 'CONF', FILE_MANAGER_DIR.'/conf');
 
+/**
+ * File upload director structure will work off
+ * of the time the file is uploaded using this order
+ * of paramaters
+ */
+define( 'UPLOAD_FOLDER_STRUCTURE', 'YmdH' );
+
 
 //SYSTEM FOLDER
 define('OBJECTS_PATH', FILE_MANAGER_DIR.'/objects');
 
 //TOOLS FOLDER
-define('LOCAL_TOOLS_PATH', OBJECTS_PATH.'/tools');
+define('LOCAL_TOOLS_PATH', FILE_MANAGER_DIR.'/tools');
 
 //VIEWS FOLDER
 define('VIEWS_PATH', FILE_MANAGER_DIR.'/views');

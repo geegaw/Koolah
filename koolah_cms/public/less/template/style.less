@@ -1,16 +1,119 @@
+#template{ 
+    section{
+        margin: 1% 3%;
+    }  
+
+    .koolahBasicContainer{
+      .left(50%);  
+      
+      #templateInfo{
+        .fullWidth;
+      }//templateInfo
+      
+      #sections{
+        .fullWidth;
+      }//sections
+      
+      #nameField{
+        .fullWidth;
+        margin: 5px 0;
+      }//nameField
+      
+      .fields{
+        .fullWidth;
+        min-height: 200px;
+        max-height: 500px;
+        overflow-y: auto;
+        
+        .field{ 
+          .fullWidth;
+          margin: 10px 0;
+          .border( @color2 );
+          padding: 4px;
+          
+          @fieldInfoW: 75%;
+          .fieldInfo{
+            .left( @fieldInfoW );
+            //.border-right( @color2 );
+            
+            @fieldNameW: 75%;
+            .fieldName{
+              .left(@fieldNameW);
+              padding: 4px 6px;
+            }
+            
+            .fieldDetails{
+              .left(100% - @fieldNameW);
+              background: @color2;
+              padding: 4px 6px;
+              
+              .extra{
+                margin-top: 4px;
+                color: @color5;
+                font-size: @subfont2;
+                .italic;
+              }//extra;
+              
+              .isRequired{
+                .extra;
+              }//isRequired
+              
+              .many{
+                .extra;
+              }//isRequired
+            }//fieldDetails
+          }//fieldInfo
+        
+          .fieldInfoCommands{
+            .right( 100% - fieldInfoW );
+          }//fieldInfoCommands
+        }//field
+      }//fields
+      
+      .sectionCommands{
+        .fullWidth;
+        .border-top(@color2, 2px);
+        padding-top: 5px;
+      }//sectionCommands
+      
+      
+      #templateCommands{
+        .clear;
+        .right();
+        margin-top: 20px;
+      }//templateCommands
+    
+      .help{
+        .clear;
+        .right();
+        font-size: @subfont4;
+        color: @color4;
+        .italic;
+      }//help      
+    }//koolahBasicContainer  
+    
+    .koolahForm{
+      .right(38%);
+    }//koolahForm  
+}
+
+
+
+/*
+
 #templatesSection{
     width: @templateSectionW;
     margin: 10px auto;
 
     #templateInfo{
         .left(@templateSectionLeftW);
-        .border( @color1 );
+        .border( @color3 );
         padding: 10px;     
     }
     
     #commands{
         .right( @templateSectionRightW );
-        .border( @color1 );
+        .border( @color3 );
         padding: 10px;
         margin-left: 5px;
     }
@@ -18,7 +121,7 @@
     input[type=text]{ @templatesSectionInputW; }
 
     #templateForm{
-        .border( @color1 );
+        .border( @color3 );
         padding: 5px;    
         
         fieldset{
@@ -46,9 +149,9 @@
 #newFieldForm{
   .positionLeftTop( fixed, 50%, 10% );
   .center( @newFieldW );
-  .border( @color1, 2px );   
+  .border( @color3, 2px );   
   .zLevel5;
-  background: @color4;
+  background: @white;
   padding: 15px; 
   max-height: 500px;
     overflow-y: auto;
@@ -62,7 +165,7 @@
 
 #newFieldCommands #newFieldCommandsMainCommands{
     .left( @mainCommandsW );
-    .border( @color5 );
+    .border( @black );
     padding: 10px;   
 }
 
@@ -94,55 +197,22 @@
 
 #newFieldCommands #requiredMany{
     .right( @requiredManyW );
-    .border( @color5 );
+    .border( @black );
     padding: 10px;
 }
 
 #newFieldCommands #newFieldSaveCancel{
-    .border( @color5 );
+    .border( @black );
     .rightBoth;
     width: @newFieldSaveCancelW;
     padding: 10px;    
 }
 
 
-.field{ margin: 10px 0;}
 
-.field .fieldInfo{
-    .left( @fieldInfoW );
-    .border( @color5 ); 
-    background: @color4;
-}
-
-.field .fieldNameInfo{
-    .left( @fieldNameInfoW );
-    padding: 5px; 
-}
-
-.field .fieldNameInfo .fieldSub *{
-    .left();
-    margin-left: 5px; 
-}
-.field .fieldNameInfo .fieldSub *:last{
-    margin-left: 0;
-}
-
-.field .fieldType{
-    .right( @fieldTypeW );
-    background: @color1;
-    color: @color5;
-    height: 50px;
-    padding: 5px;
-}
-
-
-.field .fieldInfoCommands{
-    .right( @fieldInfoCommandsW );
-    padding-top: 10px;
-}
 
 #expandCollapseAll{
-    .border( @color5 );
+    .border( @black );
     .rightBoth;
     margin: 10px 0;
     padding: 2px 5px;
@@ -153,30 +223,30 @@
     .zLevel2;
 }
 
-#addSection a{ color: @color8; }
+#addSection a{ color: @color5; }
 
 #sections{
     .relative;
     margin-top: 15px;
 
     .section{
-      .border( @color1 );
+      .border( @color3 );
       .relative;
       padding: 5px;
-      background: darken( @color4, 1% );  
+      background: darken( @white, 1% );  
       
       .fields{
-        .border( @color1 );
+        .border( @color3 );
         min-height: 50px;
-        background: darken( @color4, 2% );
+        background: darken( @white, 2% );
       } 
       .addField{ .leftBoth; }
       
       .newField{
           //.positionLeftTop( absolute, 0, -100px );
-          .border( @color1, 2px );   
+          .border( @color3, 2px );   
           .zLevel5;
-          background: @color4;
+          background: @white;
           width: @newFieldW;
           padding: 15px; 
       }
@@ -184,7 +254,7 @@
     
     
     .expandCollapse a{
-        .border( @color1 );
+        .border( @color3 );
         .right( 10px );
         .block;    
         font-size: @font4;
@@ -205,10 +275,10 @@
 #newSectionNameHolder{
     .positionLeftTop( absolute, 50%, 15px );
     .center( @newSectionNameHolderW );
-    .border( @color1 );
-    .shadow( @color1, 0, 8px, 6px, -6px );
+    .border( @color3 );
+    .shadow( @color3, 0, 8px, 6px, -6px );
     .zLevel2;
-    background: @color4;
+    background: @white;
     padding: 15px;
 }
 
@@ -225,7 +295,7 @@
 #queryConditionals{
   
     .queryCondition{
-        .border( @color1 );
+        .border( @color3 );
         padding: 5px;
         
         .notFieldset{
@@ -254,3 +324,4 @@
         }
     }
 }
+*/

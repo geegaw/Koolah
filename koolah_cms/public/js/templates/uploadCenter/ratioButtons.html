@@ -1,0 +1,5 @@
+<% _.each(ratios, function(ratio){%>
+    <button type="button" data-id="<%=ratio.id%>" data-w="<%=ratio.w%>" data-h="<%=ratio.h%>" >
+        <%=ratio.label%> (<%=ratio.w%>:<%=ratio.h%>)
+    </button>
+<%})%>

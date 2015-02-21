@@ -37,4 +37,16 @@ class API_PagesTYPE extends PagesTYPE{
         }
     }
     
+	/**
+     * prepare
+     * prepares for sending to db
+     * @access  public
+     * @return assocArray
+     */
+    final public function prepare(){
+    	$pages = array();
+        foreach ($this->pages() as $page)
+			$pages[] = $page->prepare();
+		return $pages;
+    }
 } 

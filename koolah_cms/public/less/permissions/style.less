@@ -1,0 +1,68 @@
+.permissionsForm{
+  .labelSameLine{
+    > label{
+      .left();
+      width: auto;
+      clear: none;
+      margin-left: 5px;
+    }
+    
+    > input{
+      .left();
+      width: auto;
+      clear: none;
+      margin-top: 4px;
+    }
+  }//labelSameLine
+  
+  > fieldset{
+    .labelSameLine;
+  }//fieldset
+  
+  .groups{
+    .fullWidth;
+  }//groups
+  
+  .group{
+    .quarterWidth;
+    margin-bottom: 10px;
+    .border-left(@color1);
+    .border-top(@color1);
+    padding: 5px 0 0 5px;
+    
+    .group{
+      .fullWidth;
+      margin-top: 10px;
+      padding-left: 10px;
+    }//.group
+    
+    &.templates{
+      .fullWidth;
+      
+      .group{
+        .thirdWidth;
+        clear: none !important;
+      }//.group
+    }//templates
+    
+    > label{
+      .fullWidth;
+      text-transform: uppercase;
+    } //label
+    
+    fieldset{
+      .fullWidth;
+      margin-top: 5px;
+      padding-left: 10px;
+      .labelSameLine;
+      
+      &:first-child{
+        margin-top: 0;
+      }
+      
+      &.allnone{
+        margin-bottom: 10px;
+      }//allnone
+    }//fieldset
+  }//group
+}//permissionsForm

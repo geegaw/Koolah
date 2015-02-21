@@ -41,7 +41,6 @@ class KoolahRoles extends RolesTYPE{
 		if ( $this->status->success() )
 			parent::__construct( $db );
 	}
-	
 }
 
 ?>

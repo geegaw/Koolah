@@ -53,7 +53,8 @@ class apiToolKit{
                 $query = array_merge($query, apiToolKit::formatDataQuery($q));
             
             $pages->get( $query, $offline );
-            return  $pages->pages();
+			
+			return  $pages;
         }
         return null;
     }

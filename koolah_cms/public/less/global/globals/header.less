@@ -7,11 +7,11 @@
 header{
     .fullWidth;
     .background1;
-    .border-bottom(@color5, 5px);
     padding: 5px 0;
+    margin-bottom: 5px;
     height: @headerH;
     
-    a{ color: @color4; }
+    a{ color: @white; }
 }
 
 #logo{ 
@@ -42,7 +42,7 @@ header{
             .roundCorner( @barR );
             .block;
             .noText;
-            background: @color4;
+            background: @white;
             width: @barW;
             height: @barH;
             margin-top: @barMargin;
@@ -59,13 +59,13 @@ header{
     width: @navW;
     height: 100%;
     padding: 15px;
-    background: @color7;
+    background: @color5;
     opacity: .85;
     
     .menuItem{
         .fullWidth;
-        .border-top( @color4, 5px, 5px );
-        background: @color7;
+        .border-top( @white, 5px, 5px );
+        background: @color5;
         
         &:first-child{
             border-top: 0; 
@@ -75,11 +75,11 @@ header{
         a {
             .bold;
             .block;
-            color: @color4;
+            color: @white;
             font: @font2;
             &active{
-              background: @color4;
-              color: @color7;
+              background: @white;
+              color: @color5;
             }
         }
 
@@ -87,10 +87,11 @@ header{
             .left();
             .zLevelN1;
             .positionLeftTop( absolute, 0, 0 );
+            .border-left(@white);
             width: @navW;
             height: 100%;
             padding: 15px;
-            background: @color7;
+            background: @color5;
         }
     }
     
@@ -104,7 +105,7 @@ header{
             width: @navW;
             height: 100%;
             padding: 15px;
-            background: @color7;
+            background: @color5;
         }
     }
 }

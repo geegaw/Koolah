@@ -1,0 +1,67 @@
+.commonForm( @formW: 40% ){
+    .commonBox(100%);
+      
+    form{
+        @formPadding: 5px;
+        .fullWidth;
+        .relative;
+        
+        .inputs{
+          .fullWidth;
+          margin: @formPadding 0; 
+          
+          div{
+            .fullWidth;
+          }
+          
+          fieldset{
+            .fullWidth;
+            margin-top: @formPadding;
+            
+            &:first-child{
+              margin-top: 0;
+            }
+            
+            input, textarea, select{
+              .fullWidth;
+            }//input
+          }//fieldset
+            
+        }//inputs
+        
+        .extrainputs{
+          .fullWidth;
+        }//extrainputs
+        
+        .commands{
+           .right();
+        }//commands
+    }//form    
+
+    .labelSameLine{
+      label{
+        .left();
+        width: auto;
+        clear: none;
+        margin-left: 5px;
+      }//label
+      
+      input{
+        .left();
+        width: auto;
+        clear: none;
+        margin-top: 4px;
+      }//input
+    }//labelSameLine
+
+    
+    .description{
+      color: @color4;
+      font-size: @subfont1;
+    }//description
+    
+    .extra{
+      .fullWidth;
+      margin: 10px 0;
+    }//extra
+}//commonForm

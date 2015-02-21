@@ -1,0 +1,47 @@
+<section id="TemplateContainer" class="koolahBasicContainer collapsible">
+   <div class="commandBar">
+        <h3><% if (model.id){ %>Modify<%} else {%>Create<%}%> <%= model.templateDisplay %> Template</h3>
+        <button type="button" class="toggle open">&#8211;</button>
+   </div>
+   <div class="collapsibleBody">    
+        <div class="heading">
+            <h2><% if (model.id){ %>Modify<%} else {%>Create<%}%> <%= model.templateDisplay %> Template</h2>
+        </div>
+
+		<div id="templateInfo">
+			
+			<!-- newTemplateName -->
+	        <fieldset id="nameField" >
+	            <input type="text" name="label" class="required" placeholder="<%= model.templateDisplay %> Name" value="<%= model.label %>"/>
+	        </fieldset>                
+		    <!-- /newTemplateName -->
+		    
+		    <div id="sections" class="tabSection">
+		    	<% if (model.templateTYpe != 'field'){ %>
+			    	<div class="tabLabels">
+			    	    <div id="addSection" class="tab"><a href="#">New Tab</a></div>
+			    	</div>
+		    	<%}%>
+		    	
+		    	<div class="tabsBody">
+	    	    	<div class="fields"></div>
+	        		<div class="sectionCommands">
+		        		<button type="button" class="add">+</button>
+		        		<% if (model.templateTYpe != 'field'){ %><button type="button" class="del">X</button><%}%>
+	        		</div>
+		    	</div>    
+		    	        	
+		    </div>
+		        
+		</div>
+		
+		<fieldset id="templateCommands">                
+	        <input type="submit" class="reset noreset" value="Reset" />
+	        <input type="submit" class="save noreset" value="Save" />
+	        
+		</fieldset>
+		<div class="help">*changes are only final upon clicking this save, <br />you can undo changes by hitting reset</div>
+		<div class="msgBlock"></div>
+		
+	</div>
+</section>

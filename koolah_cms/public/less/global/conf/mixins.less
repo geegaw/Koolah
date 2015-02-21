@@ -1,28 +1,20 @@
 .border( @color, @w:1px, @type:solid ){
   border: @w @type @color;
 }
-.border-top( @color, @padding:inherit, @margin:inherit, @type:solid, @border-width:1px ){
+.border-top( @color, @border-width:1px, @type:solid ){
     border-top: @border-width @type @color;
-    padding-top: @padding;
-    margin-top: @margin;  
 }
 
-.border-left( @color,  @padding:inherit, @margin:inherit, @type:solid, @border-width:1px ){
+.border-left( @color,  @border-width:1px, @type:solid ){
     border-left: @border-width @type @color;
-    padding-left: @padding;
-    margin-left: @margin;      
 }
 
-.border-right( @color, @padding:inherit, @margin:inherit, @type:solid, @border-width:1px ){
+.border-right( @color, @border-width:1px, @type:solid ){
     border-right: @border-width @type @color;
-    padding-right: @padding;
-    margin-right: @margin;      
 }
 
-.border-bottom( @color, @padding:inherit, @margin:inherit, @type:solid, @border-width:1px ){
+.border-bottom( @color, @border-width:1px, @type:solid ){
     border-bottom: @border-width @type @color;
-    padding-bottom: @padding;
-    margin-bottom: @margin;  
 }
 
 .positionRightBottom( @type:absolute, @right:0, @bottom:0 ){
@@ -76,12 +68,17 @@
     opacity: @opacity;
 }
 
-.shadow( @color:@color1,  @x:0, @y:0, @blur:8px, @spread:5px){
+.shadow( @color:@color3,  @x:0, @y:0, @blur:8px, @spread:5px){
      -webkit-box-shadow: @x @y @blur @spread @color;
          -moz-box-shadow: @x @y @blur @spread @color;
                   box-shadow: @x @y @blur @spread @color;
 }                 
 
+.round(@r){
+  -webkit-border-radius: @r;
+        -moz-border-radius: @r;
+                  border-radius: @r;
+}
 .roundCorner( @r ){
     -webkit-border-radius: @r;
         -moz-border-radius: @r;
@@ -109,4 +106,41 @@
 
 .background( @src, @x:center, @y:center, @color:transparent, @repeat:no-repeat ){
   background: @color url("@{src}") @x @y @repeat;
+}
+
+.arrow-left( @color, @w:5px ){
+  width: 0; 
+  height: 0; 
+  border-top: @w solid transparent;
+  border-bottom: @w solid transparent;
+  
+  border-right:@w solid @color; 
+}
+
+.arrow-right( @color, @w:5px ){
+  width: 0; 
+  height: 0; 
+  border-top: @w solid transparent;
+  border-bottom: @w solid transparent;
+  
+  border-left:@w solid @color; 
+}
+
+.arrow-up( @color, @w:5px ){
+  width: 0; 
+  height: 0; 
+  border-left: @w solid transparent;
+  border-right: @w solid transparent;
+  
+  border-bottom:@w solid @color; 
+}
+
+.arrow-down( @color, @w:5px ){
+  width: 0; 
+  height: 0; 
+  border-left: @w solid transparent;
+  border-right: @w solid transparent;
+  
+  border-top:@w solid @color;
+  .block; 
 }

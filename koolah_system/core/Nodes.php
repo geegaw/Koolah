@@ -42,7 +42,14 @@ class Nodes{
      * @access  protected
      */
     protected $collection;
-    
+	
+	/**
+     * collection total
+     * @var int
+     * @access public
+     */
+    public $total = 0;
+	
     /**
      * constructor
      * can customize db but defaults to the config
@@ -147,7 +154,7 @@ class Nodes{
                     $objs[] = $node;
                 }                    
             }
-        }   
+        }
         return $objs;   
     }
     
@@ -163,8 +170,20 @@ class Nodes{
      * @param array|string $orderBy
      * @param bool $distinct
      */
-    public function get( $q=null, $fields=null, $orderBy=null, $distinct=null ){
-        return $this->db->get( $this->collection, $q, $fields, $orderBy, $distinct );       
+    public function get( $q=null, $fields=null, $orderBy=null, $offset=0, $limit=null, $distinct=null ){
+    	$result = $this->db->get( $this->collection, $q, $fields, $orderBy, $offset, $limit, $distinct );
+		$this->total = $result['total'];
+		return $result['nodes'];
+    }
+	
+	/**
+     * total
+     * returns the total number of elements in collection
+     * @access  public
+	 * @return int
+     */
+    public function total(){
+    	return $this->collection->count();
     }
     
     /**
@@ -189,7 +208,7 @@ class Nodes{
      * saves objects to db
      * @access  public
      * @return StatusTYPE
-     */
+     *
     public function save(){
         if ( $this->numNodes){
             foreach ( $this->nodes as $node )
@@ -198,6 +217,7 @@ class Nodes{
         list( $status, $id ) = $this->db->save( $this->collection, $bson );
         return $status; 
     }   
+    */
     
     /**
      * del

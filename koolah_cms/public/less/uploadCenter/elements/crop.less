@@ -1,95 +1,117 @@
-#cropSection{
+.cropForm{
+  .left(80%);
+  
+  .collapsibleBody form .inputs{
+    margin-bottom: 20px;
+  }
+
+  #cropSection{
     .zLevel6;
     .overlayBox;
     .positionLeftTop( fixed, 50%, 1%);
-    .border( @color6 );    padding: 20px;
-    background: @color4;
+    .border( @color4 );    padding: 20px;
+    background: @white;
+  }    
+  
+  #cropMsgBlock{ 
+    .fullWidth;
+    margin: 10px 0;
+  }    
+  
+  #cropImgArea{
+    .right(75%);
+    .relative;
+    clear: none;
+    color: @color4;
     
-    #cropMsgBlock{ 
-        .fullWidth;
-        margin: 10px 0;
-    }    
+    img{
+       width: 750px;
+       heigth: auto;  
+    }
     
-    #cropImgArea{
+    .jcrop-holder{
         .left();
-        margin-right: 30px;
-        color: @color6;
         
-        img,
-        .jcrop-holder{
-            .left();
+        div{
+          clear: none;
+          float: none;
+          width: 7px;
         }
-        
-        .spanStyle{
-            .absolute;
-            .block;
-            background: @color4;          
-        }
-        
-        #cropImgHeight{
-            .left();
-            .relative; 
-            .border-left( @color6, inherit, 20px );
-            span{
-                .spanStyle;        
-                top: 50%;
-                left: -16px;
-                padding: 5px 0;    
-            } 
-        }
-        
-        #cropImgWidth{
-            .border-top( @color6, inherit, 20px );
-            .leftBoth;
-            .relative;
-            span{
-                .spanStyle;
-                top: -11px;
-                left: 50%;
-                padding: 0 5px;
-            }
-        }
-
+    }
+  }
+  
+  .spanStyle{
+      .absolute;
+      .block;
+      background: @white;          
+  }
+  
+  #cropImgHeight{
+    .positionRightTop(absolute, 0, 0); 
+    .border( @color4, 1px );
+    width: 1px;
+    
+    span{
+        .spanStyle;        
+        top: 50%;
+        right: -30px;
+        padding: 0 5px;
+        transform: rotate(90deg);    
+    } 
+  }
+  
+  #cropImgWidth{
+    .border( @color4, 1px );
+    height: 1px;
+    .positionLeftBottom(absolute, 0, -12px);
+    
+    span{
+        .spanStyle;
+        top: -11px;
+        left: 50%;
+        padding: 0 5px;
+        margin-left: -22px;
+    }
+  }
+  
+  #cropForm{
+    .border( @color4 );
+    .right( @cropFormW );
+    padding: 10px;    
+    
+    legend{ 
+      .fullWidth;
+      font-size: @font4; 
     }
     
-    #cropForm{
-        .border( @color6 );
-        .right( @cropFormW );
-        padding: 10px;    
-        
-        legend{ 
-          .fullWidth;
-          font-size: @font4; 
-        }
-        
-        fieldset{ .fullWidth; }
-        
-        #dimensions{
-            .fullWidth;
-        
-            #ratios{
-                button{
-                   .button1;
-                   .fullWidth;
-                   padding: 5px 0;
-                   margin-top: 5px; 
-                }
-                button.active,
-                button:hover{
-                    .button1.active;
-                }
-                button:first-child{
-                    margin-top: 0px;
-                }
-            }
-       }
-       
-       .commands{
-            input{
-              .thirdWidthM;
-              margin-left: 2%;
-            }
-            input:first-child{ margin-left: 0; }
-        }
+    fieldset{ .fullWidth; }
+  }  
+  
+  #dimensions{
+    .left(25%);
+    clear: none;
+    padding-right: 20px;
+  }
+  
+  #ratios{
+    button{
+       .button1;
+       .fullWidth;
+       padding: 5px 0;
+       margin-top: 5px; 
     }
+    button.active,
+    button:hover{
+        .button1.active;
+    }
+    button:first-child{
+        margin-top: 0px;
+    }
+  }
+  
+  #freeFormArea{
+    margin: 20px 0;
+    .border(@color1);
+    padding: 5px;
+  }
 }

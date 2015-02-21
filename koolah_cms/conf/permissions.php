@@ -13,19 +13,6 @@
  * @package koolah\cms\conf
  */ 
 $permissions = array(
-	"users" => array( 
-		'cmd',
-	),
-	"roles" => array( 
-		'cmd',
-		//'grant',
-	),
-	//"permissions" => array( 
-	//	'grant',
-	//),
-	"tags" => array( 
-		'cmd', 
-	),
 	"pages" => array( 
 		'cmd', 
 		'publish',
@@ -33,22 +20,42 @@ $permissions = array(
 	"widgets" => array( 
 		'cmd', 
 	),
+	"menus" => array( 
+        'cmd', 
+    ),
+	"taxonomy" => array( 
+		'cmd', 
+	),
+	"files" => array( 
+        'cmd', 
+        'crop',
+    ),
+	"stats" => array( 
+		'view',
+	),
+	"ratios" => array( 
+		'cmd',
+	),
+	"users" => array( 
+		'cmd',
+	),
+	/*
+	"roles" => array( 
+		'cmd',
+		//'grant',
+	),
+	//"permissions" => array( 
+	//	'grant',
+	//),
+	 * 
+	 */
+	/*
 	"folders" => array( 
         'cmd', 
     ),
-    "menus" => array( 
-        'cmd', 
-    ),
-	"files" => array( 
-	   'file'=>array(
-            'cmd', 
-            'crop',
-        ), 
-        'tags'=>array(
-            'cmd',
-        ),
-    ),
-	"templates" => array( 
+	 * 
+	 */
+    "templates" => array( 
         'pages'=>array(
             'cmd',
         ),

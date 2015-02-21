@@ -61,6 +61,9 @@ class Node{
         $this->meta = new MetaTYPE();       
     }
     
+	public function getDB(){ return $this->db; }
+	public function getCollection(){ return $this->collection; }
+	
     /**
      * getID
      * @access  public

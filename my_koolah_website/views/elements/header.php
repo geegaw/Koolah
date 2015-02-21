@@ -1,6 +1,4 @@
 <?php 
-    global $cmsMongo;
-    
     if ( isset($title) ) 
         $title = $title. ' | ';
     elseif (isset($page) && $page->seo && $page->seo->title)
@@ -33,6 +31,9 @@
     <?php   
         koolahToolKit::includeJS( "lib/jquery.1.7.1.min" );
         koolahToolKit::includeJS( "lib/jquery-ui-1.8.17.custom.min" );
+		//koolahToolKit::includeJS( "lib/jquery.masonry.min" );
+		koolahToolKit::includeJS( "lib/jquery.isotope.min" );
+		koolahToolKit::includeJS( "lib/koolahToolkit" );
         if ( ENV=='dev' )
             koolahToolKit::includeJS( "lib/less.min" );
         //if ( DEBUG )
@@ -48,7 +49,9 @@
     
     
 </head>
+<?php flush(); ?>
 <body>
     <header>
-    </header>    
-    <?php flush(); ?>
+    </header>
+    <?php include( ELEMENTS_PATH."/nav.php" ); ?> 
+    

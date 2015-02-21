@@ -1,0 +1,27 @@
+<div id="cropImgArea" class="">
+    <img id="cropImg" src="<%=model.url%>" />
+    <div id="cropImgHeight"><span></span></div>
+    <div id="cropImgWidth"><span></span></div>
+</div>
+
+<div id="dimensions">
+    <div id="ratios">
+        <button type="button" data-id="freeForm" class="active">Free Form</button>
+    </div>    
+    <div id="freeFormArea">
+        <legend>Free Form</legend>
+        <fieldset>
+            <label for="cropName">Name</label>
+            <input type="text" class=""  name="cropName" value="" placeholder="Name" />
+        </fieldset>
+        <fieldset>
+            <label for="cropWidth">Width</label>
+            <input type="text" class="int" name="cropWidth" id="cropWidth" value="" placeholder="Width" />
+        </fieldset>
+        <fieldset>
+            <label for="cropHeight">Height</label>
+            <input type="text" class="int" name="cropHeight" id="cropHeight" value="" placeholder="Height"/>
+        </fieldset>
+        <div class="description">A free form crop will create a new image</div>
+    </div>
+</div>    

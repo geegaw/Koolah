@@ -25,15 +25,18 @@ class Router{
 			Router::loadReq( FE_PATH."/home" );
 		else{
 			list( $action, $req_uri, $params ) = Router::parseReq( $req['f'] );
-			
 			if ( $action === 400 )
 				Loader::loadFile( HTTP_ERRORS_PATH."/400.php" );
 			elseif( $action==AJAX_CALL )
 				Router::loadReq( AJAX_PATH."/$req_uri" );
 			elseif( $action==SETUP_CALL )
 				Router::loadReq( SETUP_CALL."/$req_uri" );
-			else
+			elseif ($req_uri == 'signin')
 				Router::loadReq( FE_PATH."/$req_uri" );
+			elseif ($req_uri == 'signout')
+				Router::loadReq( FE_PATH."/$req_uri" );
+			else
+				Router::loadReq( FE_PATH."/default" );
 		}
 	}
 	

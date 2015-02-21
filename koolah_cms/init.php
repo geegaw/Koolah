@@ -18,6 +18,7 @@ define('KOOLAH_ROOT_CONF', CMS_DIR.'/../conf.php' );
 
 require ( KOOLAH_ROOT_CONF );
 require ( CONF_PATH.'/conf.php' );
+require ( CONF_PATH.'/errorMessages.php' );
 date_default_timezone_set( TIMEZONE);
 
 require ( CONF_PATH.'/pagePermission.php' );

@@ -1,0 +1,17 @@
+<fieldset>
+    <label for="label">Name</label>
+    <input type="text" name="label" class="required" placeholder="Name" value="<%= model.label %>"/>
+</fieldset>
+<fieldset>
+	<label for="credits">Credits/Author</label>
+    <input type="text" name="credits" class="" placeholder="Credits/Author" value="<%= model.credits %>"/>
+</fieldset>
+<fieldset>
+    <label for="description">Description</label>
+    <textArea name="description" class=""><%= model.description %></textArea>
+</fieldset>
+<fieldset id="uploadField">            
+    <label for="fileInput">Upload File:</label>
+    <input type="file" id="fileInput" value=""/>
+    <progress id="fileUploadProgress" class="fullWidth hide" max="100" value="0"></progress>
+</fieldset> 

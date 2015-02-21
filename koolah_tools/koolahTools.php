@@ -61,14 +61,14 @@ class koolahToolKit{
      * @param bool $min
      */    
     public static function includeCSS( $files, $min=false  ){
-		if ( ENV == 'dev' ){
-            $type = 'less';
-            $path = LESS_PATH;
-        }
-        else{
+//		if ( ENV == 'dev' ){
+//            $type = 'less';
+//            $path = LESS_PATH;
+//        }
+//        else{
             $type = 'css';
             $path = CSS_PATH;
-        } 
+//        } 
 		$ext = ".$type";
         if ( $min || ENV == 'prod')
             $ext = '.min'.$ext;        
@@ -77,8 +77,10 @@ class koolahToolKit{
 		foreach ( $files as $file ){
 			if ( is_dir($path.'/'.$file) )			    
 				koolahToolKit::includeCSSdir( $file );
-            else				
+			elseif ($type == 'less')				
 				echo '<link rel="stylesheet/'.$type.'" type="text/css" href="/public/'.$type.'/'.$file.$ext.'" />';
+			else
+				echo '<link rel="stylesheet" type="text/css" href="/public/'.$type.'/'.$file.$ext.'" />';
 		} 		
 	} 
 

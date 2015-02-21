@@ -1,0 +1,47 @@
+.commonBox(@width:auto, @filterInputW:70%, @filterCommandsW:30%, @nameW:50%, @listCommandsW:25%, @listMinW:150px, @listMaxW:350px ){
+    .left( @width );
+    .border( @color2 );
+    padding: 20px;
+    
+    
+    .heading{
+        .fullWidth;
+        
+        h2{ 
+          .left( 80% );
+          font-family: @fontFamily2; 
+        }          
+        button, a{ .right(); }
+     }//heading    
+     
+     .filterArea{
+        .fullWidth;
+        .relative;
+        
+        label{
+           .hide;
+         }
+         
+        .filterInput{
+          .search;
+        }
+        
+        
+        .filterCommands{ 
+            .left( @filterCommandsW  );
+            padding-top: 20px; 
+        }
+     }
+    
+    .listHeading{
+        .fullWidth;
+        
+        ul{ 
+            .fullWidth;
+            
+            li{ .left(); } 
+            li:last-child{ .right() }
+        }
+    }  
+}
+

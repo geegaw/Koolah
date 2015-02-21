@@ -75,5 +75,22 @@ class API_PageTYPE extends PageTYPE{
      * @return StatusTYPE
      */
      final public function del(){ return cmsToolKit::permissionDenied(); }
+	 
+	/**
+     * prepare
+     * prepares for sending to db
+     * @access  public
+     * @return assocArray
+     */
+    final public function prepare(){
+        $bson = array( 
+           'title' =>  $this->seo->title,
+           'description' =>  $this->description,
+           'url' => $this->getUrl(),
+        );
+		foreach ($this->getData() as $key => $value)
+			$bson[$key] = $value;	
+        return $bson + $this->label->prepare();
+    }
 }    
 ?>

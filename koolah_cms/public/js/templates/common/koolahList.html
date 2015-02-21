@@ -1,0 +1,11 @@
+<ul>
+<% _.each(collection, function(model) { %>
+  	<li class="<%= classname %>" data-id="<%= model.id %>">
+		<span class="name"><%= model.label %></span>
+		<span class="commands">
+			<%if(usercan(classname+"_m")){%><button class="edit">edit</button><%}%>
+			<%if(usercan(classname+"_d")){%><button class="del">X</button><%}%>
+		</span>
+	</li>
+<% }); %>
+</ul>

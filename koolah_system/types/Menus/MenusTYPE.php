@@ -42,8 +42,8 @@ class MenusTYPE extends Nodes{
      * @param array $orderBy -- defaul by label asc
      * @param bool $distinct        
      */    
-    public function get( $q=null, $fields=null, $orderBy=array('label'=>1), $distinct=null  ){
-        $bsonArray = parent::get( $q, $fields , $orderBy);
+    public function get( $q=null, $fields=null, $orderBy=array('label'=>1), $offset=0, $limit=null, $distinct=null  ){
+        $bsonArray = parent::get( $q, $fields , $orderBy, $offset, $limit, $distinct);
         if ( count($bsonArray) ){
             foreach ( $bsonArray as $bson ){
                 $menu = new MenuTYPE();
@@ -53,16 +53,6 @@ class MenusTYPE extends Nodes{
         }   
     }
     
-    
-    /**
-     * prepare
-     * prepares for sending to db
-     * @access  public
-     * @return assocArray
-     */
-    public function prepare(){
-        return array( 'Menus'=>parent::prepare() );
-    }
     
     /**
      * read

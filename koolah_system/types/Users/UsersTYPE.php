@@ -40,8 +40,8 @@ class UsersTYPE extends Nodes{
      * @param array $orderBy -- defaul by lastname asc, firstname 
      * @param bool $distinct        
      */    
-    public function get( $q=null, $fields=null, $orderBy=array('last_name'=>1, 'first_name'=>2), $distinct=null  ){
-		$bsonArray = parent::get( $q, $fields, $orderBy);
+    public function get( $q=null, $fields=null, $orderBy=array('last_name'=>1, 'first_name'=>2), $offset=0, $limit=null, $distinct=null  ){
+		$bsonArray = parent::get( $q, $fields, $orderBy, $offset, $limit, $distinct);
 		if ( count($bsonArray) ){
 			foreach ( $bsonArray as $bson ){
 				$user = new UserTYPE( $this->db, $this->collection );
@@ -92,16 +92,6 @@ class UsersTYPE extends Nodes{
 	}
 	/***/
 	
-	
-	/**
-     * prepare
-     * prepares for sending to db
-     * @access  public
-     * @return assocArray
-     */
-    public function prepare(){
-		return array( 'users'=>parent::prepare() );
-	}
 	
 	/**
      * read

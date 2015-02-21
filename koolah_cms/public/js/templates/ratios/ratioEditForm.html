@@ -1,0 +1,13 @@
+<fieldset>
+    <label for="ratioName">Ratio Name</label>
+    <input type="text" id="ratioName" name="label" class="required" placeholder="Ratio Name" value="<%= model.label %>"/>
+</fieldset>
+
+<div id="ratiofieldset">
+    <label>Ratio (w:h)</label>
+    <div>
+        <input type="text" id="ratioWidth" name="w" class="required int" placeholder="w" value="<%= model.w %>" />                    
+    	<span>:</span>
+        <input type="text" id="ratioHeight" name="h" class="required int" placeholder="h"  value="<%= model.h %>" />
+    </div>        
+</div>

@@ -1,0 +1,30 @@
+<section 
+	id="<%= classname %>Form<%= model.id %>" 
+	class="koolahForm collapsible <%if (typeof extra.extraclass != 'undefined'){ %><%= extra.extraclass %><%}%>" 
+	data-id="<%= model.id %>"
+>
+    <div class="commandBar">
+        <h3></h3>
+        <button type="button" class="toggle open">&#8211;</button>
+    </div>
+    <div class="collapsibleBody">
+        <div class="heading">
+            <div class="title">
+                <h2><%= label %></h2>
+                <%if (typeof extra.addSubset != 'undefined'){ %><button class="add">+</button><%}%>
+            </div>
+        </div>
+        
+        <form method="post" class="activeform">            
+            <div class="inputs"><%= inputs %></div>
+            <div class="extrainputs"></div>            
+            <div  class="commands">
+                <input type="submit" class="cancel noreset" value="Cancel" />
+                <%if (typeof extra.showReset != 'undefined'){ %><input type="submit" class="reset noreset" value="Reset" /><%}%>
+                <input type="submit" class="save noreset"   value="Save" />
+            </div>
+        </form>
+        <div class="extra"><%if (typeof extra.content != 'undefined'){ %><%= extra.content %><% } %></div>
+        <div class="msgBlock"></div>
+    </div>
+</section>

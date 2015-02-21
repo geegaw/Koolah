@@ -20,8 +20,9 @@ class cmsToolKit{
      * @access public
      * @return StatusTYPE
      */    
-    public static function permissionDenied(){
-		$status = new StatusTYPE(PERMISSION_DENIED, false);
+    public static function permissionDenied($msg=''){
+    	$msg = trim(PERMISSION_DENIED.' '.$msg);	 
+		$status = new StatusTYPE($msg, false);
 		return $status;
 	}
 	
@@ -36,6 +37,29 @@ class cmsToolKit{
         if ( !is_dir( $dirname ) )
             return mkdir($dirname);
         return true; 
+    }
+	
+	/**
+     * rmDirDashR
+     * functoins as a rm -R dir
+     * @access public
+     * @param string dir
+     * @return bool
+     */    
+    public static function rmDirDashR( $dir ){
+    	$status = new StatusTYPE();
+        if (is_dir($dir)){
+        	$interior = glob("$dir/*");
+			foreach ($interior as $el){
+				if (is_dir($el))
+					$status = cmsToolKit::rmDirDashR( $el );
+				elseif (!unlink($el)){
+					$status->setFalse('could not delete '.$el);
+					return $status; 
+				}
+			}
+        }
+		return $status;
     }
     
     /**

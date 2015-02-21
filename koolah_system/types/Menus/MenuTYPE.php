@@ -41,6 +41,13 @@ class MenuTYPE extends Node {
      * @access public
      */
     public $menuItems;
+	
+	/**
+     * order item goes in
+     * @var order
+     * @access public
+     */
+    public $order;
     
     /**
      * array of children inside of menu
@@ -69,6 +76,7 @@ class MenuTYPE extends Node {
 		$this->label->label = $name;
         $this->url = null;
         $this->newTab = false;
+		$this->order = 0;
        
         $this->children = null;
         $this->parentID = null;
@@ -83,7 +91,11 @@ class MenuTYPE extends Node {
      * @access public   
      * @return string     
      */    
-    public function getChildren(){ return $this->children; }
+    public function getChildren(){
+    	$children = new MenusTYPE();
+		$children->get(array('parentID'=>$this->getID()));
+    	return $children; 
+	}
     
     /**
      * getParentID
@@ -158,6 +170,7 @@ class MenuTYPE extends Node {
 	       'newTab' => $this->newTab,
 	       'children' => $this->prepareChildren(),
 	       'parentID' => $this->parentID,
+	       'order' => $this->order,
         );
 		return parent::prepare() + $bson + $this->label->prepare() + $this->menuItems->prepare();		
 	}
@@ -211,19 +224,20 @@ class MenuTYPE extends Node {
      * @param assocArray $bson
      */
     public function readAssoc( $bson ){
-        
-        if ( isset( $bson['url'] ) )
+		if ( array_key_exists('url', $bson) )
             $this->url = $bson['url'];
-        if ( isset( $bson['newTab'] ) )
+        if ( array_key_exists('newTab', $bson) )
             $this->newTab = $bson['newTab'];
-        if ( isset( $bson['parentID'] ) ){
+		if ( array_key_exists('order', $bson) )
+            $this->order = $bson['order'];
+        if ( array_key_exists('parentID', $bson) ){
             $this->parentID = $bson['parentID'];
             if ( $this->parentID < 0 )
                 $this->parentID = null;
         }
-        if ( isset( $bson['label'] ) )
+		if ( array_key_exists('label', $bson) )
             $this->label->read( $bson );
-        if ( isset( $bson['children'] ) )
+        if ( array_key_exists('children', $bson) )
             $this->readChildren($bson['children']);    
     }
     
@@ -237,6 +251,7 @@ class MenuTYPE extends Node {
         if ( $obj ){
               $this->url = $obj->url;
               $this->newTab = $obj->newTab;
+			  $this->order = $obj->order;
               $this->parentID = $obj->parentID;
               $this->label->label = $obj->label;
               $this->readChildren($obj->children);
@@ -251,17 +266,18 @@ class MenuTYPE extends Node {
      * @param assocArray|object|string $children
      */
     private function readChildren( $children ){
-        
-        foreach ( $children as $child ){
-            $menuItem = new MenuTYPE();
-            if (is_array($child)  )
-                $menuItem->getByID($child['id']);
-            elseif( is_object($child) )
-                $menuItem->getByID($child->id);
-            else
-                $menuItem->getByID($child);
-            $this->children[] = $menuItem;
-        }
+        if (is_array($children)){
+	        foreach ( $children as $child ){
+	            $menuItem = new MenuTYPE();
+	            if (is_array($child)  )
+	                $menuItem->getByID($child['id']);
+	            elseif( is_object($child) )
+	                $menuItem->getByID($child->id);
+	            else
+	                $menuItem->getByID($child);
+	            $this->children[] = $menuItem;
+	        }
+		}
     }
     
    /**
@@ -285,8 +301,9 @@ class MenuTYPE extends Node {
      */
      private function delChildren(){
         $status = new StatusTYPE();
-        if ( $this->children ){
-            foreach( $this->children as $child ){
+		$children = $this->getChildren();
+        if ( $children->length() ){
+            foreach( $children->menus() as $child ){
                 $status = $child->del();
                 if ( !$status->success() )
                     return $status;

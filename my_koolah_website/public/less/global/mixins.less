@@ -76,19 +76,19 @@
     opacity: @opacity;
 }
 
-.shadow( @color:@color1,  @x:0, @y:0, @blur:8px, @spread:5px){
+.shadow( @color:@color3,  @x:0, @y:0, @blur:8px, @spread:5px){
      -webkit-box-shadow: @x @y @blur @spread @color;
          -moz-box-shadow: @x @y @blur @spread @color;
                   box-shadow: @x @y @blur @spread @color;
 }                 
 
-.roundCorner( @r ){
+.round( @r ){
     -webkit-border-radius: @r;
         -moz-border-radius: @r;
                   border-radius: @r;
 }
 
-.roundCorner( @r1, @r2, @r3, @r4 ){
+.round( @r1, @r2, @r3, @r4 ){
     -webkit-border-top-left-radius: @r1;
           -moz-border-radius-topleft: @r1;
                   border-top-left-radius: @r1;
@@ -106,6 +106,13 @@
                   border-bottom-left-radius: @r4;
 }
 
+.circle(@color, @r){
+  .block;
+  background: @color;
+  .round(@r);
+  width: @r * 2;
+  height: @r * 2;
+}
 
 .background( @src, @x:center, @y:center, @color:transparent, @repeat:no-repeat ){
   background: @color url("@{src}") @x @y @repeat;

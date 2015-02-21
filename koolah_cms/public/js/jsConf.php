@@ -19,6 +19,7 @@
     global $VALID_FILES;    
 ?>
 <script>
+	var AJAX_CONTROLLER = '<?php echo AJAX_CONTROLLER; ?>';
 	var AJAX_GET_URL = '<?php echo AJAX_GET_URL; ?>';
 	var AJAX_GET_ONE_URL = '<?php echo AJAX_GET_ONE_URL; ?>';
 	var AJAX_UPLOAD_URL = '<?php echo AJAX_UPLOAD_URL; ?>';
@@ -45,4 +46,8 @@
 	var PREVIEW_URL = "<?php echo INTERNAL_PREVIEW_URL; ?>"; 
 	
 	var IMPORT_FILE_TYPES = ['<?php echo implode("', '", explode(',',  IMPORT_FILE_TYPES)); ?>'];
+	var NAV_DURATION = 450;
+	var MAX_PER_PAGE = <?php echo MAX_PER_PAGE; ?>;
+	
+	var FIELD_TYPES = [ '<?php echo implode("','", FieldTypeTYPE::getTypes()); ?>' ];
 </script>

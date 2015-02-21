@@ -48,8 +48,8 @@ class UserPermissionsTYPE extends Nodes{
      * @param array $orderBy -- defaul by label asc
      * @param bool $distinct        
      */    
-    public function get( $q=null, $fields=null, $orderBy=null, $distinct=null  ){
-		$bsonArray = parent::get( $q, $fields, $orderBy);
+    public function get( $q=null, $fields=null, $orderBy=null, $offset=0, $limit=null, $distinct=null  ){
+		$bsonArray = parent::get( $q, $fields, $orderBy, $offset, $limit, $distinct);
 		if ( count($bsonArray) ){
 			foreach ( $bsonArray as $bson ){
 				$permission = new UserPermissionTYPE( $this->db, $this->collection );
@@ -68,8 +68,8 @@ class UserPermissionsTYPE extends Nodes{
      */    
     public function hasPermission( $suspect ){
 		if ( $this->permissions() ){
-			foreach ( $permissions as $permission ){
-				if ( $suspect == $permission->name )
+			foreach ( $this->permissions() as $permission ){
+				if ( $suspect == $permission )
 					return true;
 			}
 		}

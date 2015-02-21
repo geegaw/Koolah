@@ -58,6 +58,7 @@ define('TAGS_COLLECTION', 'tags');
 define('UPLOADS_COLLECTION', 'uploads');
 define('IMAGES_COLLECTION', 'images');
 define('RATIOS_COLLECTION', 'ratios');
+define('TAXONOMY_COLLECTION', 'taxonomy');
 //***/
 
 //UPLOADS FOLDER

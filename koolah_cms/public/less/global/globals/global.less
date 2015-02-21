@@ -3,7 +3,7 @@ h1{ font-size: @font6; }
 h2{ font-size: @font5; }
 h3{ font-size: @font4; }
 h4{ font-size: @font3; }
-a{ text-decoration: none; color: @color5;}
+a{ text-decoration: none; color: @black;}
 a.active{ font-weight: bold; }
 button{ cursor: pointer;}
 input, label, textarea, select{ float: left;}
@@ -37,3 +37,26 @@ fieldset .description{
 .ppt, .pptx{ background: url("@{iconsDir}ppt.png") no-repeat;}
 
 #msgBlock, .msgBlock{ .fullWidth; }
+
+.koolahBasicContainer{
+    .left(40%);
+    .relative;
+    
+    .collapsibleBody{
+      .commonBox(100%);
+    }//collapsibleBody
+}//koolahBasicContainer
+
+.koolahForm{
+    .right(40%);
+    
+    .collapsibleBody{
+      .commonForm(100%);
+    }//collapsibleBody
+}//koolahBasicContainer
+
+> section{
+  > section{
+    margin: 1% @sectionMargin;
+  }
+}

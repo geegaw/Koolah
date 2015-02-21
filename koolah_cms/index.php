@@ -7,6 +7,6 @@
  * @copyright Copyright (c) 2013 Christophe Vaugeois
  */
     session_start();
-	require ( "init.php" );	
+	require ( "init.php" );
 	Router::serveReq( $_REQUEST );		
 ?>

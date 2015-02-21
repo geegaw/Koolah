@@ -72,6 +72,22 @@ class SessionUser extends UserTYPE{
         $bson = $user->prepare();
         $this->read( $bson );
     }
+	
+	/**
+     * flattenPermissions
+     * flattens all permissions in roles to permissions
+     * @access  public
+     */    
+    public function flattenPermissions(){
+		if ($this->isAdmin())
+			return array();
+		$permissions = $this->permissions->permissions() ? $this->permissions->permissions() : array();
+		if ($this->roles->roles()){
+			foreach ($this->roles->roles() as $role)
+				$permissions = array_merge($permissions, $role->permissions);
+		}
+		return $permissions; 
+	}
 }
 
 ?>

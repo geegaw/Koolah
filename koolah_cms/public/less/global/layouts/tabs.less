@@ -1,0 +1,54 @@
+.tabSection{
+  .fullWidth;
+  
+  .tabLabels{
+    .fullWidth;
+    .positionLeftTop( relative, 0, 1px );
+    .zLevel2;
+
+    .tab{
+      .left();
+      .border( @color3 );
+      .roundCorner(0, 15px, 0, 0);
+      .positionLeftTop(relative, -4px, 0);
+      .shadow( @color3, 2px, 0, 2px, -1px );
+      .zLevel1;
+      min-width: 50px;
+      text-align: center;
+      padding: 5px;
+      line-height: 25px;
+      background: @white;   
+      
+      a{ 
+        color: @color3; 
+      }
+      
+      &:last-child{ 
+        .shadow( @color1, 0, 0, 0, 0 ); 
+      }
+      
+      &:first-child{ 
+        left: 0; 
+      }
+      
+      &.active{
+          border-color: @color3;
+          border-bottom: 1px solid @white !important;
+          .zLevel2;
+          
+          a{ 
+            color: @black; 
+          }
+      }
+    }//tab
+  }//tabLabels
+  
+  .tabsBody{
+    .fullWidth;
+    .border( @color3 );
+    padding: 15px;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }//tabsBody
+}//tabSection

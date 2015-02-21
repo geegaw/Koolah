@@ -1,57 +1,54 @@
-#ratioForm{
-    .right();
-    min-width:  @ratioFormW;
-    
-    #ratioFormBody{
-      .commonBox( 100% );
+#ratiosForm{
+  .extra{
+    .list;
+  }//extra
+  
+  .inputs{
+    div{
+      input{
+        .left(@ratiofieldsetInputW);
+      }//input
       
-      form{
-          @formPadding: 5px;
+      span{
+        .left();
+        padding-top: 5px; 
+        margin: 0 3px;
+        font-size: @font4; 
+        .bold;
+      }//span
+    }//div
+  }//inputs
+  
+  > .commands{
+    .positionRightBottom( absolute, 5px, 5px );
+  }//commands
+  
+  li{
+     @proportionsW: 9%;
+     .ratioSizeName{
+        .left(@ratioNameW - @proportionsW * 2);
+     }
+     .ratioSizeW, .ratioSizeH{
+        .left( @proportionsW );            
+     } 
+   }//li
+}//ratiosForm
+
           
-          .fullWidth;
-          .border( @color2 );
-          padding: @formPadding;
-          .relative;
-          
-          
-          #ratioInputs{ 
-              .halfWidth; 
-              padding: 5px;
-              
-              #ratiofieldset{ .fullWidth; }
-              #ratiofieldset fieldset{ .left(); }
-              #ratiofieldsetLabel{ .fullWidth; }
-              #seperator{ 
-                  clear: none;
-                  padding-top: 5px; 
-                  margin: 0 3px;
-                  font-size: @font4; 
-                  .bold;
-              }
-              #ratiofieldset input{ width: @ratiofieldsetInputW; }
-          }  
-          
-          #ratioCommands{
-              .positionRightBottom( absolute, @formPadding, @formPadding );
-           }
-            
-           #ratioCommands .options{
-              .fullWidth;
-              margin-top: 25px;
-           }
-           
-           
-      }
-      
-      .list{
-           @proportionsW: 9%;
-           .ratioSizeName{
-              width: @ratioNameW - @proportionsW * 2;
-           }
-           .ratioSizeW, .ratioSizeH{
-              .left( @proportionsW );            
-           }
-           
-       }
-    }
-}
+#ratioSizeForm{   
+  .inputs{
+    div{
+      fieldset{
+        .halfWidth;
+        clear: none;
+        margin-top: 5px;
+        padding-left: 10px; 
+        
+        &:first-child{
+          padding-left: 0;
+          padding-right: 10px;
+        }
+      }//fieldset
+    }//div
+  }//inputs
+}//ratioSizeForm

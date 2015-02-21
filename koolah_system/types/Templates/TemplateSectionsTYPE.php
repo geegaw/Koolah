@@ -41,8 +41,8 @@ class TemplateSectionsTYPE extends Nodes{
      * @param array $orderBy -- defaul by label asc
      * @param bool $distinct        
      */    
-    public function get( $q=null, $fields=null, $orderBy=array('name'=>1), $distinct=null  ){
-		$bsonArray = parent::get( $q, $fields, $orderBy);
+    public function get( $q=null, $fields=null, $orderBy=array('name'=>1), $offset=0, $limit=null, $distinct=null  ){
+		$bsonArray = parent::get( $q, $fields, $orderBy, $offset, $limit, $distinct, $offset, $limit, $distinct);
 		if ( count($bsonArray) ){
 			foreach ( $bsonArray as $bson ){
 				$template = new TemplateSectionTYPE( $this->db, $this->collection );
@@ -147,10 +147,15 @@ class TemplateSectionsTYPE extends Nodes{
                 $sections = $bson->sections;  	
             else 
                 return; //TODO throw error
-                
+
+                                
 			foreach ( $sections as $section_bson ){
 			    $section = new TemplateSectionTYPE( $this->db );
+//debug::h1('------------------------');
+//debug::printr($section);
+//debug::printr($section_bson);						
                 $section->read($section_bson);
+//debug::printr($section);			
 				$this->append( $section );
             }    		
         }

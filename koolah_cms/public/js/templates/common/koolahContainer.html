@@ -1,0 +1,25 @@
+<section id="<%= classname %>Container" class="koolahBasicContainer collapsible" data-editForm="<%= classname %>EditForm">
+   <div class="commandBar">
+        <h3><%= label %></h3>
+        <button type="button" class="toggle open">&#8211;</button>
+   </div>
+   <div class="collapsibleBody">    
+        <div class="heading">
+            <h2><%= label %></h2>
+            <%if(usercan(classname+"_c")){%><button class="add">+</button><%}%>
+        </div>
+        <form class="filterArea activeform">
+        	<fieldset class="filterInput">
+                <label for="searchRatio">Search <%= label %>:</label>
+                <div>
+	                <input type="text" class="query" placeholder="Search"/>
+	                <input type="submit" class="reset noreset" value="x"/>
+                </div>
+                <input type="submit" class="searchGo go noreset" value="Go"/>
+            </fieldset>
+        </form>     
+        <div class="list"></div>
+        <div class="pagination"></div>                
+        <div class="msgBlock"></div>
+     </div>
+</section> 

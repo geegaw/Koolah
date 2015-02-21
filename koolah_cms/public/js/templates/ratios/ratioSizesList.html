@@ -1,0 +1,13 @@
+<ul>
+<% _.each(collection, function(model) { %>
+	<li data-id="<%= model.id %>" class="ratioSize">
+		<span class="name ratioSizeName"><%= model.label %></span>
+		<span class="ratioSizeW"><%= model.w %></span>
+		<span class="ratioSizeH"><%= model.h %></span>
+		<span class="commands">
+			<button class="edit">edit</button>
+			<button class="del">X</button>
+		</span>
+	</li>
+<% }); %>
+</ul>

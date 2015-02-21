@@ -1,118 +1,21 @@
 #menus{
-    .relative;    
+  section{
+      margin: 1% @sectionMargin;
+  } 
+  
+  .koolahBasicContainer{
+    .left(25%);
+  }//koolahBasicContainer  
+  
+  .koolahForm{
+    .left(25%);
     
-    .list{
-        .left( @menuListW );
-        .border( @color1 );
-        margin: 15px;
-        padding: 15px;
-        display: block;
-        .relative;
-    
-        .heading{
-            .border-bottom( @color1, 5px, 15px, solid, 2px );
-            h1{ 
-               .left();
-               
-               span{ margin-left: 5px;} 
-            }
-             
-            button{ .right(); }
-        }
-    }
-    
-    .items{
-        background: @color3;
-        padding: 5px 5px 15px 10px;
-    }
-    
-    .items{ 
-        .aMenu{
-            .left();
-            .bold;
-            
-            li{
-                padding: 5px 0;
-                cursor: move;
-            }
-        }
-        
-        li:first-child{
-            border-top: none;
-            margin-top: 5px;
-        }
-        
-        li{
-           .fullWidth;
-           .border-top( @color4, 5px, 15px, solid, 3px );
-          
-           .items{
-                background: @color1;
-            }
-        
-            .collapsible{
-                .border( @color4 );
-                margin: 5px 0 -6px 0;
-            }
-        }
-        
-        .commands{
-            .right();
-            
-            a{
-                margin-left: 5px;
-            }
-        }
-    }
-    
-}
-
-#menuList{
-    > a{
-        .right();
-        margin-bottom: 10px;
-        
-        .submenu{
-            padding: 5px 0 5px 15px;
-            font-size: @font1;
-            line-height: @font1;
-            color: @color10;
-            .border-bottom(@color4);
-            background: @color2;
-            
-            .toggle{
-                margin-right: 5px;
-                .right;
-                color: @color10;
-                
-                .square{
-                    border-color: @color10;
-                }
-            }                                   
-        }
-    }
-}
-
-#newMenuForm{
-    .positionLeftTop( absolute, 50%, 15px );
-    .center( @newMenuForm );
-    .zLevel3;
-    .border( @color1 );
-    padding: 15px;
-    background: @color4;
-    
-    fieldset{
-        margin-top: 10px;
-    }
-    
-    fieldset:first-child{
-        margin-top: 0;
-    }
-}
-
-
-.placeholder {
-    border: 2px #707070 dashed;
-    height: 50px;
-    margin-bottom: 10px;
+    .extra{
+      .list{
+        ul{
+          min-height: 150px;
+        }//ul
+      }//list
+    }//extra
+  }//koolahForm 
 }

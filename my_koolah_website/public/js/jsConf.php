@@ -16,4 +16,5 @@
  ?>
 <script>
     var ANIMATION_TIME = 500;
+    var FM_URL = '<?php echo FM_URL; ?>';
 </script>

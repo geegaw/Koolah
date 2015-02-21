@@ -35,17 +35,17 @@ class UserHistoryTYPE extends Nodes{
      */    
     public function pageVisits($length=null, $offset=0, $distinct=false){
          $els = $this->nodes;    
-         if ( $distinct ){
+         if ( $distinct && $els){
              $distinct = null;
              foreach( $this->nodes as $el ){
-                 $distinct[ $el->url ] = $el;
-                 if ( $length && count($distinct) >= $length )
-                    break;
+                $distinct[ $el->url ] = $el;
+                if ( $length && count($distinct) >= $length )
+					break;
              }
              $els = array_values($distinct);
+	         if ( $length )
+	             $els = array_slice($els, $offset, $length);
          }
-         if ( $length )
-             $els = array_slice($els, $offset, $length);
          return $els; 
     }
     
@@ -131,8 +131,8 @@ class UserHistoryTYPE extends Nodes{
      * @param array $orderBy -- defaul by timestamp asc
      * @param bool $distinct        
      */    
-    public function get( $q=null, $fields=null, $orderBy=array('timestamp'=>-1), $distinct=null ){
-        $bsonArray = parent::get( $q, $fields , $orderBy, $distinct);
+    public function get( $q=null, $fields=null, $orderBy=array('timestamp'=>-1), $offset=0, $limit=null, $distinct=null ){
+        $bsonArray = parent::get( $q, $fields , $orderBy, $offset, $limit, $distinct);
         if ( count($bsonArray) ){
             foreach ( $bsonArray as $bson ){
                 $pageVisit = new PageVisitTYPE();

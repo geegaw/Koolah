@@ -1,4 +1,71 @@
-@import "elements/main";
-@import "elements/files";
-@import "elements/tags";
-@import "elements/crop";
+#files{
+  section{
+      margin: 1% @sectionMargin;
+  }
+  
+  /*
+  .crop{ 
+      .submit;
+      .background("@{cropImg}", center, center, @color4);
+      .noText;
+      width: 37px;
+      height: 27px;
+      padding: 1px 6px;
+      
+      &:hover{
+        .background("@{cropImg}", center, center, @color5);
+      }
+  }
+  */
+  .koolahBasicContainer{
+    .list{
+      .type{
+        
+        &.img{
+          img{
+            width: 75px;
+            height: 50px;
+          }  
+        }//img
+        
+      }//type
+      
+      .name{
+        padding-left: 10px;
+      }//name
+    }//list
+  }//koolahBasicContainer 
+  
+  .koolahForm{
+    .terms{
+      .fullWidth;
+      margin: 10px 0;
+      
+      label{
+        .hide;
+      }
+      
+      .addTaxonomy{
+        .fullWidth;
+      }//addTaxonomy
+      
+      .relations{
+        .fullWidth;
+        background: @color1;
+        margin: 10px 0;
+        padding: 5px;
+        min-height: 20px;
+      }//relations 
+    }//terms
+  }//koolahForm
+  
+  #uploadPreview{
+    .fullWidth;
+    
+    img{
+      height: 150px;
+      width: 210px;
+    } 
+  } 
+  
+}

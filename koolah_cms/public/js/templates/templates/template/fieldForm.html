@@ -1,0 +1,37 @@
+<fieldset>
+	<input type="text" class="required" name="label" placeholder="Field Name" value="<%=model.label%>"/>
+</fieldset>
+
+<div>
+	<fieldset class="labelSameLine">
+		<input type="checkbox" name="required" <% if(model.required){%>checked="checked" <%}%>/>
+		<label for="isRequired">required</label>
+	</fieldset>
+	<fieldset class="labelSameLine">
+		<input type="checkbox" name="many" <% if(model.many){%>checked="checked" <%}%>/>
+		<label for="many">can be many</label>
+	</fieldset>
+</div>
+
+<fieldset>
+    <select id="fieldType" name="type" class="required">
+    	<option value="no_selection">Type</option>
+    	<% if ( model.fieldTypes ){ %> 
+			<% _.each(model.fieldTypes, function(type){  %>
+				<option value="<%= type %>" <% if(model.type == type){%>selected="selected" <%}%>><%= type %></option>
+			<% }); %>
+		<% } %>
+    </select>
+</fieldset>
+            	
+	                    
+
+                  
+
+
+
+
+
+
+
+        	

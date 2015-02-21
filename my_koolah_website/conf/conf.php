@@ -56,6 +56,9 @@ define('PAGES_PATH', VIEWS_PATH.'/pages');
 //ELEMENTS Folder
 define('ELEMENTS_PATH', VIEWS_PATH.'/elements');
 
+//AJAX Folder
+define('AJAX_PATH', VIEWS_PATH.'/ajax');
+
 //public
 define( 'PUBLIC_PATH', WEBSITE_DIR.'/public' );
 

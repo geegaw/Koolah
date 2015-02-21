@@ -41,6 +41,15 @@ final class Permissions{
 			$this->loadPermissions();	
 	}
 	
+	/**
+     * getPermissions
+     * 
+     * loads config permissions
+     * @access public
+     */
+    public function getPermissions(){
+		return $this->permissions;
+	}
 	
 	/**
      * loadPermissions

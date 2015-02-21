@@ -1,19 +1,26 @@
-@color1: #ccc;
-@color2: #ddd;
-@color3: #eee;
-@color4: #fff;
-@color5: #000;
-@color6: #665;
-@color7: #707070;
-@color8: #888;
-@color9: #bbb;
-@color10: #aaa;
-@color11: #999;
+@color1: #eee;
+@color2: darken(@color1, 15%);
+@color3: darken(@color2, 15%);
+@color4: darken(@color3, 15%);
+@color5: darken(@color4, 15%);
+
+@background1: #999;
+@background2: lighten(@background1, 10%);
+@shadowcolor1: #888;
+
+
+@white: #fff;
+//@white: #F5FAFA;
+@black: #000;
 
 @errorColor: red;
 @successColor: green;
 
-@fontFamily1:  calibri;
+@import url("http://fonts.googleapis.com/css?family=Lato");
+@fontFamily1: 'Lato', calibri;
+
+@import url("http://fonts.googleapis.com/css?family=Oswald");
+@fontFamily2: 'Oswald', calibri;
 
 @baseFont:  14px;
 @font1: @baseFont;

@@ -95,8 +95,11 @@ class customMongo{
      * @param bool $distinct
      * @return array                         
      */    
-    public function get( $collection, $q=null, $fields=null, $orderBy=null, $distinct=null ){
-		self::setCollection( $collection );
+    public function get( $collection, $q=null, $fields=null, $orderBy=null, $offset=0, $limit=null, $distinct=null ){
+    	self::setCollection( $collection );
+		if ($q)
+			$q = $this->formatQuery($q);
+
 		if ( $distinct ){
 		    //NOTE: At the time of developement MongoCursor::distinct was not working
 		    if( $q )
@@ -112,10 +115,40 @@ class customMongo{
 			$cursor = $this->collection->find( null, $fields );
 		else
 			$cursor = $this->collection->find();
+		
+		if ( $limit )
+			$cursor->skip($offset)->limit($limit);
         if( $orderBy )
             $cursor->sort( $orderBy );
-		return iterator_to_array($cursor);			
+
+        return array(
+			'nodes'=> iterator_to_array($cursor),
+			'total'=>$this->collection->count(),
+		);			
 	}	
+	
+	/**
+	 * formatQuery
+	 * format query to search for like
+	 */
+	public function formatQuery($q){
+		$formatted = array();
+		if (is_array($q)){
+			foreach ($q as $term => $query){
+				if (is_array($query))
+					$formatted[$term] = $this->formatQuery($query);
+				elseif( preg_match( '/^\/([^\/]*)\/[ig]*$/', $query ) )
+					$formatted[$term] = array('$regex' => new MongoRegex($query));
+				elseif( !$query )//is null search
+					$formatted[$term] = array('$type' => 10);						
+				else
+					$formatted[$term] = $query;
+			}
+		}
+		else
+			return $q;
+		return $formatted;
+	}
 	
 	/**
      * getOne
@@ -129,7 +162,7 @@ class customMongo{
     public function getOne( $collection, $q, $fields=null ){
 		self::setCollection( $collection );
 		if ( $fields )
-			return $collection->findOne( $q, $fields );
+			return $this->collection->findOne( $q, $fields );
         return $this->collection->findOne( $q );
 	}
 	
@@ -295,6 +328,9 @@ class customMongo{
 				}
 			}
 		}
+		//elseif (is_object($args))
+		//	$q = json_decode(json_encode($args), true);
+		debug::printr($args, 1);
 		return $q;
 	}
 	

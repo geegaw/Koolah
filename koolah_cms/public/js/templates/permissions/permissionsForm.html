@@ -1,0 +1,36 @@
+<% _.each(sitePermissions, function(permissions, group){ %>
+	<% label = _.last(group.split('_')); %>
+	<div class="group <%=group%>">
+		<label><%=label%></label>
+		
+		<fieldset class="allnone">
+			<input type="checkbox" class="selectAll" />
+			<label for="">all/none</label>
+		</fieldset>
+		
+		<% _.each(permissions, function(permission, i){ %>
+			<% if (typeof i == 'string'){ %>
+				<% var data = {}; data[group+'_'+i] = permission; %>
+				<%= fn({sitePermissions: data, model: model, fn: fn}) %>
+			<% } else if (permission == 'cmd'){ %>
+				<fieldset>
+					<input type="checkbox" name="permissions[]" value="<%=group%>_c" <% if ( _.contains( model.permissions,  group+'_c') ){%>checked="checked"<%}%> />
+					<label for="">create</label>
+				</fieldset>
+				<fieldset>
+					<input type="checkbox" name="permissions[]" value="<%=group%>_m" <% if ( _.contains( model.permissions,  group+'_m') ){%>checked="checked"<%}%> />
+					<label for="">modify</label>
+				</fieldset>
+				<fieldset>
+					<input type="checkbox" name="permissions[]" value="<%=group%>_d" <% if ( _.contains( model.permissions,  group+'_d') ){%>checked="checked"<%}%> />
+					<label for="">delete</label>
+				</fieldset>		
+			<% } else { %>
+				<fieldset>
+					<input type="checkbox" name="permissions[]" value="<%=group%>_<%=permission%>" <% if ( _.contains( model.permissions,  group+'_'+permission) ){%>checked="checked"<%}%> />
+					<label for=""><%=permission %></label>
+				</fieldset>
+			<% } %>	
+		<% }) %>
+	</div>
+<% }) %>

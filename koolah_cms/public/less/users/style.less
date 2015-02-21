@@ -1,79 +1,39 @@
-body > section{
-     padding-left: 2%;
-     padding-right: 2%;
-}
-
-#adminNav{
-    .left( 10% );
-    
-    #adminNavSectionBody{
-        .commonBox( 100% );
-    }
-}
-
-#mainBlock{
-    .left( 80% );
-    margin-left: 5%;
-    
-    #mainBlockSectionBody{
-        .commonBox( 100% );
-    }
-}
-
-form{ 
-    .commonForm(60%);
-    .col{
-          padding: 0 15px;
-          .halfWidth;
-          clear: none;
-     }  
-     
-    label{ 
-      clear: none;
-      margin-left: 5px; 
-    }
-    span{ 
-        .left;
-        padding: 2px; 
-    }
-    
-    .leftCol{
-        .col;
-    }
-    
-    .rightCol{
-        .col;
-        .border-left(@color1);
-        overflow-y: auto;
-        margin: 0;
-        
-        #permissionsArea{
-            fieldset.permission{
-                .left;
-                clear: none;
-                margin-left: 15px;
-                width: auto;
-            } 
-        }
-    }
-    
-    .cat{
+#users{
+  section{
+      margin: 1% @sectionMargin;
+  }
+  
+  .koolahForm{
+    .extrainputs{
+      .permissionsForm;
+      
+      .roles{
         .fullWidth;
-        margin-top: 15px;
-        &:first-child{ margin-top: 0; }
+        margin-top: 10px;
         
-        .catName{ 
-          .bold;
-          .ucWords; 
-        }
-        .catPermissions{
-            padding-left: 15px;
-        }
-    }
-}
-
-#saveCancel{
-  .border-top(@color1);
-  .border-bottom(@color1);
-  padding: 10px 0;
+        legend{
+          text-transform: uppercase;
+        }//legend
+        
+        fieldset{
+          .halfWidth;
+          
+          span{
+            .left;
+          }//span
+        }//fieldset
+      }//roles
+      
+      .permissions{
+        .fullWidth;
+        margin-top: 10px;
+        
+        fieldset{
+          span{
+            .left;
+          }//span
+        }//fieldset
+      }//permissions
+    }//
+  }//koolahForm
 }

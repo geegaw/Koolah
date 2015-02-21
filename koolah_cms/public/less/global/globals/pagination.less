@@ -1,0 +1,34 @@
+.pagination{
+  .fullWidth;
+  
+  ul{
+    .fullWidth;
+    .border-top(@color3, 7px);
+    padding-top: 5px;
+    margin-top: 10px;
+    
+    li{
+      .left;
+      margin-left: 5px;
+      
+      &:first-child{
+        margin-left: 0;
+      }
+      
+      button{
+        background: @color1;
+        color: @color4;
+        border: none;
+        padding: 2px;
+        
+        &:hover{
+          background: @color2;
+        }
+        
+        &.active{
+          background: @color3;
+        }
+      }
+    }
+  }
+}

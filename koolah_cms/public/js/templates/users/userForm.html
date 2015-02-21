@@ -1,0 +1,21 @@
+<fieldset>
+	<label for="username">Email/Username</label>
+	<input type="text"  name="username" class="required email" value="<%= model.username %>" placeholder="User Name" />	
+</fieldset>
+
+<fieldset>
+	<label for="name">Name</label>
+	<input type="text"  name="name" class="required" value="<%= model.name %>" placeholder=" Name" />	
+</fieldset>
+
+<fieldset class="confirmation">
+	<fieldset>
+		<label for="pass1">Password</label>
+		<input type="password"  name="pass1" class="confirmation1" value="" />
+		<div class="description">Password must 8 charachters long and contain at least one number.</div>	
+	</fieldset>
+	<fieldset>
+		<label for="pass2">Confirm Password</label>
+		<input type="password"  name="pass2" class="confirmation2" value="" />	
+	</fieldset>
+</fieldset>

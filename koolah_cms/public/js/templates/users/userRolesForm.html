@@ -1,0 +1,17 @@
+<div class="roles">
+	<legend>Roles</legend>
+	<fieldset class="labelSameLine">
+		<input type="checkbox" name="roles[]" value="superuser" <% if ( _.contains( model.roles, 'superuser') ){%>checked="checked"<%}%> />
+		<label for="">Super User</label>
+	</fieldset>
+	<fieldset class="labelSameLine">
+		<input type="checkbox" name="roles[]" value="admin" <% if ( _.contains( model.roles, 'admin') ){%>checked="checked"<%}%> />
+		<label for="">Admin</label>
+	</fieldset>
+	<% _.each(roles, function(role){ %>
+		<fieldset class="labelSameLine">
+			<input type="checkbox" name="roles[]" value="<%=role.id%>" <% if ( _.contains( model.roles,  role.id) ){%>checked="checked"<%}%> />
+			<label for=""><%=role.label %></label>
+		</fieldset>
+	<% }) %>
+</div>

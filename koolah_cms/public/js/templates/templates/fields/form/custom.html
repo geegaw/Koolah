@@ -1,0 +1,10 @@
+<fieldset class="typeOptions">
+    <select name="options" class="required">
+    	<option value="no_selection">Choose Custom Field</option>
+    	<% if( model.customFields ){ %>
+			<% _.each ( model.customFields, function(customField){ %>
+				<option value=" <%= customField.id %>"> <%= customField.label %></option>	
+			<% }); %>}
+		<% } %>
+    </select>
+</fieldset>	  

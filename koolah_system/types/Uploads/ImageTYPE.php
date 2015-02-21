@@ -100,18 +100,30 @@ class  ImageTYPE extends Node{
     /**
      * crop
      * resize an image based on desired width and height
-     * @access private   
+     * @access public   
      * @param image $image
      * @param int $w
      * @param int $h
      * @return StatusTYPE     
      */    
-    private function crop( $image, $w, $h ){
+    public function crop( $image, $w, $h, $retina=false ){
         $status = $this->copyFile( $this->file->getFull_Filename(),  $image);        
         
         if ( $status->success() ){
-            $new_image = imagecreatetruecolor($w, $h);            
-            
+            $new_image = imagecreatetruecolor($w, $h);
+			
+			if ($retina){            
+	            imageinterlace($new_image, true);
+				imagealphablending($new_image, false);
+				imagesavealpha($new_image, true);
+				$color = imagecolortransparent($new_image, imagecolorallocatealpha($new_image, 0, 0, 0, 127));
+				imagefill($new_image, 0, 0, $color);
+			}
+			else{
+				$newImage = ImageTYPE::getRetinaPath($image);
+				$this->crop( $newImage, $w, $h, true );
+			}
+			
             switch( $this->file->getExtFromFileName() ){
                 case 'png':
                     $image_o = imagecreatefrompng($image);
@@ -128,7 +140,7 @@ class  ImageTYPE extends Node{
             }          
             
             try{
-                imagecopyresampled(
+            	imagecopyresampled(
                     $new_image, 
                     $image_o, 
                     0,
@@ -162,11 +174,10 @@ class  ImageTYPE extends Node{
         $status = new StatusTYPE();        
         if ( file_exists($newFilename) ){
             if( !unlink($newFilename) ){
-                $status->setFalse( 'could not copy file' );
+                $status->setFalse( 'could not copy file first time' );
                 return $status;
             }
         }
-        
         if ( !copy($oldFile, $newFilename ) )
             $status->setFalse( 'could not copy file' );        
         return $status;
@@ -320,23 +331,35 @@ class  ImageTYPE extends Node{
     }
     
     /**
-     * isLandscapre
+     * isLandscape
      * return true if photo is landscape
      * @access public   
-     * @param string $id
+     * @param string $filepath
      * @return bool     
      */    
-    static public function isLandscapre($id){
-        $suspect = new ImageTYPE();
-        $suspect->getByID($id);
-        
-        if ($suspect->getID()){
-            $filepath = $suspect->file->getFull_Filename();
+    static public function isLandscape($filepath){
+        	
+        if (file_exists($filepath)){
             list($width, $height, $type, $attr) = getimagesize($filepath);
-            
             return $width > $height;
         }
         
         return false; 
+    }
+	
+	/**
+     * getRetinaPath
+     * get the retina path for an image
+     * @access public   
+     * @param string $filepath
+     * @return string     
+     */    
+    static public function getRetinaPath($filepath){
+    	$file = new FileTYPE();
+        $ext = $file->getExtFromFileName($filepath);
+		unset($file);
+        $newImage = str_replace('.'.$ext, '',$filepath);
+		$newImage.='@2x.'.$ext;
+		return $newImage; 
     }
 }

@@ -41,30 +41,17 @@
 <!doctype html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Sign In</title>    
-    <?php if (ENV == 'dev'): ?> <script type="text/javascript"> var less = { env: 'development'};</script> <?php endif; ?>
-    <?php 
-    	//koolahToolKit::includeCSS("reset.min" );
-    	//koolahToolKit::includeCSS("global" );
-		koolahToolKit::includeCSS("signin" );
-	?>
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<?php	
-		koolahToolKit::includeJS( "lib/jquery.1.7.1.min" );
-		koolahToolKit::includeJS( "lib/jquery-ui-1.8.17.custom.min" );
-        if ( ENV=='dev' )
-            koolahToolKit::includeJS( "lib/less.min" );
-		if ( DEBUG )
-			koolahToolKit::includeJS( "debug" );
-		koolahToolKit::includeJS( "plugins" );
-		
-		include(PUBLIC_PATH.'/js/jsConf.php');
-		koolahToolKit::includeJS( "global" );
-		koolahToolKit::includeJS( "objects/core" );
-		koolahToolKit::includeJS( "fe/signin" );
-	    $username = koolahToolKit::getParam('username', $_POST, ''); 
-	?>                 
+    
+    <?php koolahToolKit::includeCSS( 'koolah', true ); ?>    
+    <?php if (isset($css))koolahToolKit::includeCSS($css ); ?>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    
+    <?php include(PUBLIC_PATH.'/js/jsConf.php');; ?>
+    <script data-main="/public/js/main" src="/public/js/lib/require/require.min.js"></script>
+    
+	<?php $username = koolahToolKit::getParam('username', $_POST, ''); ?>                 
 </head>
 <?php flush(); ?>
 

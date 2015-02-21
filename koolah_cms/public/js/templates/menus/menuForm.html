@@ -1,0 +1,12 @@
+<fieldset>
+    <label for="label">Name</label>
+    <input type="text" name="label" class="required" placeholder="Name" value="<%= model.label %>"/>
+</fieldset>
+<fieldset>
+    <label for="url">URL</label>
+    <input type="text" name="url" class="url" placeholder="URL" value="<%= model.url %>"/>
+</fieldset>
+<fieldset class="labelSameLine">
+    <input type="checkbox" name="newTab" <% if (model.newTab){ %> checked="checked" <% } %>/>
+    <label for="newtab">Open in New Tab</label>
+</fieldset>

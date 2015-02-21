@@ -42,8 +42,8 @@ class AliasesTYPE extends Nodes{
      * @param array $orderBy -- defaul by label asc
      * @param bool $distinct        
      */    
-    public function get( $q=null, $fields=null, $orderBy=null, $distinct=null  ){
-        $bsonArray = parent::get( $q, $fields , $orderBy);
+    public function get( $q=null, $fields=null, $orderBy=null, $offset=0, $limit=null, $distinct=null  ){
+        $bsonArray = parent::get( $q, $fields , $orderBy, $offset, $limit, $distinct);
         if ( count($bsonArray) ){
             foreach ( $bsonArray as $bson ){
                 $alias = new AliasTYPE( $this->db, $this->collection );

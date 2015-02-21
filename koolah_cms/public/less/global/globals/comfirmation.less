@@ -1,17 +1,22 @@
-#overlayBox .top{
-    margin-bottom: 10px;
-}
+#confirmation{
+  .overlayBox;
+  .center( 350px );    
+  
+  .top{
+      margin-bottom: 10px;
+  }
 
-#overlayBox .msg,
-#overlayBox .options{
-    padding: 0 10px;
-    margin-bottom: 10px;
-}    
-
-#overlayBox .options button{
-    margin-left: 15px;
-}
-
-#overlayBox .options button.yes{
-    color: @errorColor;
+  .msg,
+  .options{
+      padding: 0 10px;
+      margin-bottom: 10px;
+  
+      button{
+          margin-left: 15px;
+          
+          &.yes{
+            color: @errorColor;
+          }
+      }
+  }
 }

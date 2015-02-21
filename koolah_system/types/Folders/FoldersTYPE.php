@@ -42,7 +42,7 @@ class FoldersTYPE extends Nodes {
      * @param array $orderBy
      * @param bool $distinct        
      */    
-    public function get($q = null, $fields = null, $orderBy = null, $distinct=null ) { $this->read( parent::get($q, $fields) ); }
+    public function get($q = null, $fields = null, $orderBy = null, $offset=0, $limit=null, $distinct=null ) { $this->read( parent::get($q, $fields, $orderBy, $offset, $limit, $distinct) ); }
 
     /**
      * prepare

@@ -51,6 +51,7 @@ class MenuItemTYPE extends Node {
      */    
     public function __construct( $db=null ){
 		parent::__construct( $db, MENU_COLLECTION );
+		$this->sessionUser = new SessionUser( $db );
 		$this->name = '';
 		$this->url = '';
 		$this->submenu = new MenuItemsTYPE( $db );
@@ -79,35 +80,54 @@ class MenuItemTYPE extends Node {
      * @return array     
      */    
     public function display( $active='', $wrapper='li', $rec=false, $class='', $levels=-1 ){
-		
+		$canView = true;
 		$requiresSub = false;
-		if ( $rec && $levels != 0 && $this->submenu->isNotEmpty()  )
+		if ( $rec && $levels != 0 && $this->submenu->isNotEmpty()  ){
 			$requiresSub = true;
-		
-		if ( !is_array( $active ) )	
-			$active = array( $active );
-		$act = '';
-		if ( in_array( $this->name, $active ))
-			$act = ' active';
-		
-		echo '<'.$wrapper.' class="menuItem '.$class.'">';
-		echo 	'<a href="'.MenuItemTYPE::formatUrl( $this->url ).'" class="';
-		if ($requiresSub){
-			echo 'subMenuTrigger';	
+			$canView = false;
+			foreach ($this->submenu->menuItems() as $menuItem){
+				if ($menuItem->userHasPermission()){
+					$canView = true;
+					break;
+				}
+			}
 		}
-		echo $act.'">'.$this->name.'</a>';
 		
-		if ($requiresSub){
-			$levels--;
+		if ($canView){
+			if ( !is_array( $active ) )	
+				$active = array( $active );
+			$act = '';
+			if ( in_array( $this->name, $active ))
+				$act = ' active';
 			
-			echo '<div class="subMenu hide">';
-			$this->submenu->display($active, $wrapper, $rec, $class, $levels );
-			echo '</div>';
-		}
+			echo '<'.$wrapper.' class="menuItem '.$class.'">';
+			echo 	'<a href="'.MenuItemTYPE::formatUrl( $this->url ).'" class="';
+			if ($requiresSub){
+				echo 'subMenuTrigger';	
+			}
+			echo $act.'">'.$this->name.'</a>';
+			
+			if ($requiresSub){
+				$levels--;
 				
-		echo "</$wrapper>";
+				echo '<div class="subMenu hide">';
+				$this->submenu->display($active, $wrapper, $rec, $class, $levels );
+				echo '</div>';
+			}
+					
+			echo "</$wrapper>";
+		}
 	}
 	
+	/**
+     * userHasPermission
+     * checks if user has permission for menu item
+     * @access  public
+     * @return bool
+     */
+    public function userHasPermission(){
+		return !$this->getPermission() || $this->sessionUser->can($this->getPermission());		
+	}
 	
 	/**
      * prepare

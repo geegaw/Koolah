@@ -12,12 +12,32 @@
     .leftBoth;
     width: 100%;
 }
-.halfWidth{ .left(50%); }
-.thirdWidth{ .left(33%); }
+.halfWidth{ 
+  .left(50%);
+  
+  &:nth-child(2n + 1){
+    clear: left;
+  } 
+}
+.thirdWidth{ 
+  .left(33%);
+  
+  &:nth-child(3n + 1){
+    clear: left;
+  } 
+}
 .thirdWidthM{ .left(32%); }
 
+.quarterWidth{ 
+  .left(25%);
+  
+  &:nth-child(4n + 1){
+    clear: left;
+  } 
+}
+
 .error{ color: @errorColor;}
-.errorText{
+.errMsg{
     .fullWidth; 
     .error;
     font-size: @font1;
@@ -48,8 +68,8 @@
 .ucWords{ text-transform: capitalize; }
 
 .background1{
-    background: @color7;
-    background: -moz-linear-gradient(left center, @color7, @color8);  
+    background: @background1;
+    background: -moz-linear-gradient(left center, darken(@background1, 10%), @background1);  
 }
 
 .fixed{ position: fixed; }
@@ -58,10 +78,11 @@
 
 .block{ display:block; }
 
-.dropShadow{ .shadow( @color1, 0, 0, 10px, 5px); }
-.dropShadow2{ .shadow( @color11, 5px, 5px, 10px, 25px); }
+.dropShadow{ .shadow( @color3, 0, 0, 10px, 5px); }
+.dropShadow2{ .shadow( @shadowcolor1, 5px, 5px, 10px, 25px); }
 
 .bold{ font-weight: bold; }
+.italic{ font-style: italic; }
 .textCenter{ text-align: center; }
 
 
@@ -86,14 +107,14 @@ button, a{
 
 .button1{
     .clearButton;
-    background: @color3;
-    color: @color5;
+    background: @color1;
+    color: @black;
     font-size: font1;
     text-align: center;
     padding: 4px 5px;
 }
 .button1.active{
-    background: @color1;
+    background: @color3;
 }
 
 html,
@@ -102,9 +123,95 @@ body{
     .background1; 
     
     > section{
-        background: @color4;
+        background: @white;
         padding: 25px 0;
         margin: 0;
         .fullWidth;
     }
+}
+
+.submit{
+  .left;
+  //.round(5px);
+  padding: 4px 6px;
+  text-align: center;
+  color: @white;
+  background: @color4;
+  //width: 50px;
+  .block;
+  margin-left: 10px;
+  border: none;
+  //.border(darken(@shadowcolor1, 10%), 2px);
+  
+  &:first-child{
+    margin-left: 0;
+  }
+  
+  &:hover{
+    background: @color5;
+  }
+}
+
+button{
+  .submit;
+}
+
+.go{
+  .submit;
+}
+
+.save{
+  .submit;
+  &:hover{
+    background: darken(green, 10%);
+  }
+}
+
+.cancel{
+  .submit;
+  &:hover{
+    background: darken(red, 10%);
+  }
+}
+
+.del:hover{
+  background: darken(red, 10%);
+}
+.reset{
+  .submit;
+  &:hover{
+    background: @black;
+  }
+}
+
+.search{
+  @queryW: 50px;
+  .fullWidth;
+  .relative;
+  padding-right: @queryW;
+  margin: 0;
+  
+  label{
+    .hide;
+  }
+  
+  div{
+    .fullWidth;
+    .relative;
+    
+    .query{
+      .fullWidth;
+    }
+    
+    .reset{
+      .positionRightTop(absolute, 5px , 0);
+      background: none;
+      color: @black;
+    }
+  }
+  
+  .searchGo{
+     .positionRightTop(absolute, 0, 0);
+     width: @queryW;
+   }
 }

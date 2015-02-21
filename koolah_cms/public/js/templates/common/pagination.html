@@ -1,0 +1,11 @@
+<ul>
+	<% if (first) { %><li><button type="button" class="first" data-page="0">&lt;&lt;</button></li><% } %>
+	<% if (prev !== false) { %><li><button type="button" class="prev" data-page="<%= prev %>">&lt;</button></li><% } %>
+	<% if (jumpPrev) { %><li clas="hide"><button type="button" class="jumpLeft" data-page="<%= jumpPrev %>"><%= jumpPrev + 1 %></button>&nbsp;...</li><% } %>
+	<% for (var i = start; i < end; i++) { %>
+		<li><button type="button" class="page<%= i %><% if (i == active){ %> active<% } %>" data-page="<%= i %>" ><%= i + 1 %></button></li>
+	<% } %>
+	<% if (jumpNext) { %><li>...&nbsp;<button type="button" class="jumpLeft" data-page="<%= jumpNext %>"><%= jumpNext + 1 %></button><% } %>
+	<% if (next) { %><li><button type="button" class="next" data-page="<%= next %>">&gt;</button></li><% } %>
+	<% if (last) { %><li><button type="button" class="last" data-page="<%= numPages - 1 %>">&gt;&gt;</button></li><% } %>
+</ul>

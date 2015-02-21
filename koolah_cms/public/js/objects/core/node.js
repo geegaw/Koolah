@@ -47,7 +47,6 @@ function Node(childClass){
 		$.ajax({
 			url: AJAX_SAVE_URL, 
 			type: 'POST',
-			//contentType: 'application/json; charset=UTF-8',
 			async: false,
 			dataType: 'json',
 			cache: false,
@@ -56,22 +55,23 @@ function Node(childClass){
 					"className": self.childClass, 
 					"data": JSON.stringify( childData )
 				  }, 
-			error: function(e){ errorMsg( $el, 'error' ); console.log(e)},
+			error: function(e){ errorMsg( $el, 'error' ); console.log(e); },
 			success: function(response){
 				if ( response.status ){
 				    successMsg( $el );
 				    if( !self.id && response.id)
-				        self.id = response.id
+				        self.id = response.id;
+					if (callback)
+						callback( response );	
 					if (chlidCallback)
 						chlidCallback( response );
-					if (callback)
-						callback( response );					
+									
 				}
 				else
 					errorMsg( $el, response.msg );
 			},
-		})
-	}
+		});
+	},
 
 	/**
      * get
@@ -96,7 +96,7 @@ function Node(childClass){
                 'id': self.id,
                 'className': self.childClass,
             },
-            error: function(e){ errorMsg( $el, 'error' ); console.log(e)},
+            error: function(e){ errorMsg( $el, 'error' ); console.log(e); },
             success: function(response){
                 if ( response.status && response.node){
                     //success
@@ -109,8 +109,8 @@ function Node(childClass){
                 else
                     errorMsg( $el, response.msg );
             },
-        })
-    }
+        });
+    },
 	
 	/**
      * del
@@ -133,7 +133,7 @@ function Node(childClass){
 					'id': self.id,
 					'className': self.childClass, 
 				 },
-			error: function(e){ errorMsg( $el, 'error' ); console.log(e)},
+			error: function(e){ errorMsg( $el, 'error' ); console.log(e); },
 			success: function(response){
 					if ( response.status ){
 						if (chlidCallback)
