@@ -1,0 +1,15 @@
+{
+  "name": "Koolah",
+  "version": "0.0.1",
+  "author": "Christophe Vaugeois",
+  "email": "cavaugeois@gmail.com",
+  "licence": "",
+  "url": "http://www.kooolah.org",
+  "repository":{
+    "type": "git",
+    "url": "https://github.com/geegaw/Koolah"
+  },
+  "dependencies": {
+    "mongodb": ">= 2.0.0"
+  },
+}
